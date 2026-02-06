@@ -3,27 +3,23 @@ import Link from "next/link";
 export default function Bacaan() {
   return (
     <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <article className="prose dark:prose-invert">
-        <h1>Bacaan</h1>
+      <article className="prose dark:prose-invert max-w-none">
+        <h1 className="text-center">Bacaan</h1>
       </article>
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-          <article className="prose dark:prose-invert">
-            <h2>Bacaan Harian</h2>
-            <p>Bacaan harian sesuai dengan kalender liturgi.</p>
-            <Link href="/bacaan/harian">
-              Lihat Bacaan Harian
-            </Link>
-          </article>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-bold mb-2">Bacaan Harian</h2>
+          <p className="text-gray-600 dark:text-gray-300">Bacaan harian sesuai dengan kalender liturgi.</p>
+          <Link href="/bacaan/harian" className="text-blue-500 hover:underline mt-4 inline-block">
+            Lihat Bacaan Harian
+          </Link>
         </div>
-        <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-          <article className="prose dark:prose-invert">
-            <h2>Bacaan Ibadah</h2>
-            <p>Bacaan untuk ibadah hari Minggu dan hari raya.</p>
-            <Link href="/bacaan/ibadah">
-              Lihat Bacaan Ibadah
-            </Link>
-          </article>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-bold mb-2">Bacaan Ibadah</h2>
+          <p className="text-gray-600 dark:text-gray-300">Bacaan untuk ibadah hari Minggu dan hari raya.</p>
+          <Link href="/bacaan/ibadah" className="text-blue-500 hover:underline mt-4 inline-block">
+            Lihat Bacaan Ibadah
+          </Link>
         </div>
       </div>
     </div>
