@@ -6,22 +6,22 @@ import { useState } from "react";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const linkClasses = "px-4 py-2 rounded-lg text-gray-800 dark:text-gray-100 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors duration-300";
+  const linkClasses = "px-4 py-2 rounded-md text-black bg-gray-100 hover:bg-gray-200 transition-colors duration-300";
   const mobileLinkClasses = "block " + linkClasses;
 
   return (
-    <header className="bg-blue-100 shadow-md dark:bg-blue-900">
+    <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-gray-800 dark:text-gray-100">
+            <Link href="/" className="text-xl font-bold text-black">
               Nama Gereja
             </Link>
           </div>
           <div className="md:hidden">
             <button onClick={() => setIsOpen(!isOpen)}>
               <svg
-                className="h-6 w-6 text-gray-800 dark:text-gray-100"
+                className="h-6 w-6 text-black"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

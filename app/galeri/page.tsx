@@ -28,15 +28,15 @@ export default function Galeri() {
 
   return (
     <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <article className="prose dark:prose-invert max-w-none">
-        <h1 className="text-center">Galeri Kegiatan</h1>
+      <article className="prose max-w-none">
+        <h1 className="text-center text-black">Galeri Kegiatan</h1>
       </article>
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {images.map((image, index) => (
-          <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-            <img src={image.src} alt={image.caption} className="w-full h-auto object-cover" />
+          <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src={image.src} alt={image.caption} className="w-full h-48 object-cover" />
             <div className="p-4">
-              <p className="text-gray-600 dark:text-gray-300">{image.caption}</p>
+              <p className="text-sm text-gray-500">{image.caption}</p>
             </div>
           </div>
         ))}

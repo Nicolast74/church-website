@@ -1,0 +1,102 @@
+PHASE:
+Phase 0 – Public Website (MVP)
+
+GOAL:
+Build a clean, calm, and informative public church website.
+This phase focuses ONLY on public-facing pages and UI.
+No authentication, no database dependency, no CRUD.
+
+TARGET USERS:
+- Church congregation
+- Public visitors
+
+NON-GOALS:
+- No admin login
+- No public comments
+- No payment system
+- No livestream system
+- No database CRUD
+
+--------------------------------------------
+TECH STACK
+--------------------------------------------
+
+- Next.js (App Router)
+- Tailwind CSS
+- Static data (hardcoded / JSON / MDX)
+
+--------------------------------------------
+GLOBAL NAVBAR
+--------------------------------------------
+
+Behavior:
+- Horizontal navbar
+- Sticky (always visible on scroll)
+- Full width, centered content
+
+Links:
+Home             -> /
+Jadwal           -> /jadwal
+Bacaan           -> /bacaan
+Kalender Liturgi -> /kalender-liturgi
+Galeri           -> /galeri
+Kontak           -> /kontak
+
+Navbar Style:
+- White background
+- Subtle shadow or border
+- Navigation links as rounded rectangle buttons
+- Calm, neutral colors
+- No animations
+
+--------------------------------------------
+PAGES
+--------------------------------------------
+
+1. HOME (/)
+- Hero section (church tagline or bible verse)
+- Upcoming schedules preview
+- Latest activities or announcements
+- Gallery preview
+- Footer with contact summary
+
+2. JADWAL (/jadwal)
+- Worship and activity schedules
+- Filter by location
+- Filter by activity type
+
+3. BACAAN (/bacaan)
+Sub-pages:
+- /bacaan/harian
+- /bacaan/ibadah
+
+Content:
+- Date-based readings
+- Structured sections (Bacaan I, Mazmur, Injil)
+
+4. KALENDER LITURGI (/kalender-liturgi)
+- Monthly liturgical calendar
+- Color-coded liturgical days
+- Feast or memorial notes
+
+5. GALERI (/galeri)
+- Card-based gallery layout
+- Image + caption
+- No public interaction
+
+6. KONTAK (/kontak)
+- Pastor information
+- Secretariat contact
+- Email
+- Church address
+
+--------------------------------------------
+DESIGN PRINCIPLES
+--------------------------------------------
+
+- Calm
+- Minimal
+- Church-appropriate
+- Mobile-first
+- Generous spacing
+- Easy to read

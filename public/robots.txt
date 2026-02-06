@@ -1,0 +1,8 @@
+# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+#
+# This file is used to prevent search engine bots from crawling certain parts of your website.
+#
+# By default, we allow all bots to crawl all pages.
+
+User-agent: *
+Allow: /

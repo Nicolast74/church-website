@@ -15,8 +15,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Church Name",
-  description: "Welcome to our church!",
+  title: "Gereja St. Agustinus & St. Yohanes",
+  description: "Selamat datang di website resmi Gereja St. Agustinus & St. Yohanes. Temukan jadwal ibadah, kegiatan, dan informasi lainnya.",
+  openGraph: {
+    title: "Gereja St. Agustinus & St. Yohanes",
+    description: "Selamat datang di website resmi Gereja St. Agustinus & St. Yohanes. Temukan jadwal ibadah, kegiatan, dan informasi lainnya.",
+    url: "https://gereja.vercel.app",
+    siteName: "Gereja St. Agustinus & St. Yohanes",
+    images: [
+      {
+        url: "https://gereja.vercel.app/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gereja St. Agustinus & St. Yohanes",
+    description: "Selamat datang di website resmi Gereja St. Agustinus & St. Yohanes. Temukan jadwal ibadah, kegiatan, dan informasi lainnya.",
+    images: ["https://gereja.vercel.app/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +47,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={`${geistSans.variable} ${geistMono.variable} flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} flex flex-col min-h-screen`}>
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
