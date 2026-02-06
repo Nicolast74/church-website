@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
+    <html lang="id">
+      <body className={`${geistSans.variable} ${geistMono.variable} flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900`}>
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
