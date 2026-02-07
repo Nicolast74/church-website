@@ -1,16 +1,26 @@
-
 import type { Config } from 'tailwindcss'
+import typography from '@tailwindcss/typography'
 
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/globals.css', // Explicitly added
   ],
   theme: {
     extend: {
+      colors: {
+        'primary': '#4A5568',      // Slate Gray
+        'secondary': '#A0AEC0',    // Cool Gray
+        'accent': '#FBBF24',       // Amber
+        'background': '#F7FAFC',   // Off-white
+        'text-primary': '#2D3748', // Charcoal
+        'text-secondary': '#718096', // Gray
+      },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
+        serif: ['Georgia', 'serif'],
         mono: ['var(--font-geist-mono)'],
       },
       backgroundImage: {
@@ -21,7 +31,7 @@ const config: Config = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
   ],
 }
 export default config

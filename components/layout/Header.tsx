@@ -4,84 +4,56 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const linkClasses = "px-4 py-2 rounded-md text-black bg-gray-100 hover:bg-gray-200 transition-colors duration-300";
-  const mobileLinkClasses = "block " + linkClasses;
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="container mx-auto px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-black">
-              Nama Gereja
-            </Link>
-          </div>
-          <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)}>
-              <svg
-                className="h-6 w-6 text-black"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex h-16 items-center justify-between">
+
+          {/* LEFT: TITLE */}
+          <Link
+            href="/"
+            className="text-lg font-semibold text-gray-800 no-underline"
+          >
+            Wilayah Bonaventura Panggang
+          </Link>
+
+          {/* RIGHT: NAV MENU */}
+          <nav className="flex items-center gap-x-[5px]">
+            <Link href="/" className="px-4 py-2 rounded-md text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 transition-colors">Home</Link>
+
+            {/* LOKASI */}
+            <div className="relative">
+              <button
+                onClick={() => setOpen(!open)}
+                className="px-4 py-2 rounded-md text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 transition-colors"
               >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
-          <nav className={`hidden md:flex md:space-x-2 ${isOpen ? "block" : "hidden"}`}>
-            <Link href="/jadwal" className={linkClasses}>
-              Jadwal
-            </Link>
-            <Link href="/bacaan" className={linkClasses}>
-              Bacaan
-            </Link>
-            <Link href="/kalender-liturgi" className={linkClasses}>
-              Kalender Liturgi
-            </Link>
-            <Link href="/galeri" className={linkClasses}>
-              Galeri
-            </Link>
-            <Link href="/kontak" className={linkClasses}>
-              Kontak
-            </Link>
+                Lokasi
+              </button>
+
+              {open && (
+                <div className="absolute left-0 mt-2 w-80 rounded-md bg-white border shadow-lg">
+                  <Link href="/lokasi/st-agustinus" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    St. Agustinus Panggang
+                  </Link>
+                  <Link href="/lokasi/st-yohanes" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    St. Yohanes Girisekar
+                  </Link>
+                  <Link href="/lokasi/taman-doa" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Taman Doa Bintang Samudra
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link href="/jadwal" className="px-4 py-2 rounded-md text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 transition-colors">Jadwal</Link>
+            <Link href="/bacaan" className="px-4 py-2 rounded-md text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 transition-colors">Bacaan</Link>
+            <Link href="/galeri" className="px-4 py-2 rounded-md text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 transition-colors">Galeri</Link>
+            <Link href="/kontak" className="px-4 py-2 rounded-md text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 transition-colors">Kontak</Link>
           </nav>
+
         </div>
-        {isOpen && (
-          <nav className="md:hidden mt-4 space-y-2">
-            <Link href="/jadwal" className={mobileLinkClasses}>
-              Jadwal
-            </Link>
-            <Link href="/bacaan" className={mobileLinkClasses}>
-              Bacaan
-            </Link>
-            <Link href="/kalender-liturgi" className={mobileLinkClasses}>
-              Kalender Liturgi
-            </Link>
-            <Link href="/galeri" className={mobileLinkClasses}>
-              Galeri
-            </Link>
-            <Link href="/kontak" className={mobileLinkClasses}>
-              Kontak
-            </Link>
-          </nav>
-        )}
       </div>
     </header>
   );
