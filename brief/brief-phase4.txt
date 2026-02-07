@@ -1,0 +1,92 @@
+BRIEF PHASE 4
+Project Website Wilayah Gereja
+
+Tujuan Phase:
+Melakukan koreksi data, perapihan struktur navigasi, dan peningkatan UX visual pada halaman Gallery dan Navbar agar website terasa lebih modern, rapi, dan usable.
+
+==================================================
+INFORMASI DASAR (REVISI FINAL)
+==================================================
+
+Nama Wilayah:
+Wilayah Bonaventura Panggang
+
+Lingkungan Gereja di Wilayah:
+1. Lingkungan Gereja St. Agustinus Panggang
+2. Lingkungan Gereja St. Yohanes Girisekar
+
+Nama Taman Doa:
+Taman Doa Bintang Samudra
+
+==================================================
+NAVBAR & NAVIGASI
+==================================================
+
+Requirement Navbar:
+- Navbar ditampilkan secara horizontal (desktop-first).
+- Navbar bersifat sticky (tetap terlihat saat scroll).
+- Item navbar berbentuk tombol (rounded rectangle).
+- Hover state jelas dan halus (transition).
+
+Struktur Navbar:
+- Home
+- Jadwal
+- Bacaan
+- Gallery
+- Lingkungan (Dropdown)
+    - St. Agustinus Panggang
+    - St. Yohanes Girisekar
+    - Taman Doa Bintang Samudra
+- Kontak
+
+Catatan Teknis:
+- Menu "Lingkungan" menggunakan dropdown (hover / click).
+- Dropdown tetap simple, tidak menggunakan library berat.
+- Menggunakan Tailwind CSS utility (flex, gap, rounded, shadow, transition).
+
+==================================================
+HALAMAN GALLERY
+==================================================
+
+Tujuan:
+Menampilkan dokumentasi kegiatan gereja dengan tampilan modern, ringan, dan familiar bagi user.
+
+Konsep Visual:
+- Grid gallery dengan card-card kecil.
+- Gaya mirip Instagram:
+  - Kotak / rasio 1:1
+  - Banyak item dalam satu layar
+  - Fokus ke visual, teks minimal
+
+Spesifikasi Gallery Card:
+- Ukuran kecil (thumbnail).
+- Gambar memenuhi card (object-cover).
+- Rounded corner.
+- Hover effect:
+  - Sedikit zoom atau overlay halus
+  - Optional: icon atau judul singkat
+- Responsive grid:
+  - Mobile: 2 kolom
+  - Tablet: 3 kolom
+  - Desktop: 4–5 kolom
+
+Konten Gallery:
+- Foto kegiatan ibadah
+- Kegiatan lingkungan
+- Event khusus gereja
+- Dokumentasi taman doa
+
+Catatan:
+- Tidak perlu fitur like/share (read-only).
+- Komentar dan upload belum termasuk di phase ini.
+
+==================================================
+CATATAN TAMBAHAN
+==================================================
+
+- Fokus phase ini adalah UX & UI polish.
+- Tidak menambah fitur backend baru.
+- Konsistensi penamaan halaman dan data harus dijaga.
+- Styling diarahkan agar tidak terlihat "HTML polos".
+
+End of Brief Phase 4

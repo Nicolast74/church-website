@@ -1,46 +1,46 @@
+import GalleryCard from "@/components/galeri/GalleryCard";
+import PageHeader from "@/components/ui/PageHeader";
+import Section from "@/components/ui/Section";
+
 export default function Galeri() {
-  const images = [
-    {
-      src: "https://picsum.photos/seed/picsum1/800/600",
-      caption: "Kegiatan Retret OMK 2023",
-    },
-    {
-      src: "https://picsum.photos/seed/picsum2/800/600",
-      caption: "Ziarah 9 Gua Maria Lingkungan St. Yusuf",
-    },
-    {
-      src: "https://picsum.photos/seed/picsum3/800/600",
-      caption: "Lomba Paduan Suara Antar Lingkungan",
-    },
-    {
-      src: "https://picsum.photos/seed/picsum4/800/600",
-      caption: "Misa Syukur HUT Paroki ke-50",
-    },
-    {
-      src: "https://picsum.photos/seed/picsum5/800/600",
-      caption: "Penerimaan Sakramen Krisma",
-    },
-    {
-      src: "https://picsum.photos/seed/picsum6/800/600",
-      caption: "Natal Bersama Anak-anak Panti Asuhan",
-    },
+  // A single, unified list of all images for an Instagram-style grid.
+  const allImages = [
+    { src: "https://picsum.photos/seed/event1-1/500/500", caption: "Sesi Pembukaan Retret" },
+    { src: "https://picsum.photos/seed/event1-2/500/500", caption: "Kerja Kelompok OMK" },
+    { src: "https://picsum.photos/seed/event2-1/500/500", caption: "Perarakan Misa Syukur" },
+    { src: "https://picsum.photos/seed/event1-3/500/500", caption: "Malam Keakraban" },
+    { src: "https://picsum.photos/seed/event2-2/500/500", caption: "Pemotongan Tumpeng HUT Paroki" },
+    { src: "https://picsum.photos/seed/event3-1/500/500", caption: "Ziarah ke Taman Doa" },
+    { src: "https://picsum.photos/seed/event2-3/500/500", caption: "Ramah Tamah Umat" },
+    { src: "https://picsum.photos/seed/event4-1/500/500", caption: "Penerimaan Sakramen Krisma" },
+    { src: "https://picsum.photos/seed/event3-2/500/500", caption: "Doa Rosario di Taman Doa" },
+    { src: "https://picsum.photos/seed/event2-4/500/500", caption: "Foto Bersama Panitia" },
   ];
 
   return (
-    <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <article className="prose max-w-none">
-        <h1 className="text-center text-black">Galeri Kegiatan</h1>
-      </article>
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {images.map((image, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-            <img src={image.src} alt={image.caption} className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <p className="text-sm text-gray-500">{image.caption}</p>
-            </div>
+    <main>
+      <Section>
+        <PageHeader title="Galeri Kegiatan" subtitle="Momen-momen kebersamaan di Wilayah Bonaventura Panggang" />
+
+        {allImages.length > 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {allImages.map((image, index) => (
+              <GalleryCard
+                key={index}
+                imageUrl={image.src}
+                caption={image.caption}
+              />
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        ) : (
+          <div className="text-center">
+            <h3 className="text-2xl font-semibold text-gray-700">Galeri Masih Kosong</h3>
+            <p className="mt-2 text-gray-500">
+              Belum ada foto kegiatan yang diunggah. Silakan kembali lagi nanti.
+            </p>
+          </div>
+        )}
+      </Section>
+    </main>
   );
 }

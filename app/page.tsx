@@ -14,7 +14,7 @@ export default function Home() {
             Selamat Datang di Gereja Kami
           </h1>
           <p className="mt-3 max-w-md mx-auto text-lg sm:text-xl md:mt-5 md:text-2xl md:max-w-3xl">
-            "Karena di mana dua atau tiga orang berkumpul dalam Nama-Ku, di situ Aku ada di tengah-tengah mereka."
+            &quot;Karena di mana dua atau tiga orang berkumpul dalam Nama-Ku, di situ Aku ada di tengah-tengah mereka.&quot;
           </p>
           <p className="mt-2 text-lg sm:text-xl md:text-2xl md:max-w-3xl">
             - Matius 18:20 -

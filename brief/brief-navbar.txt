@@ -1,0 +1,154 @@
+--- visual model ---
+[ Home ] [ Lokasi ▾ ] [ Jadwal ] [ Bacaan ] [ Galeri ] [ Kontak ]
+              ↓
+     ┌───────────────────────────────┐
+     │ St. Agustinus Panggang         │
+     │ St. Yohanes Girisekar          │
+     │ Taman Doa Bintang Samudra      │
+     └───────────────────────────────┘
+--- brief ---
+NAVBAR BRIEF – FINAL VERSION
+
+GOAL:
+Create a clean, top horizontal navbar for a church website.
+Style must be calm, flat, and professional.
+
+STRICT RULES (NO EXCEPTIONS):
+- Navbar MUST be horizontal at the TOP.
+- Navbar MUST NOT be vertical.
+- Navbar MUST NOT be a sidebar.
+- Navbar MUST NOT use hamburger menu.
+- Navbar MUST NOT hide items with breakpoints.
+- Navbar MUST NOT underline links.
+- Navbar MUST NOT change text color on click.
+
+LAYOUT STRUCTURE:
+LEFT:
+- Site title text:
+  "Wilayah Bonaventura Panggang"
+
+RIGHT (HORIZONTAL MENU, SPACED):
+- Home
+- Lokasi (button with dropdown)
+- Jadwal
+- Bacaan
+- Galeri
+- Kontak
+
+NAVBAR STYLE:
+- Flat button style for all menu items
+- No underline
+- No active color change
+- Hover effect: subtle background only
+- Rounded rectangle buttons
+- Calm gray text color
+
+SPACING:
+- All menu items must be in ONE flex container
+- Use gap-x for spacing between menu items
+- Each menu item must have padding (px & py)
+
+LOKASI DROPDOWN:
+- "Lokasi" is a BUTTON, not a link
+- Dropdown opens ON CLICK
+- Dropdown is positioned below "Lokasi"
+- Dropdown width is INDEPENDENT from button width
+- Dropdown must be wide enough for long names
+
+DROPDOWN CONTENT:
+- St. Agustinus Panggang
+- St. Yohanes Girisekar
+- Taman Doa Bintang Samudra
+
+TECH STACK:
+- Next.js (App Router)
+- Tailwind CSS
+- React Client Component
+
+IMPLEMENTATION NOTES:
+- Use flex-row
+- Use justify-between
+- Use relative + absolute for dropdown
+- Use w-72 or w-80 for dropdown width
+- Do NOT use md:hidden, md:flex, or responsive navbar tricks
+
+OUTPUT:
+- Header.tsx only
+- No explanations
+- No alternative layouts
+
+----- reference -----
+---header.txt---
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+
+export default function Header() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex h-16 items-center justify-between">
+
+          {/* LEFT: TITLE */}
+          <Link
+            href="/"
+            className="text-lg font-semibold text-gray-800 no-underline"
+          >
+            Wilayah Bonaventura Panggang
+          </Link>
+
+          {/* RIGHT: NAV MENU */}
+          <nav className="flex items-center gap-x-4">
+            <Link href="/" className="nav-btn">Home</Link>
+
+            {/* LOKASI */}
+            <div className="relative">
+              <button
+                onClick={() => setOpen(!open)}
+                className="nav-btn"
+              >
+                Lokasi
+              </button>
+
+              {open && (
+                <div className="absolute left-0 mt-2 w-80 rounded-md bg-white border shadow-lg">
+                  <Link href="/lokasi/st-agustinus" className="dropdown-item">
+                    St. Agustinus Panggang
+                  </Link>
+                  <Link href="/lokasi/st-yohanes" className="dropdown-item">
+                    St. Yohanes Girisekar
+                  </Link>
+                  <Link href="/lokasi/taman-doa" className="dropdown-item">
+                    Taman Doa Bintang Samudra
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link href="/jadwal" className="nav-btn">Jadwal</Link>
+            <Link href="/bacaan" className="nav-btn">Bacaan</Link>
+            <Link href="/galeri" className="nav-btn">Galeri</Link>
+            <Link href="/kontak" className="nav-btn">Kontak</Link>
+          </nav>
+
+        </div>
+      </div>
+    </header>
+  );
+}
+---end---
+
+---add to global.tsx---
+.nav-btn {
+  @apply px-4 py-2 rounded-md text-sm font-medium text-gray-700
+         no-underline hover:bg-gray-100 transition-colors;
+}
+
+.dropdown-item {
+  @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100;
+}
+---end---
+----- end -----

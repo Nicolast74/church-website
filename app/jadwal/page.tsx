@@ -1,3 +1,7 @@
+import Card from "@/components/ui/Card";
+import PageHeader from "@/components/ui/PageHeader";
+import Section from "@/components/ui/Section";
+
 export default function Jadwal() {
   const ibadahRutin = [
     {
@@ -7,6 +11,7 @@ export default function Jadwal() {
           title: "Misa Minggu Pagi",
           time: "08:00",
           location: "St. Agustinus",
+          isUpcoming: true,
         },
         {
           title: "Misa Minggu Sore",
@@ -33,6 +38,7 @@ export default function Jadwal() {
       day: "Jumat Pertama",
       time: "19:00",
       location: "Taman Doa Bintang Samudra",
+      isUpcoming: true,
     },
     {
       title: "Katekumen",
@@ -49,43 +55,73 @@ export default function Jadwal() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <article className="prose max-w-none">
-        <h1 className="text-center text-black">Jadwal Ibadah & Kegiatan</h1>
-      </article>
+    <main>
+      <Section>
+        <PageHeader title="Jadwal Ibadah & Kegiatan" />
 
-      <section className="mt-12">
-        <h2 className="text-2xl font-bold text-black mb-6">Ibadah Rutin</h2>
-        <div className="space-y-8">
-          {ibadahRutin.map((item, index) => (
-            <div key={index}>
-              <h3 className="text-xl font-semibold text-black mb-4">{item.day}</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {item.schedules.map((schedule, sIndex) => (
-                  <div key={sIndex} className="p-6 bg-white rounded-lg shadow-md">
-                    <h4 className="text-lg font-bold mb-2 text-black">{schedule.title}</h4>
-                    <p className="text-black">{schedule.time}</p>
-                    <p className="text-black">{schedule.location}</p>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+            Ibadah Rutin
+          </h2>
+          {ibadahRutin.length > 0 ? (
+            <div className="space-y-10">
+              {ibadahRutin.map((item, index) => (
+                <div key={index}>
+                  <h3 className="text-2xl font-semibold text-gray-700 mb-4 border-b-2 border-gray-200 pb-2">
+                    {item.day}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {item.schedules.map((schedule, sIndex) => (
+                      <Card key={sIndex} isUpcoming={schedule.isUpcoming}>
+                        <h4 className="text-xl font-bold text-gray-800">
+                          {schedule.title}
+                        </h4>
+                        <p className="text-gray-600 mt-2 text-lg">
+                          {schedule.time}
+                        </p>
+                        <p className="text-gray-500 mt-1">
+                          {schedule.location}
+                        </p>
+                      </Card>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <p className="text-center text-gray-500">
+              Jadwal ibadah rutin akan segera diperbarui.
+            </p>
+          )}
         </div>
-      </section>
+      </Section>
 
-      <section className="mt-12">
-        <h2 className="text-2xl font-bold text-black mb-6">Kegiatan Gereja</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {kegiatanGereja.map((kegiatan, index) => (
-            <div key={index} className="p-6 bg-white rounded-lg shadow-md">
-              <h3 className="text-lg font-bold mb-2 text-black">{kegiatan.title}</h3>
-              <p className="text-black">{kegiatan.day} - {kegiatan.time}</p>
-              <p className="text-black">{kegiatan.location}</p>
+      <Section isGray>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+            Kegiatan Gereja
+          </h2>
+          {kegiatanGereja.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {kegiatanGereja.map((kegiatan, index) => (
+                <Card key={index} isUpcoming={kegiatan.isUpcoming}>
+                  <h3 className="text-xl font-bold text-gray-800">
+                    {kegiatan.title}
+                  </h3>
+                  <p className="text-gray-600 mt-2">
+                    {kegiatan.day} - {kegiatan.time}
+                  </p>
+                  <p className="text-gray-500 mt-1">{kegiatan.location}</p>
+                </Card>
+              ))}
             </div>
-          ))}
+          ) : (
+            <p className="text-center text-gray-500">
+              Belum ada kegiatan gereja yang dijadwalkan.
+            </p>
+          )}
         </div>
-      </section>
-    </div>
+      </Section>
+    </main>
   );
 }
