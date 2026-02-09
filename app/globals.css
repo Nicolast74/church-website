@@ -25,4 +25,79 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/bg/gereja.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.nav-spacing > * + * {
+  margin-left: 1.5rem;
+}
+
+.floating-header-container {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 0.75rem; /* p-3 */
+}
+
+.floating-navbar {
+  max-width: 80rem; /* max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #E5E7EB; /* bg-ray-200 */
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
+  border: 1px solid #D1D5DB; /* border-gray-300 */
+  border-radius: 0.5rem; /* rounded-lg */
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #1f2937; /* text-gray-800 */
+  text-decoration: none;
+  border-width: 0;
+  transition: background-color 150ms;
+  appearance: none;
+}
+.nav-item:hover {
+  background-color: #D1D5DB; /* bg-gray-300 */
+}
+.nav-item:visited {
+  color: #1f2937; /* text-gray-800 */
+}
+
+.dropdown-panel {
+  position: absolute;
+  left: 0;
+  margin-top: 0.5rem;
+  min-width: 18rem;
+  background-color: #F9FAFB; /* bg-gray-50 */
+  border: 1px solid #D1D5DB; /* border-gray-300 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
+  overflow: hidden; /* To make sure children conform to the border radius */
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #374151; /* text-gray-700 */
+  text-decoration: none;
+}
+.dropdown-item:hover {
+  background-color: #E5E7EB; /* bg-gray-200 */
+}
+.dropdown-item:visited {
+  color: #374151; /* text-gray-700 */
 }
