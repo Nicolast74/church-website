@@ -1,0 +1,149 @@
+┌──────────────────────────────────────────────────────────────┐
+│ HEADER / NAVBAR                                               │
+│ Wilayah Bonaventura Panggang        Home Lokasi Jadwal ...    │
+└──────────────────────────────────────────────────────────────┘
+
+
+┌──────────────────────────────────────────────────────────────┐
+│ HERO SECTION                                                  │
+│ ------------------------------------------------------------ │
+│ [ Background Image: Foto Gereja / Taman Doa ]                │
+│                                                              │
+│  Wilayah Bonaventura Panggang                                 │
+│  Informasi dan kegiatan Gereja St. Agustinus Panggang        │
+│  dan St. Yohanes Girisekar                                    │
+│                                                              │
+│  [ Lihat Jadwal Ibadah ]                                      │
+└──────────────────────────────────────────────────────────────┘
+
+
+┌──────────────────────────────────────────────────────────────┐
+│ TENTANG WILAYAH                                               │
+│ ------------------------------------------------------------ │
+│ Wilayah Bonaventura Panggang merupakan bagian dari Paroki... │
+│ Wilayah ini melayani umat melalui kegiatan ibadah, pastoral, │
+│ dan kebersamaan umat.                                        │
+└──────────────────────────────────────────────────────────────┘
+
+
+┌──────────────────────────────────────────────────────────────┐
+│ GEREJA & LINGKUNGAN                                           │
+│ ------------------------------------------------------------ │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
+│  │   FOTO       │  │   FOTO       │  │   FOTO       │       │
+│  │ St. Agustinus│  │ St. Yohanes  │  │ Taman Doa    │       │
+│  │ Panggang     │  │ Girisekar    │  │ Bintang      │       │
+│  │              │  │              │  │ Samudra      │       │
+│  │ [ Detail ]   │  │ [ Detail ]   │  │ [ Detail ]   │       │
+│  └──────────────┘  └──────────────┘  └──────────────┘       │
+└──────────────────────────────────────────────────────────────┘
+
+
+┌──────────────────────────────────────────────────────────────┐
+│ JADWAL IBADAH TERDEKAT                                        │
+│ ------------------------------------------------------------ │
+│ Minggu, 10.00 WIB  – Ibadah Minggu                            │
+│ Jumat, 17.00 WIB   – Ibadah Lingkungan                        │
+│                                                              │
+│ [ Lihat Semua Jadwal ]                                       │
+└──────────────────────────────────────────────────────────────┘
+
+
+┌──────────────────────────────────────────────────────────────┐
+│ GALERI KEGIATAN                                               │
+│ ------------------------------------------------------------ │
+│ ┌───┐ ┌───┐ ┌───┐ ┌───┐                                      │
+│ │img│ │img│ │img│ │img│                                      │
+│ └───┘ └───┘ └───┘ └───┘                                      │
+│                                                              │
+│ [ Lihat Galeri ]                                             │
+└──────────────────────────────────────────────────────────────┘
+
+
+┌──────────────────────────────────────────────────────────────┐
+│ FOOTER                                                       │
+│ ------------------------------------------------------------ │
+│ Wilayah Bonaventura Panggang                                  │
+│ Gereja St. Agustinus Panggang & St. Yohanes Girisekar        │
+│ Kontak | Alamat | Media Sosial                                │
+│ © 2026 Wilayah Bonaventura Panggang                           │
+└──────────────────────────────────────────────────────────────┘
+
+Struktur Halaman (WAJIB IKUT URUTAN)
+
+1. Header / Navbar
+    - Navbar horizontal di atas
+    - Kiri: Judul wilayah
+    - Kanan: Menu navigasi
+
+2. Hero Section
+    - Background image (foto gereja / taman doa)
+    - Judul besar: Wilayah Bonaventura Panggang
+    - Subjudul: Informasi dan kegiatan Gereja St. Agustinus Panggang dan St. Yohanes Girisekar
+    - Tombol CTA: “Lihat Jadwal Ibadah”
+
+3. Tentang Wilayah
+    - Paragraf singkat (2–3 kalimat)
+    - Menjelaskan Wilayah Bonaventura Panggang secara umum
+
+4. Gereja & Lingkungan
+    - 3 card horizontal:
+        - St. Agustinus Panggang
+        - St. Yohanes Girisekar
+        - Taman Doa Bintang Samudra
+    - Tiap card:
+        - Foto
+        - Nama
+        - Tombol “Detail”
+
+5. Jadwal Ibadah Terdekat
+    - Menampilkan 2–3 jadwal ibadah (boleh dummy)
+    - Tombol “Lihat Semua Jadwal”
+
+6. Galeri Kegiatan
+    - Gallery menggunakan bentuk card bergaya polaroid
+    - Setiap card berisi:
+        - Foto kegiatan (rasio kotak)
+        - Caption singkat di bawah foto
+    - Card memiliki:
+        - Background putih
+        - Border tipis
+        - Shadow ringan
+        - Padding bawah lebih tebal (polaroid style)
+    - Grid layout:
+        - Desktop: 3 kolom, 1 row
+        - Tablet: 2 kolom
+        - Mobile: 1 kolom
+    - Caption:
+        - Text kecil
+        - Warna abu gelap
+        - Rata kiri atau tengah
+    - Tambahkan tombol "Lihat Galeri" di bawah grid
+
+    - IMPORTANT:
+        - Fokus visual, bukan interaksi
+        - Konten boleh dummy / ambil dari internet
+    - contoh bentuk polaroid 
+        ┌──────────────┐
+        │              │
+        │   FOTO       │
+        │              │
+        ├──────────────┤
+        │ Caption      │
+        │ (kegiatan)   │
+        └──────────────┘
+    - Example captions:
+        - Ibadah Minggu Bersama
+        - Doa Bersama Lingkungan
+        - Perayaan Natal Wilayah
+        - Kegiatan Bakti Sosial
+
+
+
+7. Footer
+    - Nama wilayah
+    - Nama gereja
+    - Kontak singkat
+    - Copyright
+
+IMPORTANT : USE CUSTOM CSS TO STYLE ANYTHING

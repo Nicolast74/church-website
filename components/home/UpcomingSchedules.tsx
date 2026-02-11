@@ -1,12 +1,14 @@
 import Link from 'next/link';
+import PageHeader from '@/components/ui/PageHeader';
 
 export default function UpcomingSchedules() {
   return (
     <section className="py-16">
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-black sm:text-4xl">
-          Jadwal Mendatang
-        </h2>
+        <PageHeader
+          title="Jadwal Ibadah Terdekat"
+          description="Beberapa jadwal ibadah mendatang di wilayah Bonaventura Panggang."
+        />
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-6 bg-white rounded-lg shadow-md">
             <h3 className="text-xl font-bold mb-2 text-black">Misa Minggu Pagi</h3>

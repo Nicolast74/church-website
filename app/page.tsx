@@ -1,30 +1,32 @@
 import dynamic from 'next/dynamic';
+import Hero from '@/components/home/Hero';
+import ChurchLocationCards from '@/components/home/ChurchLocationCards';
+import Section from '@/components/ui/Section';
+import PageHeader from '@/components/ui/PageHeader';
+
 
 const UpcomingSchedules = dynamic(() => import('@/components/home/UpcomingSchedules'));
-const LatestActivities = dynamic(() => import('@/components/home/LatestActivities'));
 const GalleryPreview = dynamic(() => import('@/components/home/GalleryPreview'));
 
 export default function Home() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative h-[60vh] bg-gray-100">
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-black px-4">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-            Selamat Datang di Gereja Kami
-          </h1>
-          <p className="mt-3 max-w-md mx-auto text-lg sm:text-xl md:mt-5 md:text-2xl md:max-w-3xl">
-            &quot;Karena di mana dua atau tiga orang berkumpul dalam Nama-Ku, di situ Aku ada di tengah-tengah mereka.&quot;
-          </p>
-          <p className="mt-2 text-lg sm:text-xl md:text-2xl md:max-w-3xl">
-            - Matius 18:20 -
-          </p>
+      <Hero />
+
+      {/* Tentang Wilayah Section */}
+      <Section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <PageHeader
+            title="Tentang Wilayah Bonaventura Panggang"
+            description="Wilayah Bonaventura Panggang merupakan bagian dari Paroki Gereja St. Agustinus Panggang. Wilayah ini melayani umat melalui kegiatan ibadah, pastoral, dan kebersamaan umat."
+          />
         </div>
-      </section>
+      </Section>
+
+      <ChurchLocationCards />
 
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <UpcomingSchedules />
-        <LatestActivities />
         <GalleryPreview />
       </div>
     </>

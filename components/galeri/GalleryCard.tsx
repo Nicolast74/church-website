@@ -4,23 +4,28 @@ import Image from 'next/image';
 interface GalleryCardProps {
   imageUrl: string;
   caption: string;
+  rotateClass: string;
 }
 
-const GalleryCard: React.FC<GalleryCardProps> = ({ imageUrl, caption }) => {
+const GalleryCard: React.FC<GalleryCardProps> = ({ imageUrl, caption, rotateClass }) => {
   return (
-    <div className="relative aspect-square rounded-lg overflow-hidden group">
-      <Image
-        src={imageUrl}
-        alt={caption}
-        fill
-        className="object-cover transition-transform duration-300 group-hover:scale-110"
-        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-        <p className="text-white text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-semibold">
-          {caption}
-        </p>
+    <div 
+      className={`bg-white p-3 pb-8 shadow-2xl transition-all duration-300 transform 
+        hover:-translate-y-2 hover:rotate-0 hover:scale-105
+        ${rotateClass} w-full max-w-[260px] flex flex-col`}
+    >
+      <div className="w-full h-[250px] overflow-hidden bg-gray-100 border border-gray-100">
+        <Image 
+          src={imageUrl} 
+          alt={caption}
+          fill
+          className="w-full h-full object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </div>
+      <p className="mt-4 text-center text-gray-800 font-medium text-sm leading-tight">
+        {caption}
+      </p>
     </div>
   );
 };
