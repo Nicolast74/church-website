@@ -7,7 +7,7 @@ export default function UpcomingSchedules() {
       <div className="text-center">
         <PageHeader
           title="Jadwal Ibadah Terdekat"
-          description="Beberapa jadwal ibadah mendatang di wilayah Bonaventura Panggang."
+          subtitle="Beberapa jadwal ibadah mendatang di wilayah Bonaventura Panggang."
         />
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-6 bg-white rounded-lg shadow-md">

@@ -1,16 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
+
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+
+
 
   return (
     <header className="floating-header-container">
@@ -22,7 +20,7 @@ export default function Header() {
             href="/"
             className="nav-item"
           >
-            Wilayah Bonaventura Panggang
+            Lingkungan St. Yohanes Rasul Girisekar
           </Link>
 
           {/* RIGHT: NAV MENU */}
@@ -39,14 +37,11 @@ export default function Header() {
 
               {open && (
                 <div className="dropdown-panel">
-                  <Link href="/lokasi/st-agustinus" onClick={() => setOpen(false)} className="dropdown-item">
-                    St. Agustinus Panggang
-                  </Link>
                   <Link href="/lokasi/st-yohanes" onClick={() => setOpen(false)} className="dropdown-item">
-                    St. Yohanes Girisekar
+                    St. Yohanes Rasul Girisekar
                   </Link>
                   <Link href="/lokasi/taman-doa" onClick={() => setOpen(false)} className="dropdown-item">
-                    Taman Doa Bintang Samudra
+                    Taman Doa Goa Maria Bintang Samudra
                   </Link>
                 </div>
               )}
