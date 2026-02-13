@@ -12,23 +12,25 @@ interface LocationCardProps {
 
 const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, description, linkHref }) => {
   return (
-    <Card className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <div className="relative w-full h-48 mb-4">
+    <Card className="flex flex-row items-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <div className="relative w-48 h-48 mr-4 overflow-hidden rounded-md flex-shrink-0">
         <Image
           src={imageSrc}
           alt={title}
-          layout="fill"
+          width={400} // Explicit width
+          height={192} // Explicit height (h-48 is 192px)
           objectFit="cover"
-          className="rounded-md"
         />
       </div>
-      <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-      <p className="text-gray-600 text-sm mb-4">{description}</p>
-      <Link href={linkHref} legacyBehavior>
-        <a className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out">
-          Detail
-        </a>
-      </Link>
+      <div className="flex flex-col text-left flex-grow">
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
+        <p className="text-gray-600 text-sm mb-4">{description}</p>
+        <Link href={linkHref} legacyBehavior>
+          <a className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out self-start">
+            Detail
+          </a>
+        </Link>
+      </div>
     </Card>
   );
 };
@@ -36,19 +38,13 @@ const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, descriptio
 const ChurchLocationCards: React.FC = () => {
   const locations = [
     {
-      imageSrc: "/images/galeri/foto-1.jpg", // Placeholder image
-      title: "St. Agustinus Panggang",
-      description: "Gereja pusat Wilayah Bonaventura Panggang.",
-      linkHref: "/lokasi/st-agustinus",
-    },
-    {
-      imageSrc: "/images/galeri/foto-2.jpg", // Placeholder image
+      imageSrc: "/images/bg/gereja.jpg", // Placeholder image
       title: "St. Yohanes Girisekar",
       description: "Gereja lingkungan di Girisekar.",
       linkHref: "/lokasi/st-yohanes",
     },
     {
-      imageSrc: "/images/bg/taman-doa.jpg", // Assuming another image exists
+      imageSrc: "/images/galeri/The-Wind-Rises.jpg", // Assuming another image exists
       title: "Taman Doa Bintang Samudra",
       description: "Tempat ziarah dan retret yang tenang.",
       linkHref: "/lokasi/taman-doa",

@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative h-[70vh] flex items-center justify-center text-center text-white">
       <Image
-        src="/images/bg/hero.jpg" // Assuming this image exists based on brief
+        src="/images/bg/gereja.jpg" // Assuming this image exists based on brief
         alt="Background Gereja / Taman Doa"
         layout="fill"
         objectFit="cover"
@@ -16,10 +16,10 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
       <div className="relative z-20 px-4">
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl leading-tight">
-          Wilayah Bonaventura Panggang
+          Lingkungan St. Yohanes Rasul Girisekar
         </h1>
         <p className="mt-4 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto">
-          Informasi dan kegiatan Gereja St. Agustinus Panggang dan St. Yohanes Girisekar
+          Informasi dan kegiatan Gereja St. Yohanes Rasul Girisekar
         </p>
         <div className="mt-8">
           <Link href="/jadwal" legacyBehavior>

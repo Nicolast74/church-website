@@ -17,8 +17,8 @@ export default function Home() {
       <Section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <PageHeader
-            title="Tentang Wilayah Bonaventura Panggang"
-            subtitle="Wilayah Bonaventura Panggang merupakan bagian dari Paroki Gereja St. Agustinus Panggang. Wilayah ini melayani umat melalui kegiatan ibadah, pastoral, dan kebersamaan umat."
+            title="Tentang Gereja Lingkungan St. Yohanes Girisekar"
+            subtitle="Lingkungan St. Yohanes Rasul Girisekar merupakan bagian dari Wilayah St. Agustinus Bonaventura Panggang dan masuk dalam Paroki St. Yusuf Bandung. Lingkungan ini melayani umat melalui kegiatan ibadah, pastoral, dan kebersamaan umat."
           />
         </div>
       </Section>
