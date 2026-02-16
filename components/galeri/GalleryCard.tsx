@@ -27,7 +27,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ imageUrl, caption, rotateClas
           src={imageUrl} 
           alt={caption}
           /* object-cover biar nggak penyet, w-full biar simetris */
-          className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-500"
+          className="w-full h-full object-cover grayscale-10 group-hover:grayscale-0 transition-all duration-500"
         />
       </div>
 

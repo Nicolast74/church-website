@@ -13,7 +13,7 @@ interface LocationCardProps {
 const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, description, linkHref }) => {
   return (
     <Card className="flex flex-row items-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <div className="relative w-48 h-48 mr-4 overflow-hidden rounded-md flex-shrink-0">
+      <div className="relative w-48 h-48 mr-4 overflow-hidden rounded-md shrink-0">
         <Image
           src={imageSrc}
           alt={title}
@@ -22,7 +22,7 @@ const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, descriptio
           objectFit="cover"
         />
       </div>
-      <div className="flex flex-col text-left flex-grow">
+      <div className="flex flex-col text-left grow">
         <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
         <p className="text-gray-600 text-sm mb-4">{description}</p>
         <Link href={linkHref} legacyBehavior>
