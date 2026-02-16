@@ -1,7 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import Card from '@/components/ui/Card';
 
 interface LocationCardProps {
   imageSrc: string;
@@ -12,58 +10,69 @@ interface LocationCardProps {
 
 const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, description, linkHref }) => {
   return (
-    <Card className="flex flex-row items-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <div className="relative w-48 h-48 mr-4 overflow-hidden rounded-md shrink-0">
-        <Image
-          src={imageSrc}
+    // w-full tapi kita kunci max-width-nya biar kaga jadi raksasa
+    // Grid: Tetap side-by-side (2 kol) di semua layar. Card jadi verikal.
+    <div className="w-full bg-white rounded-2xl shadow-lg flex flex-col items-center p-4 hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-2 group h-full text-center">
+      
+      {/* BOX GAMBAR: Full width di atas */}
+      <div className="w-full aspect-[4/3] shrink-0 overflow-hidden rounded-xl border border-gray-100 bg-gray-50 mb-4">
+        <img
+          src={imageSrc} 
           alt={title}
-          width={400} // Explicit width
-          height={192} // Explicit height (h-48 is 192px)
-          objectFit="cover"
+          /* object-cover biar kaga penyet */
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
       </div>
-      <div className="flex flex-col text-left grow">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-        <p className="text-gray-600 text-sm mb-4">{description}</p>
-        <Link href={linkHref} legacyBehavior>
-          <a className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out self-start">
-            Detail
-          </a>
+
+      {/* KONTEN TEKS */}
+      {/* KONTEN TEKS */}
+      <div className="w-full flex flex-col items-center min-w-0 grow">
+        <h3 className="text-sm md:text-lg font-bold text-gray-800 mb-2 leading-tight">
+          {title}
+        </h3>
+        <p className="text-gray-600 text-xs mb-4 line-clamp-3 leading-relaxed">
+          {description}
+        </p>
+        <Link 
+          href={linkHref} 
+          className="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-full hover:bg-blue-700 transition-all shadow-md"
+        >
+          Detail
         </Link>
       </div>
-    </Card>
+    </div>
   );
 };
 
 const ChurchLocationCards: React.FC = () => {
   const locations = [
     {
-      imageSrc: "/images/bg/gereja.jpg", // Placeholder image
+      imageSrc: "/images/bg/gereja.jpg",
       title: "St. Yohanes Girisekar",
-      description: "Gereja lingkungan di Girisekar.",
+      description: "Gereja lingkungan di Girisekar yang melayani umat dengan penuh kasih.",
       linkHref: "/lokasi/st-yohanes",
     },
     {
-      imageSrc: "/images/galeri/The-Wind-Rises.jpg", // Assuming another image exists
+      imageSrc: "/images/galeri/The-Wind-Rises.jpg",
       title: "Taman Doa Bintang Samudra",
-      description: "Tempat ziarah dan retret yang tenang.",
+      description: "Tempat ziarah dan retret tenang di tepi samudra yang indah.",
       linkHref: "/lokasi/taman-doa",
     },
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-10">
-          Gereja & Lingkungan
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {locations.map((location, index) => (
-            <LocationCard key={index} {...location} />
-          ))}
-        </div>
+    <div className="w-full py-10">
+      <h2 className="text-2xl font-bold text-white text-center mb-12 uppercase tracking-widest">
+        Gereja & Lingkungan
+      </h2>
+      
+      {/* GRID: Force 2 kolom (grid-cols-2) di semua layar (gap-4 buat HP) */}
+      <div className="grid grid-cols-2 gap-3 md:gap-8 max-w-4xl mx-auto justify-items-center items-stretch">
+        {locations.map((location, index) => (
+          <LocationCard key={index} {...location} />
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 
