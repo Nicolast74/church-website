@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import GalleryCard from '@/components/galeri/GalleryCard';
 
 export default function GalleryPreview() {
@@ -18,11 +21,10 @@ export default function GalleryPreview() {
         
         <div className="text-center mb-12">
           {/* Judul tetap dikasih text-white manual karena background-nya gelap */}
-          <h2 className="text-3xl font-bold text-white mb-2">Galeri Kegiatan</h2>
-          <p className="text-gray-200 italic text-sm">Momen indah di Wilayah Bonaventura Panggang.</p>
+          <h2 className="text-3xl font-serif font-bold text-white mb-4 tracking-wide">Galeri Kegiatan</h2>
+          <p className="text-gray-300 font-light text-lg">Momen indah di Wilayah Bonaventura Panggang.</p>
         </div>
 
-        {/* FORCE GRID: Kita pakai inline style untuk memastikan 4 kolom ke samping */}
         <div 
           style={{ 
             display: 'grid', 
@@ -34,13 +36,24 @@ export default function GalleryPreview() {
           className="lg:!grid-cols-4" 
         >
           {galleryItems.map((item, i) => (
-            <div key={i} style={{ width: '100%', maxWidth: '250px' }}>
+            <motion.div 
+              key={i} 
+              style={{ width: '100%', maxWidth: '250px' }}
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ 
+                duration: 0.6, 
+                delay: i * 0.15,
+                ease: "easeOut"
+              }}
+            >
               <GalleryCard 
                 imageUrl={item.src} 
                 caption={item.title} 
                 rotateClass={item.rot} 
               />
-            </div>
+            </motion.div>
           ))}
         </div>
 

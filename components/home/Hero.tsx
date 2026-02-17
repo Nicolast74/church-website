@@ -15,15 +15,15 @@ const Hero: React.FC = () => {
       />
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
       <div className="relative z-20 px-4">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl leading-tight">
+        <h1 className="text-5xl font-serif font-bold tracking-tight sm:text-6xl md:text-7xl leading-tight text-white drop-shadow-lg">
           Lingkungan St. Yohanes Rasul Girisekar
         </h1>
-        <p className="mt-4 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto">
+        <p className="mt-6 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto font-light text-gray-100">
           Informasi dan kegiatan Gereja St. Yohanes Rasul Girisekar
         </p>
-        <div className="mt-8">
+        <div className="mt-10">
           <Link href="/jadwal" legacyBehavior>
-            <a className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10 transition duration-300 ease-in-out">
+            <a className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-amber-700 hover:bg-amber-800 md:py-4 md:text-lg md:px-10 transition duration-300 ease-in-out shadow-lg hover:shadow-amber-700/40">
               Lihat Jadwal Ibadah
             </a>
           </Link>

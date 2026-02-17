@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -11,6 +11,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
@@ -47,9 +52,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={`${geistSans.variable} ${geistMono.variable} flex flex-col min-h-screen`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} flex flex-col min-h-screen`}>
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="grow">{children}</main>
         <Footer />
       </body>
     </html>

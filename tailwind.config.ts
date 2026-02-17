@@ -20,7 +20,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
-        serif: ['Georgia', 'serif'],
+        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
         mono: ['var(--font-geist-mono)'],
       },
       backgroundImage: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import FadeIn from '@/components/ui/FadeIn';
 
 interface LocationCardProps {
   imageSrc: string;
@@ -15,7 +16,7 @@ const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, descriptio
     <div className="w-full bg-white rounded-2xl shadow-lg flex flex-col items-center p-4 hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-2 group h-full text-center">
       
       {/* BOX GAMBAR: Full width di atas */}
-      <div className="w-full aspect-[4/3] shrink-0 overflow-hidden rounded-xl border border-gray-100 bg-gray-50 mb-4">
+      <div className="w-full aspect-4/3 shrink-0 overflow-hidden rounded-xl border border-gray-100 bg-gray-50 mb-4">
         <img
           src={imageSrc} 
           alt={title}
@@ -27,7 +28,7 @@ const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, descriptio
       {/* KONTEN TEKS */}
       {/* KONTEN TEKS */}
       <div className="w-full flex flex-col items-center min-w-0 grow">
-        <h3 className="text-sm md:text-lg font-bold text-gray-800 mb-2 leading-tight">
+        <h3 className="text-sm md:text-lg font-serif font-bold text-slate-800 mb-2 leading-tight">
           {title}
         </h3>
         <p className="text-gray-600 text-xs mb-4 line-clamp-3 leading-relaxed">
@@ -69,7 +70,14 @@ const ChurchLocationCards: React.FC = () => {
       {/* GRID: Force 2 kolom (grid-cols-2) di semua layar (gap-4 buat HP) */}
       <div className="grid grid-cols-2 gap-3 md:gap-8 max-w-4xl mx-auto justify-items-center items-stretch">
         {locations.map((location, index) => (
-          <LocationCard key={index} {...location} />
+          <FadeIn 
+            key={index} 
+            direction={index % 2 === 0 ? "right" : "left"} 
+            delay={index * 0.2}
+            className="h-full w-full"
+          >
+            <LocationCard {...location} />
+          </FadeIn>
         ))}
       </div>
     </div>

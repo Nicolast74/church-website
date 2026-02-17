@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <h3 className="text-lg font-semibold text-gray-800">Kontak Kami</h3>
             <p className="mt-2 text-gray-500">
-              Email: <a href="mailto:sekretariat@stmaria.org" className="hover:text-blue-600">sekretariat@stmaria.org</a>
+              Email: <a href="mailto:sekretariat@stmaria.org" className="hover:text-amber-700 transition-colors">sekretariat@stmaria.org</a>
               <br />
               Telepon: (021) 123-4567
             </p>
@@ -22,8 +22,8 @@ export default function Footer() {
           <div className="md:col-span-1">
             <h3 className="text-lg font-semibold text-gray-800">Tautan</h3>
             <ul className="mt-2 space-y-1">
-              <li><a href="/lokasi/st-agustinus" className="text-gray-500 hover:text-blue-600">Lokasi Gereja</a></li>
-              <li><a href="/kontak" className="text-gray-500 hover:text-blue-600">Formulir Kontak</a></li>
+              <li><a href="/lokasi/st-agustinus" className="text-gray-500 hover:text-gray-500 hover:underline-0 no-underline">Lokasi Gereja</a></li>
+              <li><a href="/kontak" className="text-gray-500 hover:text-gray-500 hover:underline-0 no-underline">Formulir Kontak</a></li>
             </ul>
           </div>
         </div>

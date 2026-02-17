@@ -7,12 +7,13 @@ interface PageHeaderProps {
 
 const PageHeader: React.FC<PageHeaderProps> = ({ title, subtitle }) => {
   return (
-    <div className="text-center mb-12">
-      <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+    <div className="text-center mb-16">
+      <h1 className="text-4xl font-serif font-bold tracking-tight text-slate-900 sm:text-5xl relative inline-block pb-4">
         {title}
+        <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-amber-600 rounded-full"></span>
       </h1>
       {subtitle && (
-        <p className="mt-3 text-xl text-gray-500 sm:mt-4">
+        <p className="mt-6 text-xl text-slate-600 sm:mt-8 max-w-2xl mx-auto leading-relaxed">
           {subtitle}
         </p>
       )}
