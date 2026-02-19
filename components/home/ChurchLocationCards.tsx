@@ -13,10 +13,10 @@ const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, descriptio
   return (
     // w-full tapi kita kunci max-width-nya biar kaga jadi raksasa
     // Grid: Tetap side-by-side (2 kol) di semua layar. Card jadi verikal.
-    <div className="w-full bg-white rounded-2xl shadow-lg flex flex-col items-center p-4 hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-2 group h-full text-center">
+    <div className="w-full bg-white rounded-xl shadow-lg border-t-4 border-amber-600 border border-stone-100 flex flex-col items-center p-4 hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-2 group h-full text-center">
       
       {/* BOX GAMBAR: Full width di atas */}
-      <div className="w-full aspect-4/3 shrink-0 overflow-hidden rounded-xl border border-gray-100 bg-gray-50 mb-4">
+      <div className="w-full aspect-4/3 shrink-0 overflow-hidden rounded-lg border border-gray-100 bg-gray-50 mb-4">
         <img
           src={imageSrc} 
           alt={title}
@@ -68,7 +68,7 @@ const ChurchLocationCards: React.FC = () => {
       </h2>
       
       {/* GRID: Force 2 kolom (grid-cols-2) di semua layar (gap-4 buat HP) */}
-      <div className="grid grid-cols-2 gap-3 md:gap-8 max-w-4xl mx-auto justify-items-center items-stretch">
+      <div className="grid grid-cols-2 gap-3 md:gap-8 max-w-2xl mx-auto justify-items-center items-stretch">
         {locations.map((location, index) => (
           <FadeIn 
             key={index} 

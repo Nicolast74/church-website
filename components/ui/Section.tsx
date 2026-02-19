@@ -7,9 +7,9 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({ children, className = '', isGray = false }) => {
-  const bgColor = isGray ? 'bg-gray-50' : 'bg-white';
+  const bgColor = isGray ? 'bg-stone-50' : 'bg-white';
   return (
-    <section className={`py-16 sm:py-20 ${bgColor} ${className}`}>
+    <section className={`py-16 sm:py-24 ${bgColor} ${className}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {children}
       </div>

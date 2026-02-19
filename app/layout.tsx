@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+// import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-});
+// const playfair = Playfair_Display({
+//   variable: "--font-playfair",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Gereja St. Agustinus & St. Yohanes",
@@ -52,7 +52,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} flex flex-col min-h-screen`}>
+      <body className={`antialiased font-sans flex flex-col min-h-screen`}>
         <Header />
         <main className="grow">{children}</main>
         <Footer />

@@ -4,11 +4,28 @@ import ChurchLocationCards from '@/components/home/ChurchLocationCards';
 import Section from '@/components/ui/Section';
 import PageHeader from '@/components/ui/PageHeader';
 import FadeIn from '@/components/ui/FadeIn';
+import { createClient } from '@/lib/supabaseServer';
 
 const UpcomingSchedules = dynamic(() => import('@/components/home/UpcomingSchedules'));
 const GalleryPreview = dynamic(() => import('@/components/home/GalleryPreview'));
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient();
+  const today = new Date().toISOString().split('T')[0];
+
+  const { data: activities } = await supabase
+    .from('kegiatan')
+    .select('*')
+    .order('tanggal', { ascending: false })
+    .limit(4);
+
+  const { data: schedules } = await supabase
+    .from('jadwal')
+    .select('*')
+    .gte('tanggal', today)
+    .order('tanggal', { ascending: true })
+    .limit(3);
+
   return (
     <main className="min-h-screen  overflow-x-hidden">
       <Hero />
@@ -18,7 +35,7 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-20">
           <FadeIn>
             <PageHeader
-              title="Tentang Gereja Lingkungan St. Yohanes Girisekar"
+              title="Tentang Gereja"
               subtitle="Lingkungan St. Yohanes Rasul Girisekar merupakan bagian dari Wilayah St. Agustinus Bonaventura Panggang. Kami melayani umat melalui kegiatan ibadah, pastoral, dan kebersamaan umat."
             />
           </FadeIn>
@@ -36,7 +53,7 @@ export default function Home() {
       <section className="py-24 bg-stone-100">
         <div className="container mx-auto px-4 lg:px-20">
           <FadeIn>
-            <UpcomingSchedules />
+            <UpcomingSchedules schedules={schedules || []} />
           </FadeIn>
         </div>
       </section>
@@ -44,7 +61,7 @@ export default function Home() {
       {/* 4. Section Gallery (Polaroid) - Slate Gelap Elegant */}
       <section className="w-full py-24 bg-slate-900 overflow-hidden text-white">
         <div className="container mx-auto px-4">
-           <GalleryPreview />
+           <GalleryPreview activities={activities || []} />
         </div>
       </section>
     </main>

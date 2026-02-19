@@ -7,7 +7,7 @@ export default function KalenderLiturgi() {
     <main>
       <Section isGray>
         <PageHeader title="Kalender Liturgi" />
-        <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <div className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-amber-600">
           <Calendar />
         </div>
       </Section>

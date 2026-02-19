@@ -1,0 +1,254 @@
+PROJECT: Website Gereja
+STACK: Next.js (App Router) + Tailwind + Supabase
+ARCHITECTURE: SEO-friendly (Async Server Components for public pages)
+
+============================================================
+CURRENT PROJECT STRUCTURE CONTEXT
+
+Existing public routes:
+
+/galeri
+
+/jadwal
+
+/bacaan
+
+/kalender-liturgi
+
+/kontak
+
+/lokasi/*
+
+Homepage: /
+
+Existing components:
+
+components/galeri/GalleryCard.tsx
+
+components/home/GalleryPreview.tsx
+
+components/home/LatestActivities.tsx
+
+components/home/UpcomingSchedules.tsx
+
+Galeri dan Jadwal sudah memiliki page.tsx.
+Fitur baru akan mengubah halaman tersebut dari static menjadi dynamic (Supabase-driven).
+
+============================================================
+FEATURE 1: GALERI KEGIATAN (DYNAMIC)
+
+Tujuan:
+Mengubah halaman /galeri menjadi dynamic dan terhubung ke Supabase.
+
+Thumbnail ditampilkan sebagai card (menggunakan GalleryCard component).
+Detail kegiatan memiliki halaman sendiri.
+
+DATABASE STRUCTURE
+
+Table: kegiatan
+
+id (uuid, primary key)
+
+judul (text)
+
+deskripsi (text)
+
+tanggal (date)
+
+thumbnail_url (text)
+
+created_at (timestamp)
+
+Table: kegiatan_foto
+
+id (uuid)
+
+kegiatan_id (foreign key -> kegiatan.id)
+
+foto_url (text)
+
+Relasi:
+1 kegiatan dapat memiliki banyak foto tambahan.
+
+ROUTES
+
+Public:
+
+/galeri
+
+Async Server Component
+
+Fetch semua kegiatan
+
+Order by tanggal DESC
+
+Render grid menggunakan GalleryCard
+
+/galeri/[id]
+
+Perlu ditambahkan folder baru:
+app/galeri/[id]/page.tsx
+
+Async Server Component
+
+Fetch 1 kegiatan
+
+Fetch foto tambahan
+
+Render:
+
+Thumbnail besar
+
+Judul
+
+Tanggal
+
+Deskripsi lengkap
+
+Grid lampiran
+
+SEO:
+
+Gunakan generateMetadata() untuk dynamic title & description
+
+Server-side data fetch
+
+HOMEPAGE INTEGRATION
+
+components/home/GalleryPreview.tsx
+
+Ambil 3 kegiatan terbaru
+
+Fetch via Server Component
+
+Tampilkan preview grid
+
+============================================================
+FEATURE 2: JADWAL (DYNAMIC)
+
+Tujuan:
+Mengubah halaman /jadwal menjadi dynamic dari Supabase.
+
+Manual input (no recurring logic).
+
+DATABASE STRUCTURE
+
+Table: jadwal
+
+id (uuid)
+
+nama_kegiatan (text)
+
+tanggal (date)
+
+jam (text atau time)
+
+lokasi (text)
+
+deskripsi (text)
+
+created_at (timestamp)
+
+ROUTES
+
+/jadwal
+
+Async Server Component
+
+Query:
+
+tanggal >= hari ini
+
+Order by tanggal ASC
+
+Render list atau card
+
+HOMEPAGE INTEGRATION
+
+components/home/UpcomingSchedules.tsx
+
+Fetch 3 jadwal terdekat
+
+Server-side fetch
+
+============================================================
+FEATURE 3: ADMIN DASHBOARD (NEW)
+
+Folder baru yang perlu dibuat:
+
+app/admin/
+login/page.tsx
+dashboard/page.tsx
+kegiatan/page.tsx
+jadwal/page.tsx
+
+AUTHENTICATION
+
+Supabase Auth
+
+Email + Password
+
+Middleware protect route /admin/*
+
+ADMIN FUNCTIONALITY
+
+Kelola Galeri:
+
+Create kegiatan
+
+Upload thumbnail ke Supabase Storage
+
+Upload foto tambahan
+
+Update kegiatan
+
+Delete kegiatan
+
+Kelola Jadwal:
+
+Create jadwal
+
+Update jadwal
+
+Delete jadwal
+
+STORAGE
+
+Supabase Storage Bucket:
+
+nama bucket: kegiatan
+
+Simpan public URL ke database
+
+============================================================
+SUPABASE CLIENT STRUCTURE
+
+Folder baru:
+
+lib/
+supabaseServer.ts
+supabaseClient.ts
+
+supabaseServer.ts:
+
+Digunakan untuk Async Server Component
+
+supabaseClient.ts:
+
+Digunakan untuk Client Component (admin)
+
+============================================================
+NON-GOALS (MVP)
+
+No recurring schedule
+
+No multi-role system
+
+No search
+
+No filtering
+
+No comment system
+
+============================================================
+END OF FEATURE BRIEF

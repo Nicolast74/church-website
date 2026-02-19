@@ -1,0 +1,93 @@
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export interface Database {
+  public: {
+    Tables: {
+      kegiatan: {
+        Row: {
+          id: string
+          judul: string
+          deskripsi: string
+          tanggal: string
+          thumbnail_url: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          judul: string
+          deskripsi: string
+          tanggal: string
+          thumbnail_url?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          judul?: string
+          deskripsi?: string
+          tanggal?: string
+          thumbnail_url?: string | null
+          created_at?: string
+        }
+      }
+      kegiatan_foto: {
+        Row: {
+          id: string
+          kegiatan_id: string
+          foto_url: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          kegiatan_id: string
+          foto_url: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          kegiatan_id?: string
+          foto_url?: string
+          created_at?: string
+        }
+      }
+      jadwal: {
+        Row: {
+          id: string
+          nama_kegiatan: string
+          tanggal: string
+          jam: string
+          lokasi: string
+          deskripsi: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          nama_kegiatan: string
+          tanggal: string
+          jam: string
+          lokasi: string
+          deskripsi?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          nama_kegiatan?: string
+          tanggal?: string
+          jam?: string
+          lokasi?: string
+          deskripsi?: string | null
+          created_at?: string
+        }
+      }
+    }
+  }
+}
+
+export type Kegiatan = Database['public']['Tables']['kegiatan']['Row']
+export type KegiatanFoto = Database['public']['Tables']['kegiatan_foto']['Row']
+export type Jadwal = Database['public']['Tables']['jadwal']['Row']

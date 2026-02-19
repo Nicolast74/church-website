@@ -37,16 +37,22 @@ const LocationPage: React.FC<LocationPageProps> = ({
       {/* Content Section */}
       <Section>
         <div className="max-w-4xl mx-auto">
-          <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-            {description}
+          {/* Description Card */}
+          <div className="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 md:p-12 -mt-24 relative z-20 border-t-4 border-amber-600">
+             <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed font-light">
+              {description}
+            </div>
           </div>
 
           {specialSchedules && specialSchedules.length > 0 && (
-            <div className="mt-16">
-              <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Jadwal Khusus</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="mt-20">
+              <h2 className="text-3xl font-serif font-bold text-center text-slate-800 mb-10 relative inline-block">
+                Jadwal Khusus
+                <span className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-amber-600 rounded-full"></span>
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
                 {specialSchedules.map((schedule, index) => (
-                  <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <div key={index} className="bg-white rounded-xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-stone-100 border-t-4 border-slate-600 hover:-translate-y-1 transition-transform">
                     <h3 className="font-bold text-xl text-gray-800">{schedule.title}</h3>
                     <p className="text-gray-600 mt-2">{schedule.details}</p>
                   </div>

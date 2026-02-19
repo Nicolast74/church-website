@@ -3,14 +3,18 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import GalleryCard from '@/components/galeri/GalleryCard';
+import { Kegiatan } from '@/types';
 
-export default function GalleryPreview() {
-  const galleryItems = [
-    { title: "Ibadah Minggu Bersama", src: "/images/galeri/sylwia-bartyzel-tME8s001BNQ-unsplash.jpg", rot: "-rotate-3"},
-    { title: "Doa Bersama Lingkungan", src: "/images/galeri/The-Wind-Rises.jpg", rot: "rotate-2" },
-    { title: "Perayaan Natal Wilayah", src: "/images/galeri/timon-studler--L3q2Uuz6oY.jpg", rot: "-rotate-2" },
-    { title: "Kegiatan Bakti Sosial", src: "/images/galeri/win11-img28.jpg", rot: "rotate-3" }
-  ];
+interface GalleryPreviewProps {
+  activities: Kegiatan[];
+}
+
+export default function GalleryPreview({ activities }: GalleryPreviewProps) {
+  const rotClasses = ["-rotate-3", "rotate-2", "-rotate-2", "rotate-3"];
+
+  if (!activities || activities.length === 0) {
+      return null;
+  }
 
   return (
     <section 
@@ -35,9 +39,9 @@ export default function GalleryPreview() {
           }}
           className="lg:!grid-cols-4" 
         >
-          {galleryItems.map((item, i) => (
+          {activities.map((item, i) => (
             <motion.div 
-              key={i} 
+              key={item.id} 
               style={{ width: '100%', maxWidth: '250px' }}
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -48,11 +52,13 @@ export default function GalleryPreview() {
                 ease: "easeOut"
               }}
             >
-              <GalleryCard 
-                imageUrl={item.src} 
-                caption={item.title} 
-                rotateClass={item.rot} 
-              />
+              <Link href={`/galeri/${item.id}`}>
+                <GalleryCard 
+                    imageUrl={item.thumbnail_url || 'https://picsum.photos/seed/default/500/500'} 
+                    caption={item.judul} 
+                    rotateClass={rotClasses[i % rotClasses.length]} 
+                />
+              </Link>
             </motion.div>
           ))}
         </div>
