@@ -1,69 +1,124 @@
-import Link from 'next/link';
+import React from 'react';
+import { LayoutDashboard, Image as ImageIcon, Calendar, LogOut, ChevronRight, User } from 'lucide-react';
 
-export default function AdminDashboard() {
+export default function GlassDashboard() {
   return (
-    <div>
-      <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-sm text-gray-500 mt-1">Selamat datang kembali, Admin.</p>
-      </div>
+    // Background Image Utama - Pastikan URL-nya bener!
+    <div className="min-h-screen bg-[url('https://images.unsplash.com/photo-1548625361-195fe57724e1?q=80&w=2000')] bg-cover bg-center bg-fixed flex font-sans overflow-hidden">
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Dark Overlay biar teks putih lo kebaca, nggak tenggelam di awan */}
+      <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px]"></div>
+
+      {/* Sidebar Glassmorphism - Sekarang lebih solid biar navigasi lo kelihatan */}
+      <aside className="relative z-10 w-72 m-6 rounded-[2rem] bg-black/20 backdrop-blur-2xl border border-white/10 p-8 flex flex-col shadow-2xl">
+        <div className="flex items-center gap-3 mb-12 px-2">
+          <div className="h-10 w-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-500/30">
+            GB
+          </div>
+          <span className="text-xl font-bold text-white tracking-tight">Admin Panel</span>
+        </div>
         
-        {/* Quick Actions Panel */}
-        <div className="col-span-2 bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">Akses Cepat</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Link href="/admin/kegiatan" className="flex items-center p-4 rounded-lg border border-gray-100 bg-gray-50/50 hover:bg-white hover:border-indigo-200 hover:shadow-sm transition-all group">
-                    <div className="h-10 w-10 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 mr-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div className="font-medium text-gray-900">Galeri Kegiatan</div>
-                        <div className="text-xs text-gray-500">Kelola foto & acara</div>
-                    </div>
-                </Link>
+        <nav className="space-y-2 flex-1">
+          <NavItem icon={<LayoutDashboard size={20}/>} label="Dashboard" active />
+          <NavItem icon={<ImageIcon size={20}/>} label="Galeri Kegiatan" />
+          <NavItem icon={<Calendar size={20}/>} label="Jadwal Misa" />
+        </nav>
 
-                <Link href="/admin/jadwal" className="flex items-center p-4 rounded-lg border border-gray-100 bg-gray-50/50 hover:bg-white hover:border-amber-200 hover:shadow-sm transition-all group">
-                    <div className="h-10 w-10 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 mr-4 group-hover:bg-amber-600 group-hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div className="font-medium text-gray-900">Jadwal Misa</div>
-                        <div className="text-xs text-gray-500">Kelola agenda gereja</div>
-                    </div>
-                </Link>
-            </div>
+        <div className="pt-6 border-t border-white/10">
+          <button className="flex items-center gap-4 w-full px-5 py-4 text-white/60 hover:text-red-400 hover:bg-red-400/10 rounded-2xl transition-all">
+            <LogOut size={20} />
+            <span className="text-sm font-bold">Logout</span>
+          </button>
         </div>
+      </aside>
 
-        {/* System Info / Help */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">Informasi</h3>
+      {/* Main Content Area */}
+      <main className="relative z-10 flex-1 p-10 overflow-y-auto">
+        
+        {/* Header Section */}
+        <header className="flex justify-between items-center mb-10">
+          <div className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[2.5rem] shadow-2xl">
+            <h1 className="text-4xl font-black text-white tracking-tight">Welcome Back, Admin ✨</h1>
+            <p className="text-white/60 text-sm mt-2 font-medium">Manage your community activities with style.</p>
+          </div>
+          <div className="h-14 w-14 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white shadow-xl hover:bg-white/20 transition-all cursor-pointer">
+            <User size={24} />
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Quick Access List */}
+          <div className="lg:col-span-2 space-y-6">
+            <h3 className="text-xs font-black text-white/40 uppercase tracking-[0.3em] ml-4">Quick Access</h3>
             <div className="space-y-4">
-                 <div className="p-3 bg-blue-50 rounded-lg border border-blue-100">
-                    <div className="flex items-start">
-                         <svg className="w-5 h-5 text-blue-600 mt-0.5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <div>
-                            <p className="text-sm font-medium text-blue-900">Tips Admin</p>
-                            <p className="text-xs text-blue-700 mt-1">
-                                Pastikan gambar yang diupload untuk galeri memiliki rasio landscape agar tampil optimal.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className="text-xs text-gray-400 text-center pt-4">
-                    Church Admin v1.0.0
-                </div>
+              <ActionCard 
+                title="Galeri Kegiatan" 
+                desc="Update your latest church events and photos." 
+                icon={<ImageIcon size={24} className="text-indigo-300" />}
+              />
+              <ActionCard 
+                title="Jadwal Misa" 
+                desc="Keep the congregation updated on service hours." 
+                icon={<Calendar size={24} className="text-amber-300" />}
+              />
             </div>
+          </div>
+
+          {/* Info Side Panel */}
+          <div className="space-y-6">
+            <h3 className="text-xs font-black text-white/40 uppercase tracking-[0.3em] ml-4">System Info</h3>
+            <div className="bg-gradient-to-b from-white/15 to-transparent backdrop-blur-2xl p-8 rounded-[3rem] border border-white/10 shadow-2xl">
+              <div className="bg-indigo-400/20 text-indigo-300 text-[10px] font-black px-3 py-1 rounded-full inline-block mb-4 tracking-tighter">PRO TIP</div>
+              <p className="text-white/90 text-sm leading-relaxed mb-6">
+                Gunakan rasio <b>16:9</b> buat foto galeri biar nggak kepotong pas di-render di landing page.
+              </p>
+              <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden">
+                <div className="h-full w-2/3 bg-indigo-400"></div>
+              </div>
+              <p className="text-[10px] text-white/20 mt-6 font-mono tracking-widest uppercase">Version 1.0.0-MAX</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
 
+// Sub-components biar nggak berantakan
+interface NavItemProps {
+  icon: React.ReactNode;
+  label: string;
+  active?: boolean;
+}
+
+function NavItem({ icon, label, active = false }: NavItemProps) {
+  return (
+    <div className={`flex items-center gap-4 px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 ${active ? 'bg-white/20 text-white shadow-xl border border-white/10' : 'text-white/50 hover:bg-white/10 hover:text-white'}`}>
+      {icon}
+      <span className="text-sm font-bold tracking-tight">{label}</span>
+    </div>
+  );
+}
+
+interface ActionCardProps {
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+}
+
+function ActionCard({ title, desc, icon }: ActionCardProps) {
+  return (
+    <div className="group bg-white/5 backdrop-blur-lg p-6 rounded-[2rem] border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-500 cursor-pointer flex items-center justify-between shadow-xl">
+      <div className="flex items-center gap-6">
+        <div className="h-16 w-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+          {icon}
+        </div>
+        <div>
+          <h4 className="font-bold text-white text-xl">{title}</h4>
+          <p className="text-sm text-white/40 mt-1">{desc}</p>
+        </div>
+      </div>
+      <ChevronRight className="text-white/20 group-hover:text-white group-hover:translate-x-2 transition-all" size={24} />
+    </div>
+  );
+}
