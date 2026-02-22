@@ -4,28 +4,34 @@ import Image from 'next/image';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative h-[70vh] flex items-center justify-center text-center text-white">
+    <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
       <Image
-        src="/images/bg/gereja.jpg" // Assuming this image exists based on brief
-        alt="Background Gereja / Taman Doa"
+        src="/images/bg/gereja.jpg"
+        alt="Background Gereja"
         layout="fill"
         objectFit="cover"
-        quality={100}
-        className="absolute inset-0 z-0"
+        priority
+        className="absolute inset-0 z-0 scale-105"
       />
-      <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-      <div className="relative z-20 px-4">
-        <h1 className="text-5xl font-serif font-bold tracking-tight sm:text-6xl md:text-7xl leading-tight text-white drop-shadow-lg">
-          Lingkungan St. Yohanes Rasul Girisekar
+      {/* Masking Gradient - Biar transisi ke section bawah mulus banget */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-white z-10"></div>
+      
+      <div className="relative z-20 px-6 max-w-5xl text-center">
+        <span className="inline-block px-4 py-1.5 mb-6 text-[10px] font-black tracking-[0.4em] text-white/80 bg-white/10 backdrop-blur-md rounded-full uppercase border border-white/20">
+          Welcome to Our Community
+        </span>
+        <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white leading-[0.9] mb-8 drop-shadow-2xl">
+          Iman. Kasih. <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-white">Kebersamaan.</span>
         </h1>
-        <p className="mt-6 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto font-light text-gray-100">
-          Informasi dan kegiatan Gereja St. Yohanes Rasul Girisekar
+        <p className="mt-6 text-lg md:text-xl max-w-2xl mx-auto font-medium text-white/80 leading-relaxed">
+          Lingkungan St. Yohanes Rasul Girisekar melayani dengan kasih dan menumbuhkan iman dalam setiap langkah.
         </p>
-        <div className="mt-10">
-          <Link href="/jadwal" legacyBehavior>
-            <a className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-amber-700 hover:bg-amber-800 md:py-4 md:text-lg md:px-10 transition duration-300 ease-in-out shadow-lg hover:shadow-amber-700/40">
-              Lihat Jadwal Ibadah
-            </a>
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/jadwal" className="px-10 py-4 bg-white text-black font-black rounded-2xl hover:bg-indigo-50 transition-all shadow-2xl hover:-translate-y-1">
+            Lihat Jadwal Ibadah
+          </Link>
+          <Link href="/kontak" className="px-10 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 font-black rounded-2xl hover:bg-white/20 transition-all">
+            Hubungi Kami
           </Link>
         </div>
       </div>

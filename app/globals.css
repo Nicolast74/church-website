@@ -47,10 +47,10 @@ body {
   max-width: 80rem; /* max-w-7xl */
   margin-left: auto;
   margin-right: auto;
-  background-color: #E5E7EB; /* bg-ray-200 */
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
-  border: 1px solid #D1D5DB; /* border-gray-300 */
-  border-radius: 0.5rem; /* rounded-lg */
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .nav-item {

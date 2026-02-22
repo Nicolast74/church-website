@@ -31,6 +31,52 @@ export default function Header() {
 
   return (
     <header className="floating-header-container">
+      <style dangerouslySetInnerHTML={{__html: `
+        .nav-item {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          padding: 14px 20px;
+          border-radius: 18px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          color: #1e293b; /* Dark Slate */
+          font-weight: 600;
+        }
+        .nav-item:hover, .nav-item.active {
+          background: rgba(0, 0, 0, 0.05);
+          color: #000000;
+          transform: translateY(-2px);
+        }
+        .dropdown-panel {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          margin-top: 10px;
+          min-width: 260px;
+          background: #ffffff;
+          border: 1px solid #e5e7eb;
+          border-radius: 20px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+          padding: 8px;
+          z-index: 100;
+          overflow: hidden;
+        }
+        .dropdown-item {
+          display: block;
+          padding: 14px 20px;
+          border-radius: 14px;
+          color: #374151 !important; /* Dark Gray text */
+          font-weight: 600;
+          text-decoration: none !important;
+          transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+          background: rgba(0, 0, 0, 0.05);
+          color: #000000 !important;
+          transform: translateX(8px);
+        }
+        `}} />
       <div className="floating-navbar">
         <div className="flex h-16 items-center justify-between px-6">
 

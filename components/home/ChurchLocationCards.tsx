@@ -11,34 +11,26 @@ interface LocationCardProps {
 
 const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, description, linkHref }) => {
   return (
-    // w-full tapi kita kunci max-width-nya biar kaga jadi raksasa
-    // Grid: Tetap side-by-side (2 kol) di semua layar. Card jadi verikal.
-    <div className="w-full bg-white rounded-xl shadow-lg border-t-4 border-amber-600 border border-stone-100 flex flex-col items-center p-4 hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-2 group h-full text-center">
-      
-      {/* BOX GAMBAR: Full width di atas */}
-      <div className="w-full aspect-4/3 shrink-0 overflow-hidden rounded-lg border border-gray-100 bg-gray-50 mb-4">
+    <div className="w-full bg-white rounded-[2.5rem] border border-slate-100 p-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 group h-full">
+      <div className="w-full aspect-[4/5] overflow-hidden rounded-[2rem] mb-6 relative">
         <img
           src={imageSrc} 
           alt={title}
-          /* object-cover biar kaga penyet */
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+            <span className="text-white font-bold text-sm">Lihat Detail →</span>
+        </div>
       </div>
 
-      {/* KONTEN TEKS */}
-      {/* KONTEN TEKS */}
-      <div className="w-full flex flex-col items-center min-w-0 grow">
-        <h3 className="text-sm md:text-lg font-serif font-bold text-slate-800 mb-2 leading-tight">
-          {title}
-        </h3>
-        <p className="text-gray-600 text-xs mb-4 line-clamp-3 leading-relaxed">
-          {description}
-        </p>
+      <div className="px-4 pb-4 text-center">
+        <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight">{title}</h3>
+        <p className="text-slate-500 text-sm mb-6 leading-relaxed line-clamp-2 italic">"{description}"</p>
         <Link 
           href={linkHref} 
-          className="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-full hover:bg-blue-700 transition-all shadow-md"
+          className="inline-block w-full py-4 bg-slate-50 text-slate-900 text-xs font-black rounded-2xl hover:bg-slate-900 hover:text-white transition-all"
         >
-          Detail
+          EXPLORE LOKASI
         </Link>
       </div>
     </div>
