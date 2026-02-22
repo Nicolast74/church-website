@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PageHeader from '@/components/ui/PageHeader';
 import { Jadwal } from '@/types';
+import { Clock } from 'lucide-react';
 
 interface UpcomingSchedulesProps {
   schedules: Jadwal[];
@@ -8,63 +9,23 @@ interface UpcomingSchedulesProps {
 
 export default function UpcomingSchedules({ schedules }: UpcomingSchedulesProps) {
   return (
-    <section className="py-4">
-      <div className="text-center">
-        <PageHeader
-          title="Jadwal Ibadah Terdekat"
-          subtitle="Beberapa jadwal ibadah mendatang di wilayah Bonaventura Panggang."
-        />
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          {/* Render dynamic schedules if available */}
-          {schedules && schedules.length > 0 ? (
-            schedules.map((item) => (
-              <div key={item.id} className="p-8 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-amber-600 hover:-translate-y-1 transition-transform duration-300">
-                <h3 className="text-2xl font-serif font-bold mb-3 text-slate-800">{item.nama_kegiatan}</h3>
-                <p className="text-slate-600 font-medium">
-                  {new Date(item.tanggal).toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long' })}
-                </p>
-                <div className="mt-4 inline-block px-4 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-semibold">
-                  Pukul {item.jam}
-                </div>
-              </div>
-            ))
-          ) : (
-            <>
-                {/* Fallback to static cards if no dynamic schedules */}
-                <div className="p-8 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-amber-600 hover:-translate-y-1 transition-transform duration-300">
-                    <h3 className="text-2xl font-serif font-bold mb-3 text-slate-800">Misa Minggu Pagi</h3>
-                    <p className="text-slate-600 font-medium">Setiap hari Minggu</p>
-                    <div className="mt-4 inline-block px-4 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-semibold">
-                    Pukul 08:00
-                    </div>
-                </div>
-
-                <div className="p-8 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-slate-600 hover:-translate-y-1 transition-transform duration-300">
-                    <h3 className="text-2xl font-serif font-bold mb-3 text-slate-800">Misa Minggu Sore</h3>
-                    <p className="text-slate-600 font-medium">Setiap hari Minggu</p>
-                    <div className="mt-4 inline-block px-4 py-1 bg-slate-100 text-slate-800 rounded-full text-sm font-semibold">
-                    Pukul 17:00
-                    </div>
-                </div>
-
-                <div className="p-8 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-amber-600 hover:-translate-y-1 transition-transform duration-300">
-                    <h3 className="text-2xl font-serif font-bold mb-3 text-slate-800">Misa Harian</h3>
-                    <p className="text-slate-600 font-medium">Senin - Sabtu</p>
-                    <div className="mt-4 inline-block px-4 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-semibold">
-                    Pukul 06:00
-                    </div>
-                </div>
-            </>
-          )}
-
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {(schedules?.length ? schedules : Array(3).fill(null)).map((item, i) => (
+        <div key={i} className="group p-10 bg-white rounded-[2.5rem] border border-slate-100 hover:border-indigo-100 hover:shadow-2xl hover:shadow-indigo-100/50 transition-all duration-500">
+          <div className="w-12 h-12 bg-slate-50 text-slate-400 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+            <Clock size={20} />
+          </div>
+          <h3 className="text-2xl font-black text-slate-900 mb-2 tracking-tight">
+            {item?.nama_kegiatan || (i === 0 ? "Misa Minggu" : "Misa Harian")}
+          </h3>
+          <p className="text-indigo-600 font-bold text-sm mb-6 uppercase tracking-widest">
+            {item ? new Date(item.tanggal).toLocaleDateString('id-ID', { weekday: 'long' }) : "Setiap Hari"}
+          </p>
+          <div className="inline-block px-4 py-2 bg-slate-50 rounded-xl text-xs font-black text-slate-600 uppercase">
+            Pukul {item?.jam || "08:00"}
+          </div>
         </div>
-        <div className="mt-16">
-          <Link href="/jadwal" className="inline-block px-8 py-3 border-2 border-amber-700 text-amber-700 font-bold rounded-full hover:bg-amber-700 hover:text-white transition-colors duration-300">
-            Lihat Semua Jadwal
-          </Link>
-        </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
 }

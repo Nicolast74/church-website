@@ -1,0 +1,292 @@
+--- hero.tsx ---
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+
+const Hero: React.FC = () => {
+  return (
+    <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
+      <Image
+        src="/images/bg/gereja.jpg"
+        alt="Background Gereja"
+        layout="fill"
+        objectFit="cover"
+        priority
+        className="absolute inset-0 z-0 scale-105"
+      />
+      {/* Masking Gradient - Biar transisi ke section bawah mulus banget */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-white z-10"></div>
+      
+      <div className="relative z-20 px-6 max-w-5xl text-center">
+        <span className="inline-block px-4 py-1.5 mb-6 text-[10px] font-black tracking-[0.4em] text-white/80 bg-white/10 backdrop-blur-md rounded-full uppercase border border-white/20">
+          Welcome to Our Community
+        </span>
+        <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white leading-[0.9] mb-8 drop-shadow-2xl">
+          Iman. Kasih. <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-white">Kebersamaan.</span>
+        </h1>
+        <p className="mt-6 text-lg md:text-xl max-w-2xl mx-auto font-medium text-white/80 leading-relaxed">
+          Lingkungan St. Yohanes Rasul Girisekar melayani dengan kasih dan menumbuhkan iman dalam setiap langkah.
+        </p>
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/jadwal" className="px-10 py-4 bg-white text-black font-black rounded-2xl hover:bg-indigo-50 transition-all shadow-2xl hover:-translate-y-1">
+            Lihat Jadwal Ibadah
+          </Link>
+          <Link href="/kontak" className="px-10 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 font-black rounded-2xl hover:bg-white/20 transition-all">
+            Hubungi Kami
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
+--- end ---
+
+--- ChurchLocationCards.tsx ---
+import React from 'react';
+import Link from 'next/link';
+import FadeIn from '@/components/ui/FadeIn';
+
+interface LocationCardProps {
+  imageSrc: string;
+  title: string;
+  description: string;
+  linkHref: string;
+}
+
+const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, description, linkHref }) => {
+  return (
+    <div className="w-full bg-white rounded-[2.5rem] border border-slate-100 p-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 group h-full">
+      <div className="w-full aspect-[4/5] overflow-hidden rounded-[2rem] mb-6 relative">
+        <img
+          src={imageSrc} 
+          alt={title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+            <span className="text-white font-bold text-sm">Lihat Detail →</span>
+        </div>
+      </div>
+
+      <div className="px-4 pb-4 text-center">
+        <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight">{title}</h3>
+        <p className="text-slate-500 text-sm mb-6 leading-relaxed line-clamp-2 italic">"{description}"</p>
+        <Link 
+          href={linkHref} 
+          className="inline-block w-full py-4 bg-slate-50 text-slate-900 text-xs font-black rounded-2xl hover:bg-slate-900 hover:text-white transition-all"
+        >
+          EXPLORE LOKASI
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const ChurchLocationCards: React.FC = () => {
+  const locations = [
+    {
+      imageSrc: "/images/bg/gereja.jpg",
+      title: "St. Yohanes Girisekar",
+      description: "Gereja lingkungan di Girisekar yang melayani umat dengan penuh kasih.",
+      linkHref: "/lokasi/st-yohanes",
+    },
+    {
+      imageSrc: "/images/galeri/The-Wind-Rises.jpg",
+      title: "Taman Doa Bintang Samudra",
+      description: "Tempat ziarah dan retret tenang di tepi samudra yang indah.",
+      linkHref: "/lokasi/taman-doa",
+    },
+  ];
+
+  return (
+    <div className="w-full py-10">
+      <h2 className="text-2xl font-bold text-white text-center mb-12 uppercase tracking-widest">
+        Gereja & Lingkungan
+      </h2>
+      
+      {/* GRID: Force 2 kolom (grid-cols-2) di semua layar (gap-4 buat HP) */}
+      <div className="grid grid-cols-2 gap-3 md:gap-8 max-w-2xl mx-auto justify-items-center items-stretch">
+        {locations.map((location, index) => (
+          <FadeIn 
+            key={index} 
+            direction={index % 2 === 0 ? "right" : "left"} 
+            delay={index * 0.2}
+            className="h-full w-full"
+          >
+            <LocationCard {...location} />
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ChurchLocationCards;
+--- end ---
+
+--- GalleryPreview.tsx ---
+'use client';
+
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Kegiatan } from '@/types';
+
+interface GalleryPreviewProps {
+  activities: Kegiatan[];
+}
+
+export default function GalleryPreview({ activities }: GalleryPreviewProps) {
+  const rotClasses = ["-rotate-3", "rotate-2", "-rotate-2", "rotate-3"];
+
+  if (!activities || activities.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="w-full">
+      <div 
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center"
+      >
+        {activities.map((item, i) => (
+          <motion.div 
+            key={item.id} 
+            className={`${rotClasses[i % rotClasses.length]} hover:rotate-0 transition-transform duration-500`}
+            style={{ width: '100%', maxWidth: '280px' }}
+          >
+            <Link href={`/galeri/${item.id}`}>
+              <div className="bg-white p-3 pb-10 shadow-2xl shadow-black/50 transform transition-all hover:scale-105 hover:z-50">
+                <div className="aspect-square overflow-hidden bg-slate-800">
+                  <img 
+                    src={item.thumbnail_url || 'https://picsum.photos/seed/default/500/500'} 
+                    className="w-full h-full object-cover"
+                    alt={item.judul}
+                  />
+                </div>
+                <div className="mt-4 px-2">
+                  <p 
+                    className="text-slate-800 font-handwriting text-lg leading-tight truncate" 
+                    style={{ fontFamily: 'var(--font-permanent_marker), cursive' }}
+                  >
+                    {item.judul}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="text-center mt-12 md:hidden">
+        <Link 
+          href="/galeri" 
+          className="inline-block px-6 py-2 border border-white/50 text-white rounded-full hover:bg-white hover:text-black transition-all text-sm"
+        >
+          Lihat Galeri Lainnya
+        </Link>
+      </div>
+    </div>
+  );
+}
+--- end ---
+
+--- LatestActivities.tsx ---
+export default function LatestActivities() {
+  return (
+    <section className="py-16 bg-gray-100 rounded-lg">
+      <div className="text-center">
+        <h2 className="text-3xl font-bold text-black sm:text-4xl">
+          Kegiatan Terbaru
+        </h2>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="p-6 bg-white rounded-lg shadow-md">
+            <h3 className="text-xl font-bold mb-2 text-black">Retret OMK</h3>
+            <p className="text-black">Retret tahunan Orang Muda Katolik akan diadakan pada...</p>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-md">
+            <h3 className="text-xl font-bold mb-2 text-black">Ziarah 9 Gua Maria</h3>
+            <p className="text-black">Lingkungan St. Yusuf akan mengadakan ziarah 9 Gua Maria...</p>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-md">
+            <h3 className="text-xl font-bold mb-2 text-black">Lomba Paduan Suara</h3>
+            <p className="text-black">Pendaftaran untuk lomba paduan suara antar lingkungan telah dibuka...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+--- end ---
+
+--- UpcomingSchedule.tsx ---
+import Link from 'next/link';
+import PageHeader from '@/components/ui/PageHeader';
+import { Jadwal } from '@/types';
+
+interface UpcomingSchedulesProps {
+  schedules: Jadwal[];
+}
+
+export default function UpcomingSchedules({ schedules }: UpcomingSchedulesProps) {
+  return (
+    <section className="py-4">
+      <div className="text-center">
+        <PageHeader
+          title="Jadwal Ibadah Terdekat"
+          subtitle="Beberapa jadwal ibadah mendatang di wilayah Bonaventura Panggang."
+        />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* Render dynamic schedules if available */}
+          {schedules && schedules.length > 0 ? (
+            schedules.map((item) => (
+              <div key={item.id} className="p-8 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-amber-600 hover:-translate-y-1 transition-transform duration-300">
+                <h3 className="text-2xl font-serif font-bold mb-3 text-slate-800">{item.nama_kegiatan}</h3>
+                <p className="text-slate-600 font-medium">
+                  {new Date(item.tanggal).toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long' })}
+                </p>
+                <div className="mt-4 inline-block px-4 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-semibold">
+                  Pukul {item.jam}
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+                {/* Fallback to static cards if no dynamic schedules */}
+                <div className="p-8 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-amber-600 hover:-translate-y-1 transition-transform duration-300">
+                    <h3 className="text-2xl font-serif font-bold mb-3 text-slate-800">Misa Minggu Pagi</h3>
+                    <p className="text-slate-600 font-medium">Setiap hari Minggu</p>
+                    <div className="mt-4 inline-block px-4 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-semibold">
+                    Pukul 08:00
+                    </div>
+                </div>
+
+                <div className="p-8 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-slate-600 hover:-translate-y-1 transition-transform duration-300">
+                    <h3 className="text-2xl font-serif font-bold mb-3 text-slate-800">Misa Minggu Sore</h3>
+                    <p className="text-slate-600 font-medium">Setiap hari Minggu</p>
+                    <div className="mt-4 inline-block px-4 py-1 bg-slate-100 text-slate-800 rounded-full text-sm font-semibold">
+                    Pukul 17:00
+                    </div>
+                </div>
+
+                <div className="p-8 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-t-4 border-amber-600 hover:-translate-y-1 transition-transform duration-300">
+                    <h3 className="text-2xl font-serif font-bold mb-3 text-slate-800">Misa Harian</h3>
+                    <p className="text-slate-600 font-medium">Senin - Sabtu</p>
+                    <div className="mt-4 inline-block px-4 py-1 bg-amber-50 text-amber-800 rounded-full text-sm font-semibold">
+                    Pukul 06:00
+                    </div>
+                </div>
+            </>
+          )}
+
+        </div>
+        <div className="mt-16">
+          <Link href="/jadwal" className="inline-block px-8 py-3 border-2 border-amber-700 text-amber-700 font-bold rounded-full hover:bg-amber-700 hover:text-white transition-colors duration-300">
+            Lihat Semua Jadwal
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+--- end ---

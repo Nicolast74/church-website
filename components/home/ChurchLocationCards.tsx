@@ -9,33 +9,21 @@ interface LocationCardProps {
   linkHref: string;
 }
 
-const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, description, linkHref }) => {
-  return (
-    <div className="w-full bg-white rounded-[2.5rem] border border-slate-100 p-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 group h-full">
-      <div className="w-full aspect-[4/5] overflow-hidden rounded-[2rem] mb-6 relative">
-        <img
-          src={imageSrc} 
-          alt={title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-            <span className="text-white font-bold text-sm">Lihat Detail →</span>
-        </div>
-      </div>
-
-      <div className="px-4 pb-4 text-center">
-        <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight">{title}</h3>
-        <p className="text-slate-500 text-sm mb-6 leading-relaxed line-clamp-2 italic">"{description}"</p>
-        <Link 
-          href={linkHref} 
-          className="inline-block w-full py-4 bg-slate-50 text-slate-900 text-xs font-black rounded-2xl hover:bg-slate-900 hover:text-white transition-all"
-        >
-          EXPLORE LOKASI
-        </Link>
-      </div>
+// Card Component-nya tetep simpel tapi shadow-nya diperhalus
+const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, description, linkHref }) => (
+  <div className="w-full bg-white rounded-[2.5rem] border border-slate-100 p-4 hover:shadow-[0_32px_64px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 group h-full">
+    <div className="w-full aspect-square overflow-hidden rounded-[2rem] mb-6">
+      <img src={imageSrc} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
     </div>
-  );
-};
+    <div className="px-4 pb-4 text-center">
+      <h3 className="text-xl font-black text-slate-900 mb-2">{title}</h3>
+      <p className="text-slate-500 text-sm mb-6 line-clamp-2 italic">"{description}"</p>
+      <Link href={linkHref} className="inline-block w-full py-4 bg-slate-50 text-slate-900 text-[10px] font-black tracking-widest rounded-2xl hover:bg-slate-900 hover:text-white transition-all">
+        DIREKSI LOKASI
+      </Link>
+    </div>
+  </div>
+);
 
 const ChurchLocationCards: React.FC = () => {
   const locations = [
