@@ -9,6 +9,7 @@ import FadeIn from '@/components/ui/FadeIn';
 
 const UpcomingSchedules = dynamic(() => import('@/components/home/UpcomingSchedules'));
 const GalleryPreview = dynamic(() => import('@/components/home/GalleryPreview'));
+const DailyDevotionPreview = dynamic(() => import('@/components/home/DailyDevotionPreview'));
 
 export default async function Home() {
   const supabase = await createClient();

@@ -1,0 +1,176 @@
+PROJECT: Website Gereja
+STACK: Next.js (App Router) + Tailwind + Supabase
+ARCHITECTURE: SEO-friendly (Async Server Components for public pages)
+
+============================================================
+FEATURE 4: RENUNGAN HARIAN
+
+TUJUAN
+
+Menyediakan halaman renungan harian yang:
+- Ditulis manual oleh admin
+- Terhubung ke Supabase
+- SEO-friendly
+- Bisa diakses berdasarkan tanggal
+- Memiliki halaman detail per renungan
+
+Renungan adalah original content (bukan agregasi API).
+
+============================================================
+DATABASE STRUCTURE
+
+Table: renungan
+
+id (uuid, primary key)
+judul (text, not null)
+ayat_referensi (text, not null)
+isi (text, not null)
+tanggal (date, unique, not null)
+created_at (timestamp with time zone, default now())
+
+CONSTRAINT:
+- tanggal harus unique (1 renungan per hari)
+
+INDEX:
+
+create index idx_renungan_tanggal
+on public.renungan (tanggal desc);
+
+============================================================
+ROUTES
+
+Public Routes:
+
+/renungan
+
+Async Server Component
+
+Function:
+- Fetch 10 renungan terbaru
+- Order by tanggal DESC
+- Tampilkan dalam bentuk list/card
+  - Judul
+  - Tanggal
+  - Ayat referensi
+  - Excerpt isi (150-200 karakter)
+
+/renungan/[tanggal]
+
+Contoh:
+ /renungan/2026-02-24
+
+Folder:
+app/renungan/[tanggal]/page.tsx
+
+Async Server Component
+
+Function:
+- Fetch renungan berdasarkan tanggal
+- Jika tidak ada → return notFound()
+
+Render:
+- Judul
+- Tanggal (format human readable)
+- Ayat referensi
+- Isi lengkap (rich text sederhana)
+
+SEO:
+- generateMetadata()
+- Title: Judul Renungan | Nama Gereja
+- Description: potongan 150 karakter dari isi
+- Static params optional (bisa incremental)
+
+============================================================
+HOMEPAGE INTEGRATION
+
+Component baru:
+components/home/DailyDevotionPreview.tsx
+
+Function:
+- Fetch renungan berdasarkan tanggal hari ini
+- Jika tidak ada:
+  - Fallback ke renungan terbaru
+
+Render:
+- Judul
+- Ayat referensi
+- 120 karakter preview
+- Link ke halaman detail
+
+============================================================
+ADMIN DASHBOARD UPDATE
+
+Route baru:
+
+app/admin/renungan/page.tsx
+
+Function:
+- List semua renungan
+- Order by tanggal DESC
+
+Admin Features:
+- Create renungan
+- Update renungan
+- Delete renungan
+
+Validation:
+- Tidak boleh ada tanggal duplikat
+- Judul minimal 5 karakter
+- Isi minimal 50 karakter
+
+Form Fields:
+- Judul (text input)
+- Ayat Referensi (text input)
+- Tanggal (date picker)
+- Isi (textarea atau simple rich text)
+
+============================================================
+SUPABASE RLS
+
+Public:
+- SELECT allowed for everyone
+
+Authenticated:
+- INSERT
+- UPDATE
+- DELETE
+
+============================================================
+ASYNC STRATEGY
+
+Public pages:
+- Gunakan Async Server Component
+- Direct fetch via supabaseServer client
+- Tidak gunakan client-side fetching
+
+Admin:
+- Gunakan supabaseClient
+- Form submission via Server Action atau API route
+
+============================================================
+SEO STRATEGY
+
+- URL berbasis tanggal (clean & semantic)
+- generateMetadata untuk tiap detail page
+- Structured data (optional enhancement)
+- Konten original untuk ranking
+
+============================================================
+NON-GOALS (MVP)
+
+- Tidak ada comment system
+- Tidak ada kategori
+- Tidak ada tagging
+- Tidak ada search
+- Tidak ada multi-author system
+
+============================================================
+EXPECTED OUTCOME
+
+- Website memiliki konten harian yang konsisten
+- Bisa menjadi entry point SEO
+- Mudah dikelola admin
+- Stabil tanpa dependency API eksternal
+
+============================================================
+END OF FEATURE BRIEF

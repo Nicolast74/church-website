@@ -1,0 +1,59 @@
+PROJECT: Website Gereja
+STATUS TRACKING DOCUMENT
+LAST UPDATED: [isi tanggal hari ini]
+
+============================================================
+FEATURE 1: GALERI KEGIATAN (DYNAMIC)
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- /galeri sudah dynamic (Supabase-driven)
+- /galeri/[id] sudah dibuat
+- Async Server Component implemented
+- generateMetadata() sudah digunakan
+- Homepage GalleryPreview sudah fetch 3 terbaru
+- Supabase Storage bucket "kegiatan" aktif
+- CRUD admin kegiatan berfungsi
+
+NOTES:
+- No search
+- No filtering
+- No pagination (MVP scope)
+
+------------------------------------------------------------
+
+FEATURE 2: JADWAL (DYNAMIC)
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- /jadwal sudah dynamic
+- Query tanggal >= today
+- Order ASC
+- Homepage UpcomingSchedules fetch 3 terdekat
+- CRUD admin jadwal berfungsi
+
+NOTES:
+- No recurring logic
+
+------------------------------------------------------------
+
+FEATURE 3: ADMIN DASHBOARD
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- Supabase Auth Email/Password aktif
+- /admin protected via middleware
+- CRUD kegiatan aktif
+- CRUD jadwal aktif
+- Storage upload berjalan
+- RLS policy working
+
+------------------------------------------------------------
+
+OPEN FEATURES
+STATUS: 🚧 NOT IMPLEMENTED
+
+- Renungan Harian
+- Bacaan Harian
+- Bacaan Misa
+- Kalender Liturgi dynamic logic

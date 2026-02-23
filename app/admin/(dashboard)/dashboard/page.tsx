@@ -21,7 +21,7 @@ export default function AdminDashboard() {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.85] tracking-tighter mb-8">
-              Shalom, <br/> 
+              Halo, <br/> 
               <span className="text-indigo-600 font-serif italic font-light lowercase">Admin.</span>
             </h1>
             

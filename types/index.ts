@@ -84,6 +84,32 @@ export interface Database {
           created_at?: string
         }
       }
+      renungan: {
+        Row: {
+          id: string
+          judul: string
+          ayat_referensi: string
+          isi: string
+          tanggal: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          judul: string
+          ayat_referensi: string
+          isi: string
+          tanggal: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          judul?: string
+          ayat_referensi?: string
+          isi?: string
+          tanggal?: string
+          created_at?: string
+        }
+      }
     }
   }
 }
@@ -91,3 +117,4 @@ export interface Database {
 export type Kegiatan = Database['public']['Tables']['kegiatan']['Row']
 export type KegiatanFoto = Database['public']['Tables']['kegiatan_foto']['Row']
 export type Jadwal = Database['public']['Tables']['jadwal']['Row']
+export type Renungan = Database['public']['Tables']['renungan']['Row']
