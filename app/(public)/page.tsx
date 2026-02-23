@@ -49,7 +49,7 @@ export default async function Home() {
                 Menumbuhkan <br/> <span className="text-accent-serif">iman</span> dalam kasih.
               </h2>
               <p className="text-slate-500 text-lg md:text-xl font-medium italic mb-12 max-w-lg">
-                "Melayani umat melalui ibadah dan semangat kebersamaan yang inklusif di Girisekar."
+                &quot;Melayani umat melalui ibadah dan semangat kebersamaan yang inklusif di Girisekar.&quot;
               </p>
               <Link href="/profil" className="btn-primary-modern">
                 Selengkapnya <ArrowRight size={18} />
@@ -78,7 +78,7 @@ export default async function Home() {
                 <Quote className="text-indigo-500/10 absolute -left-6 -top-6 group-hover:scale-110 transition-transform duration-700" size={140} />
                 <div className="relative z-10">
                   <p className="text-2xl font-serif italic font-light leading-snug text-slate-300">
-                    "Sebab di mana dua atau tiga orang berkumpul dalam Nama-Ku, di situ Aku ada..."
+                    &quot;Sebab di mana dua atau tiga orang berkumpul dalam Nama-Ku, di situ Aku ada...&quot;
                   </p>
                 </div>
                 <span className="text-[10px] font-black text-indigo-400 tracking-widest uppercase mt-8 border-t border-slate-800 pt-6 relative z-10">

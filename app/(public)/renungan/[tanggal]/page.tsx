@@ -79,7 +79,7 @@ export default async function RenunganDetailPage({ params }: Props) {
               </h1>
               <div className="w-24 h-1.5 bg-indigo-600 mx-auto rounded-full mb-8"></div>
               <p className="text-xl md:text-2xl italic text-gray-600 font-medium">
-                "{devotion.ayat_referensi}"
+                &quot;{devotion.ayat_referensi}&quot;
               </p>
             </div>
 

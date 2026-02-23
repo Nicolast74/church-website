@@ -45,6 +45,13 @@ export default function DashboardLayout({
                 </svg>
                 Jadwal Misa
             </Link>
+
+            <Link href="/admin/renungan" className="flex items-center px-4 py-2.5 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-indigo-600 transition-all group">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4.5 w-4.5 mr-3 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.168.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                Renungan Harian
+            </Link>
  
              <div className="pt-6 mt-6 border-t border-slate-50">
                 <Link href="/" target="_blank" className="flex items-center px-4 py-2.5 rounded-xl text-[10px] font-black tracking-widest text-slate-400 hover:bg-slate-900 hover:text-white transition-all group uppercase">

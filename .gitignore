@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal notes and temporary brief files
+brief/note.txt
+brief/clipboard.txt
+Brief/Note.txt
+Brief/Clipboard.txt

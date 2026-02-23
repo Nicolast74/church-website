@@ -50,10 +50,31 @@ DETAILS:
 
 ------------------------------------------------------------
 
+FEATURE 4: RENUNGAN HARIAN
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- Table "renungan" created in Supabase
+- Public list page (/renungan) and detail page implemented
+- Homepage preview component integrated
+- Admin CRUD management fully functional
+- Search engine optimization (SEO) included
+
+------------------------------------------------------------
+
+FEATURE 5: PROFIL LINGKUNGAN
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- Professional profile page (/profil) implemented
+- Premium design with mission, vision, and values
+- Integrated with homepage CTA button
+
+------------------------------------------------------------
+
 OPEN FEATURES
 STATUS: 🚧 NOT IMPLEMENTED
 
-- Renungan Harian
-- Bacaan Harian
+- Bacaan Harian (External API integration)
 - Bacaan Misa
 - Kalender Liturgi dynamic logic

@@ -42,7 +42,7 @@ export default async function RenunganListPage() {
                   <p className="text-sm italic text-gray-500 mb-4 line-clamp-1">
                     {devotion.ayat_referensi}
                   </p>
-                  <p className="text-gray-600 line-clamp-3 flex-grow">
+                  <p className="text-gray-600 line-clamp-3 grow">
                     {devotion.isi}
                   </p>
                   <div className="mt-6 flex items-center text-indigo-600 font-semibold text-sm">
