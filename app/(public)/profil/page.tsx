@@ -28,18 +28,16 @@ export default function ProfilPage() {
               <span className="badge-premium">Sejarah & Identitas</span>
             </div>
             <h2 className="heading-huge text-center mb-10 text-4xl!">
-              Wilayah <span className="text-accent-serif">Bonaventura</span> Panggang
+              Lingkungan <span className="text-accent-serif">St. Yohanes Rasul</span> Girisekar
             </h2>
             <div className="prose prose-lg max-w-none text-slate-600 leading-relaxed text-center italic">
               <p>
-                Wilayah Bonaventura Panggang merupakan bagian dari Paroki St. Yohanes Rasul yang berlokasi di Girisekar. 
+                Lingkungan St. Yohanes Rasul Girisekar merupakan bagian dari Wilayah St. Agustinus Bonaventura Panggang yang termasuk dalam naungan Paroki St. Yusuf Bandung. 
                 Kami adalah komunitas umat Katolik yang dinamis, berkomitmen untuk menumbuhkan iman di tengah masyarakat 
                 melalui semangat persaudaraan dan pelayanan yang inklusif.
               </p>
               <p className="mt-6">
-                Nama Bonaventura diambil dari Santo Bonaventura, seorang teolog dan mistikus besar yang dikenal karena 
-                keseimbangan antara intelektualitas dan spiritualitas—semangat inilah yang terus kami bawa dalam 
-                setiap kegiatan gerejawi dan kemasyarakatan kami.
+                Nama St. Yohanes Rasul diambil dari sosok murid terkasih yang dikenal karena kedalaman spiritualitasnya dan pesan cinta kasih yang radikal—semangat inilah yang menjadi fondasi kami dalam membangun persaudaraan umat yang tulus, hangat, dan penuh pengabdian di tengah masyarakat.
               </p>
             </div>
           </FadeIn>

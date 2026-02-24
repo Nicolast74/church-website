@@ -46,7 +46,7 @@ export default async function Home() {
                 <Sparkles size={14} className="text-indigo-400 animate-pulse mb-6" />
               </div>
               <h2 className="heading-huge mb-10">
-                Menumbuhkan <br/> <span className="text-accent-serif">iman</span> dalam kasih.
+                <span className="text-5xl md:text-7xl! block md:inline">Menumbuhkan</span> <br className="hidden md:block"/> <span className="text-accent-serif">iman</span> dalam kasih.
               </h2>
               <p className="text-slate-500 text-lg md:text-xl font-medium italic mb-12 max-w-lg">
                 &quot;Melayani umat melalui ibadah dan semangat kebersamaan yang inklusif di Girisekar.&quot;

@@ -5,20 +5,20 @@ import Card from "@/components/ui/Card";
 export default function Kontak() {
   const contacts = [
     {
-      role: "Pastor Paroki",
-      name: "Romo Yohanes, Pr",
-      email: "pastor@gereja.org",
+      role: "Jabatan Kontak 1",
+      name: "Nama Kontak 1",
+      email: "kontak1@gmail.com",
       phone: "0812-3456-7890",
     },
     {
-      role: "Sekretariat Paroki",
-      name: "Ibu Maria",
-      email: "sekretariat@gereja.org",
+      role: "Jabatan Kontak 2",
+      name: "Nama Kontak 2",
+      email: "kontak2@gmail.com",
       phone: "021-123-4567",
     },
     {
-      role: "Ketua Dewan Paroki",
-      name: "Bapak Yosef",
+      role: "Jabatan Kontak 3",
+      name: "Nama Kontak 3",
       email: "dewan@gereja.org",
       phone: "0812-9876-5432",
     },
