@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { Kegiatan, KegiatanFoto } from '@/types';
+import GalleryGrid from '@/components/galeri/GalleryGrid';
 
 export const revalidate = 60;
 
@@ -96,22 +97,7 @@ export default async function GalleryDetail({ params }: Props) {
                     <p className="whitespace-pre-line">{activity.deskripsi}</p>
                 </div>
 
-                {photos && photos.length > 0 && (
-                    <div>
-                        <h3 className="text-2xl font-bold font-serif mb-6 border-b pb-4">Dokumentasi Foto</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {photos.map((photo) => (
-                                <div key={photo.id} className="aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img 
-                                        src={photo.foto_url} 
-                                        alt={`Dokumentasi ${activity.judul}`} 
-                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
+                <GalleryGrid photos={photos || []} activityTitle={activity.judul} />
             </div>
         </div>
       </Section>

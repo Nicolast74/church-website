@@ -72,6 +72,13 @@ DETAILS:
 
 ------------------------------------------------------------
 
+FEATURE 6: Gallery Photos view
+STATUS: 🚧 NOT IMPLEMENTED
+
+DETAILS:
+- Make the photos viewable.
+
+------------------------------------------------------------
 OPEN FEATURES
 STATUS: 🚧 NOT IMPLEMENTED
 
