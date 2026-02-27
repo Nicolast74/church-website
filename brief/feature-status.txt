@@ -73,7 +73,7 @@ DETAILS:
 ------------------------------------------------------------
 
 FEATURE 6: Gallery Photos view
-STATUS: 🚧 NOT IMPLEMENTED
+STATUS: ✅️ COMPLETED
 
 DETAILS:
 - Make the photos viewable.
