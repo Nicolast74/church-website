@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabaseServer';
 import { Clock, Quote, ArrowRight, Sparkles } from 'lucide-react';
 
@@ -92,12 +93,29 @@ export default async function Home() {
       </section>
 
       {/* SECTION LOKASI */}
-      <section className="py-40 px-4 max-w-7xl mx-auto">
-        <div className="text-center mb-24">
-          <h2 className="heading-huge text-5xl! uppercase italic">Kunjungi Kami</h2>
-          <div className="w-16 h-1.5 bg-indigo-600 mx-auto mt-8 rounded-full" />
+      <section className="py-24 px-4 max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-stretch gap-12 lg:gap-20">
+          {/* Image Column - 3:4 ratio */}
+          <div className="lg:w-5/12 shrink-0">
+            <div className="w-full aspect-3/4 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 sticky top-24">
+              <Image
+                src="/images/home/church-location.png"
+                alt="Gereja St. Yohanes Girisekar"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Content Column */}
+          <div className="lg:w-7/12 flex flex-col justify-center">
+            <div className="mb-12">
+              <h2 className="heading-huge text-5xl! uppercase italic">Kunjungi<br /><span className="text-accent-serif">Kami</span></h2>
+              <div className="w-16 h-1.5 bg-indigo-600 mt-8 rounded-full" />
+            </div>
+            <ChurchLocationCards />
+          </div>
         </div>
-        <ChurchLocationCards />
       </section>
 
       {/* SECTION GALLERY */}
