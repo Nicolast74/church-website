@@ -1,6 +1,6 @@
 PROJECT: Website Gereja
 STATUS TRACKING DOCUMENT
-LAST UPDATED: [isi tanggal hari ini]
+LAST UPDATED: 2026-03-01
 
 ============================================================
 FEATURE 1: GALERI KEGIATAN (DYNAMIC)
@@ -72,11 +72,38 @@ DETAILS:
 
 ------------------------------------------------------------
 
-FEATURE 6: Gallery Photos view
-STATUS: ✅️ COMPLETED
+FEATURE 6: GALLERY PHOTOS VIEW
+STATUS: ✅ COMPLETED
 
 DETAILS:
 - Make the photos viewable.
+
+------------------------------------------------------------
+
+FEATURE 7: NAVBAR V2 (SCALABLE)
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- Restructured nav: Rohani, Komunitas, Lokasi dropdowns + Kontak + Donasi CTA
+- Desktop: hover dropdown with active link highlighting (usePathname)
+- Mobile: hamburger → slide-in sidebar with click-to-expand accordion groups
+- Components split: Header.tsx, NavDropdown.tsx, MobileMenu.tsx
+- Routing remains flat (no nested routes)
+
+------------------------------------------------------------
+
+FEATURE 8: PENGUMUMAN
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- Public page /pengumuman (Server Component, ISR 60s)
+- Expandable cards with "Selengkapnya" toggle (PengumumanCard client component)
+- Category badges: Umum / Liturgi / Kegiatan
+- Auto-hides expired announcements (tanggal_selesai filter)
+- Admin CRUD: list, create, edit, delete
+- Admin sidebar link added
+- Table "pengumuman" schema defined in types/index.ts
+  (requires Supabase table creation)
 
 ------------------------------------------------------------
 OPEN FEATURES

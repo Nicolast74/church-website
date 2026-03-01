@@ -52,6 +52,13 @@ export default function DashboardLayout({
                 </svg>
                 Renungan Harian
             </Link>
+
+            <Link href="/admin/pengumuman" className="flex items-center px-4 py-2.5 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-indigo-600 transition-all group">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4.5 w-4.5 mr-3 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                </svg>
+                Pengumuman
+            </Link>
  
              <div className="pt-6 mt-6 border-t border-slate-50">
                 <Link href="/" target="_blank" className="flex items-center px-4 py-2.5 rounded-xl text-[10px] font-black tracking-widest text-slate-400 hover:bg-slate-900 hover:text-white transition-all group uppercase">
