@@ -12,8 +12,8 @@ const Hero: React.FC = () => {
         priority
         className="absolute inset-0 z-0 object-cover opacity-60 scale-105"
       />
-      {/* Overlay gradien yang lebih deep */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#F8FAFC] z-10"></div>
+      {/* Overlay gradien */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#F8FAFC] dark:to-[#0f172a] z-10"></div>
       
       <div className="relative z-20 px-6 max-w-6xl text-center">
         <span className="inline-block px-4 py-1.5 mb-8 text-[10px] font-black tracking-[0.5em] text-white/90 bg-white/10 backdrop-blur-md rounded-full uppercase border border-white/20">

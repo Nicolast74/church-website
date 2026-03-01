@@ -6,6 +6,7 @@ import { useState, useCallback } from "react";
 import { Menu, Home, Heart } from "lucide-react";
 import NavDropdown from "./NavDropdown";
 import MobileMenu from "./MobileMenu";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 // ─── Nav data ────────────────────────────────────────────────────────────────
 
@@ -76,8 +77,8 @@ export default function Header() {
             left: 50%;
             transform: translateX(-50%);
             min-width: 180px;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
+            background: var(--dropdown-bg, #ffffff);
+            border: 1px solid var(--dropdown-border, #e5e7eb);
             border-radius: 14px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.10);
             padding: 6px;
@@ -95,6 +96,7 @@ export default function Header() {
             transition: background 0.15s ease, color 0.15s ease;
             white-space: nowrap;
           }
+          html.dark .dropdown-item { color: #cbd5e1; }
           .dropdown-item:hover {
             background: rgba(79, 70, 229, 0.06);
             color: #4f46e5;
@@ -111,7 +113,7 @@ export default function Header() {
             right: 0;
             bottom: 0;
             width: 290px;
-            background: white;
+            background: var(--card-bg, white);
             z-index: 1000;
             box-shadow: -8px 0 28px rgba(0,0,0,0.09);
             transform: translateX(100%);
@@ -151,9 +153,11 @@ export default function Header() {
             border: none;
             transition: background 0.15s ease, color 0.15s ease;
           }
+          html.dark .mobile-nav-item { color: #cbd5e1; }
           .mobile-nav-item:hover {
             background: #f8fafc;
           }
+          html.dark .mobile-nav-item:hover { background: #1e293b; }
           .mobile-nav-child {
             display: block;
             padding: 8px 12px;
@@ -163,10 +167,12 @@ export default function Header() {
             color: #6b7280;
             transition: background 0.15s ease, color 0.15s ease;
           }
+          html.dark .mobile-nav-child { color: #94a3b8; }
           .mobile-nav-child:hover {
             background: #f1f5f9;
             color: #4f46e5;
           }
+          html.dark .mobile-nav-child:hover { background: #1e293b; }
           .mobile-nav-child-active {
             color: #4f46e5;
             background: rgba(79, 70, 229, 0.06);
@@ -211,6 +217,8 @@ export default function Header() {
                   </Link>
                 );
               })}
+
+              <ThemeToggle className="mx-1" />
 
               {/* Donasi CTA */}
               <Link

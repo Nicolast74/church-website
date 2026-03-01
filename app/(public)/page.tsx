@@ -33,7 +33,7 @@ export default async function Home() {
   const nextMisa = schedules?.[0] || { nama_kegiatan: "Misa Minggu", jam: "08:00" };
 
   return (
-    <main className="bg-[#F8FAFC]">
+    <main style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
       <Hero />
 
       {/* SECTION BENTO */}

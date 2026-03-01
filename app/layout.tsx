@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display, Permanent_Marker } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,13 +32,7 @@ export const metadata: Metadata = {
     description: "Selamat datang di website resmi Gereja St. Agustinus & St. Yohanes. Temukan jadwal ibadah, kegiatan, dan informasi lainnya.",
     url: "https://gereja.vercel.app",
     siteName: "Gereja St. Agustinus & St. Yohanes",
-    images: [
-      {
-        url: "https://gereja.vercel.app/og-image.jpg",
-        width: 1200,
-        height: 630,
-      },
-    ],
+    images: [{ url: "https://gereja.vercel.app/og-image.jpg", width: 1200, height: 630 }],
     locale: "id_ID",
     type: "website",
   },
@@ -49,15 +44,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id">
+    <html lang="id" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${permanentMarker.variable} antialiased font-sans flex flex-col min-h-screen`}>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

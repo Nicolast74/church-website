@@ -20,11 +20,11 @@ export default function GalleryPreview({ activities }: GalleryPreviewProps) {
           className={`${rotClasses[i % rotClasses.length]} hover:rotate-0 transition-all duration-500 hover:z-50`}
         >
           <Link href={`/galeri/${item.id}`}>
-            <div className="bg-white p-4 pb-12 shadow-2xl shadow-black/30 transform hover:scale-105 transition-all">
-              <div className="aspect-square overflow-hidden bg-slate-100">
+            <div className="bg-white dark:bg-slate-800 p-4 pb-12 shadow-2xl shadow-black/30 transform hover:scale-105 transition-all">
+              <div className="aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700">
                 <img src={item.thumbnail_url || 'https://picsum.photos/seed/1/500/500'} className="w-full h-full object-cover" alt={item.judul} />
               </div>
-              <p className="mt-6 text-slate-800 text-xl text-center" style={{ fontFamily: 'var(--font-permanent-marker), cursive' }}>
+              <p className="mt-6 text-slate-800 dark:text-slate-200 text-xl text-center" style={{ fontFamily: 'var(--font-permanent-marker), cursive' }}>
                 {item.judul}
               </p>
             </div>

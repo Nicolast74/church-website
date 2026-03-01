@@ -29,12 +29,12 @@ export default async function PengumumanPage() {
 
         <div className="max-w-3xl mx-auto">
           {list.length === 0 ? (
-            <div className="text-center py-20 bg-slate-50 rounded-2xl border border-slate-100">
-              <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Megaphone size={28} className="text-slate-400" />
+            <div className="text-center py-20 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700">
+              <div className="w-16 h-16 bg-slate-100 dark:bg-slate-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Megaphone size={28} className="text-slate-400 dark:text-slate-500" />
               </div>
-              <h3 className="text-lg font-bold text-slate-700">Belum ada pengumuman</h3>
-              <p className="text-slate-400 mt-1 text-sm">Pantau terus halaman ini untuk informasi terbaru.</p>
+              <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300">Belum ada pengumuman</h3>
+              <p className="text-slate-400 dark:text-slate-500 mt-1 text-sm">Pantau terus halaman ini untuk informasi terbaru.</p>
             </div>
           ) : (
             <div className="space-y-4">

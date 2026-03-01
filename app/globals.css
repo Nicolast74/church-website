@@ -1,16 +1,179 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F8FAFC; /* Kita pake off-white biar premium */
-  --foreground: #0F172A;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card-bg: #ffffff;
+  --card-border: #f1f5f9;
+  --nav-bg: rgba(255, 255, 255, 0.75);
+  --dropdown-bg: #ffffff;
+  --dropdown-border: #e5e7eb;
+  --muted: #64748b;
 }
 
-/* HAPUS background-image dari body! */
+html.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --nav-bg: rgba(15, 23, 42, 0.8);
+  --dropdown-bg: #1e293b;
+  --dropdown-border: #334155;
+  --muted: #94a3b8;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  @apply antialiased; /* Biar font lo gak pecah */
+  @apply antialiased transition-colors duration-200;
 }
+
+/* Ensure sections without explicit bg inherit the dark background */
+html.dark section,
+html.dark main {
+  color: var(--foreground);
+}
+
+/*
+ * ──────────────────────────────────────────────────────────────
+ * DARK MODE — Global overrides for hardcoded Tailwind bg-white /
+ * bg-gray-* / bg-slate-50 that JIT may not recompile in time.
+ * These selectors target class names verbatim so they always win.
+ * ──────────────────────────────────────────────────────────────
+ */
+html.dark .bg-white,
+html.dark .bg-white\/90,
+html.dark .bg-white\/70 {
+  background-color: var(--card-bg) !important;
+}
+
+html.dark .bg-gray-50,
+html.dark .bg-slate-50,
+html.dark .bg-stone-50 {
+  background-color: #1e293b !important;
+}
+
+html.dark .bg-gray-100,
+html.dark .bg-slate-100,
+html.dark .bg-stone-100 {
+  background-color: #334155 !important;
+}
+
+/* Text in dark mode for common gray text utilities */
+html.dark .text-gray-800,
+html.dark .text-slate-900,
+html.dark .text-gray-900 {
+  color: #f1f5f9 !important;
+}
+
+html.dark .text-gray-700,
+html.dark .text-slate-800,
+html.dark .text-gray-600,
+html.dark .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-gray-500,
+html.dark .text-slate-600,
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+/* Borders */
+html.dark .border-gray-100,
+html.dark .border-slate-100,
+html.dark .border-gray-200,
+html.dark .border-slate-200 {
+  border-color: #334155 !important;
+}
+
+/* amber-50 info banners */
+html.dark .bg-amber-50 {
+  background-color: rgba(120, 53, 15, 0.25) !important;
+}
+
+/* Footer */
+html.dark footer {
+  background-color: #0f172a;
+  border-color: #1e293b;
+}
+
+/* glass-card on homepage bento */
+html.dark .glass-card {
+  background: rgba(30, 41, 59, 0.92) !important;
+  border-color: #334155 !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+ * DARK MODE — Component utility class overrides.
+ * @apply dark: inside @layer components is not compiled by
+ * Turbopack JIT in time, so we override here directly.
+ * ──────────────────────────────────────────────────────────────
+ */
+
+/* heading-huge: dark:text-slate-100 */
+html.dark .heading-huge {
+  color: #f1f5f9;
+}
+
+/* nav-item: dark:text-slate-300 */
+html.dark .nav-item {
+  color: #cbd5e1 !important;   /* slate-300 */
+}
+html.dark .nav-item:hover {
+  color: #818cf8 !important;   /* indigo-400 */
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+html.dark .nav-item.active {
+  color: #818cf8 !important;
+}
+
+/* dropdown-item: dark:text-slate-300 */
+html.dark .dropdown-item {
+  color: #cbd5e1 !important;
+}
+html.dark .dropdown-item:hover {
+  color: #f1f5f9 !important;
+}
+
+
+/* heading-huge explicit white override */
+html.dark .heading-huge.text-white\! {
+  color: #ffffff !important;
+}
+
+/* text-accent-serif — indigo-600 → indigo-400 in dark */
+html.dark .text-accent-serif {
+  color: #818cf8 !important; /* indigo-400 */
+}
+
+/* badge-premium */
+html.dark .badge-premium {
+  color: #a5b4fc !important;       /* indigo-300 */
+  background: rgba(49, 46, 129, 0.3) !important;
+  border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+/* btn-primary-modern */
+html.dark .btn-primary-modern {
+  background: #4f46e5 !important;  /* indigo-600 */
+  color: #ffffff !important;
+}
+html.dark .btn-primary-modern:hover {
+  background: #4338ca !important;
+}
+
+/* glass-card text (headings inside) */
+html.dark .glass-card .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+/* Dark mode: indigo-600 text → indigo-400 for readability */
+html.dark .text-indigo-600 {
+  color: #818cf8 !important;
+}
+
+
 
 @layer components {
   /* Navbar & Navigation */
@@ -22,35 +185,51 @@ body {
   }
 
   .floating-navbar {
-    @apply max-w-7xl mx-auto bg-white/70 backdrop-blur-xl border border-white/20 
-           rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.05)] transition-all duration-300;
+    background: var(--nav-bg);
+    @apply max-w-7xl mx-auto backdrop-blur-xl border border-white/20
+           dark:border-white/5 rounded-[2rem]
+           shadow-[0_8px_32px_rgba(0,0,0,0.05)] transition-all duration-300;
   }
 
   .nav-item {
     @apply inline-flex items-center px-5 py-2 rounded-xl text-sm font-bold
-           text-slate-600 transition-all hover:bg-slate-100 hover:text-indigo-600;
+           text-slate-600 dark:text-slate-300
+           transition-all hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400;
   }
 
-  /* Typography Slay */
+  /* Dropdown */
+  .dropdown-panel {
+    background: var(--dropdown-bg);
+    border-color: var(--dropdown-border);
+  }
+
+  .dropdown-item {
+    @apply text-slate-700 dark:text-slate-300;
+  }
+
+  /* Mobile sidebar */
+  .mobile-sidebar {
+    background: var(--card-bg);
+  }
+
+  /* Typography */
   .heading-huge {
-    @apply text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] text-slate-900;
+    @apply text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] text-slate-900 dark:text-slate-100;
   }
 
-  /* Ini rahasia estetikanya: mix sans dan serif */
   .text-accent-serif {
-    /* Pastikan lo import Playfair Display atau font serif lainnya */
-    font-family: var(--font-playfair), serif; 
+    font-family: var(--font-playfair), serif;
     @apply italic font-light text-indigo-500 lowercase;
   }
 
-  /* Bento & Cards Style */
+  /* Bento & Cards */
   .glass-card {
-    @apply bg-white/90 backdrop-blur-2xl border border-white rounded-[3rem] 
-           shadow-[0_32px_64px_-15px_rgba(0,0,0,0.05)] transition-all duration-500;
+    @apply bg-white/90 dark:bg-slate-800/90 backdrop-blur-2xl border border-white dark:border-slate-700
+           rounded-[3rem] shadow-[0_32px_64px_-15px_rgba(0,0,0,0.05)] transition-all duration-500;
   }
 
   .dark-card {
-    background-color: #020617; /* bg-slate-950 */
+    background-color: #020617;
     border-radius: 3rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -58,28 +237,36 @@ body {
     overflow: hidden;
   }
 
-  /* Badge & Mini Info */
+  /* Badge */
   .badge-premium {
-    @apply inline-flex items-center px-4 py-1.5 text-[10px] font-black tracking-[0.4em] 
-           text-indigo-600 bg-indigo-50 rounded-full uppercase border border-indigo-100 mb-6;
+    @apply inline-flex items-center px-4 py-1.5 text-[10px] font-black tracking-[0.4em]
+           text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950 rounded-full uppercase border border-indigo-100 dark:border-indigo-900 mb-6;
   }
 
-  /* Button Premium */
+  /* Button */
   .btn-primary-modern {
-    @apply px-10 py-5 bg-slate-900 text-white font-bold rounded-2xl 
-           hover:bg-indigo-600 transition-all shadow-xl hover:-translate-y-1 
+    @apply px-10 py-5 bg-slate-900 dark:bg-indigo-600 text-white font-bold rounded-2xl
+           hover:bg-indigo-600 dark:hover:bg-indigo-500 transition-all shadow-xl hover:-translate-y-1
            flex items-center gap-3 w-fit uppercase text-[11px] tracking-widest;
   }
 
-  /* Polaroid Style yang beneran estetik */
+  /* Polaroid */
   .polaroid-frame {
-    @apply bg-white p-4 pb-12 shadow-2xl transition-all duration-500 
-           border border-slate-100 hover:rotate-0 hover:scale-105 hover:z-50;
+    @apply bg-white dark:bg-slate-800 p-4 pb-12 shadow-2xl transition-all duration-500
+           border border-slate-100 dark:border-slate-700 hover:rotate-0 hover:scale-105 hover:z-50;
   }
 }
 
 /* Helper buat rotasi random di Polaroid */
-.rotate-L { transform: rotate(-3deg); }
-.rotate-R { transform: rotate(2deg); }
-.rotate-L-small { transform: rotate(-1.5deg); }
-.rotate-R-small { transform: rotate(1.5deg); }
+.rotate-L {
+  transform: rotate(-3deg);
+}
+.rotate-R {
+  transform: rotate(2deg);
+}
+.rotate-L-small {
+  transform: rotate(-1.5deg);
+}
+.rotate-R-small {
+  transform: rotate(1.5deg);
+}

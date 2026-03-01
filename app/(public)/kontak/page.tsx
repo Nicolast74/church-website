@@ -33,16 +33,16 @@ export default function Kontak() {
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {contacts.map((contact, index) => (
           <Card key={index} className="text-center hover:-translate-y-2 transition-transform duration-300">
-            <h2 className="text-xl font-serif font-bold mb-2 text-amber-700">{contact.role}</h2>
-            <p className="text-slate-900 font-semibold text-lg mb-4">{contact.name}</p>
-            <div className="space-y-2 text-slate-600 text-sm">
+            <h2 className="text-xl font-serif font-bold mb-2 text-amber-700 dark:text-amber-400">{contact.role}</h2>
+            <p className="text-slate-900 dark:text-slate-100 font-semibold text-lg mb-4">{contact.name}</p>
+            <div className="space-y-2 text-slate-600 dark:text-slate-400 text-sm">
               <p>
-                <span className="font-semibold text-slate-800">Email:</span><br/>
-                <a href={`mailto:${contact.email}`} className="text-amber-700 hover:text-amber-800 transition-colors">{contact.email}</a>
+                <span className="font-semibold text-slate-800 dark:text-slate-300">Email:</span><br/>
+                <a href={`mailto:${contact.email}`} className="text-amber-700 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300 transition-colors">{contact.email}</a>
               </p>
               <p>
-                <span className="font-semibold text-slate-800">Telepon:</span><br/>
-                <a href={`tel:${contact.phone}`} className="text-slate-600 hover:text-amber-700 transition-colors">{contact.phone}</a>
+                <span className="font-semibold text-slate-800 dark:text-slate-300">Telepon:</span><br/>
+                <a href={`tel:${contact.phone}`} className="text-slate-600 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors">{contact.phone}</a>
               </p>
             </div>
           </Card>

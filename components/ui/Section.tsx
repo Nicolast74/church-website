@@ -7,9 +7,13 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({ children, className = '', isGray = false }) => {
-  const bgColor = isGray ? 'bg-stone-50' : 'bg-white';
+  // Use CSS variables so dark mode always applies without JIT compilation uncertainty
+  const bgStyle = isGray
+    ? { background: 'color-mix(in srgb, var(--background) 90%, currentColor 5%)' }
+    : { background: 'var(--background)' };
+
   return (
-    <section className={`py-16 sm:py-24 ${bgColor} ${className}`}>
+    <section className={`py-16 sm:py-24 transition-colors duration-200 ${className}`} style={bgStyle}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {children}
       </div>

@@ -1,6 +1,6 @@
 PROJECT: Website Gereja
 STATUS TRACKING DOCUMENT
-LAST UPDATED: 2026-03-01
+LAST UPDATED: 2026-03-02
 
 ============================================================
 FEATURE 1: GALERI KEGIATAN (DYNAMIC)
@@ -104,6 +104,24 @@ DETAILS:
 - Admin sidebar link added
 - Table "pengumuman" schema defined in types/index.ts
   (requires Supabase table creation)
+
+------------------------------------------------------------
+
+FEATURE 9: DONASI
+STATUS: ✅ COMPLETED (placeholder — rekening pending)
+
+DETAILS:
+- Static page /donasi with placeholder bank account cards
+- Two accounts: Lingkungan St. Yohanes Rasul + Taman Doa Bintang Samudra
+- Copy-to-clipboard button for account numbers (CopyButton client component)
+- QRIS section placeholder (ready to be filled)
+- Info banner notifying users that account details are pending confirmation
+- Step-by-step donation guide
+- SEO metadata included
+
+NOTES:
+- Real bank account info to be provided by client
+- When ready: update accounts[] in donasi/page.tsx and remove info banner
 
 ------------------------------------------------------------
 OPEN FEATURES
