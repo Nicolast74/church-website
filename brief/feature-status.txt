@@ -124,6 +124,19 @@ NOTES:
 - When ready: update accounts[] in donasi/page.tsx and remove info banner
 
 ------------------------------------------------------------
+
+FEATURE 10: DARK MODE
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- Theme management: next-themes with ThemeProvider and system preference support
+- Global design: CSS variable-driven architecture (var(--background), etc.)
+- Public pages: Full dark mode support for Homepage and all subpages
+- Admin Dashboard: Full dark mode support with layout-level overrides
+- UI Toggle: Integrated Sun/Moon switch in Header (public) and Sidebar (admin)
+- Robustness: Targeted html.dark CSS overrides to handle Turbopack JIT compilation delays
+
+------------------------------------------------------------
 OPEN FEATURES
 STATUS: 🚧 NOT IMPLEMENTED
 
