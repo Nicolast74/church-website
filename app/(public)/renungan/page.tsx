@@ -30,25 +30,25 @@ export default async function RenunganListPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {devotions.map((devotion) => (
               <Link href={`/renungan/${devotion.tanggal}`} key={devotion.id}>
-                <Card className="h-full hover:shadow-lg transition-all duration-300 flex flex-col p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-indigo-600 px-3 py-1 bg-indigo-50 rounded-full">
+                <Card className="h-full hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[10px] font-black tracking-widest text-indigo-600 dark:text-indigo-400 px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 rounded-full uppercase">
                       {format(new Date(devotion.tanggal), 'dd MMMM yyyy', { locale: id })}
                     </span>
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                  <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 leading-tight">
                     {devotion.judul}
                   </h2>
-                  <p className="text-sm italic text-gray-500 mb-4 line-clamp-1">
+                  <p className="text-xs italic text-slate-500 dark:text-slate-400 mb-6 line-clamp-1 border-l-2 border-indigo-200 dark:border-indigo-800 pl-3">
                     {devotion.ayat_referensi}
                   </p>
-                  <p className="text-gray-600 line-clamp-3 grow">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 grow leading-relaxed">
                     {devotion.isi}
                   </p>
-                  <div className="mt-6 flex items-center text-indigo-600 font-semibold text-sm">
+                  <div className="mt-8 flex items-center text-indigo-600 dark:text-indigo-400 font-black text-[10px] uppercase tracking-widest group-hover:gap-2 transition-all">
                     Baca Selengkapnya
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
                 </Card>

@@ -83,10 +83,10 @@ export default async function RenunganDetailPage({ params }: Props) {
               </p>
             </div>
 
-            <Card className="p-8 md:p-12 shadow-xl border-gray-100 bg-white">
-              <div className="prose prose-indigo prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
+            <Card className="border-slate-100 dark:border-slate-800 shadow-[0_32px_64px_-15px_rgba(0,0,0,0.08)]">
+              <div className="prose prose-indigo prose-lg max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-8 font-light italic-quotes">
                 {devotion.isi.split('\n').map((paragraph, index) => (
-                   paragraph.trim() && <p key={index}>{paragraph}</p>
+                   paragraph.trim() && <p key={index} className="first-letter:text-5xl first-letter:font-black first-letter:text-indigo-600 first-letter:mr-3 first-letter:float-left first-letter:leading-none">{paragraph}</p>
                 ))}
               </div>
             </Card>

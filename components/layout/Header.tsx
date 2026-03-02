@@ -29,7 +29,7 @@ const navGroups = [
   {
     label: "Lokasi",
     children: [
-      { href: "/lokasi/gereja", label: "Gereja" },
+      { href: "/lokasi/st-yohanes", label: "Gereja" },
       { href: "/lokasi/taman-doa", label: "Taman Doa" },
     ],
   },

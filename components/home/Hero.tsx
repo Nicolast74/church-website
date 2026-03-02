@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
         className="absolute inset-0 z-0 object-cover opacity-60 scale-105"
       />
       {/* Overlay gradien */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#F8FAFC] dark:to-[#0f172a] z-10"></div>
+      <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.4), transparent, var(--background))' }}></div>
       
       <div className="relative z-20 px-6 max-w-6xl text-center">
         <span className="inline-block px-4 py-1.5 mb-8 text-[10px] font-black tracking-[0.5em] text-white bg-indigo-950/20 backdrop-blur-md rounded-full uppercase border border-white/30">
