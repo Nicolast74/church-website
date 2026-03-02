@@ -22,7 +22,7 @@ export default function DashboardLayout({
           </div>
           <div>
             <h2 className="text-sm font-black leading-tight uppercase tracking-tighter" style={{ color: 'var(--foreground)' }}>Admin.CH</h2>
-            <p className="text-[10px] text-indigo-500 font-bold uppercase tracking-wider">St. Yohanes Rasul</p>
+            <p className="text-[10px] text-indigo-600 font-bold uppercase tracking-wider">St. Yohanes Rasul</p>
           </div>
         </div>
         
@@ -71,7 +71,7 @@ export default function DashboardLayout({
             <div className="h-9 w-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-black text-xs">A</div>
             <div className="ml-3">
               <p className="text-sm font-black leading-tight" style={{ color: 'var(--foreground)' }}>Admin</p>
-              <p className="text-[10px] text-indigo-500 font-bold">Administrator</p>
+              <p className="text-[10px] text-indigo-600 font-bold">Administrator</p>
             </div>
           </div>
         </div>
