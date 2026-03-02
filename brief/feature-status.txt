@@ -137,6 +137,28 @@ DETAILS:
 - Robustness: Targeted html.dark CSS overrides to handle Turbopack JIT compilation delays
 
 ------------------------------------------------------------
+
+FEATURE 11: LOKASI (ENHANCED)
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- Extended LocationPage component with Address, Phone, Email, and Google Maps.
+- Corrected map coordinates for St. Agustinus, St. Yohanes, and Taman Doa.
+- Interactive contact links (tel: and mailto:).
+- High-fidelity visual design with Framer Motion animations.
+
+------------------------------------------------------------
+
+FEATURE 12: PREMIUM UI & ACCESSIBILITY (THEMING)
+STATUS: ✅ COMPLETED
+
+DETAILS:
+- Refined color schemes for Bacaan and Renungan pages (Light/Dark).
+- Standardized font contrast across all pages to meet accessibility standards.
+- Drop Cap editorial effect implemented in Renungan detail pages.
+- Global CSS overrides for robust card and background consistency.
+
+------------------------------------------------------------
 OPEN FEATURES
 STATUS: 🚧 NOT IMPLEMENTED
 

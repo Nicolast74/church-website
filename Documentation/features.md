@@ -28,7 +28,13 @@ This document describes the functional features and capabilities of the church w
 ### 5. Parish Profile (Profil Lingkungan)
 - **Core Identity**: Dedicated page detailing the mission, vision, and values of the St. Yohanes Rasul Girisekar community.
 
-### 6. Donation Info (Donasi)
+### 6. Location Information (Lokasi Gereja)
+- **Detailed Pages**: Dedicated pages for each location (St. Yohanes, St. Agustinus, Taman Doa).
+- **Contact Integration**: Reach the parish directly via integrated phone and email links.
+- **Accurate Navigation**: Interactive Google Maps embeds for each site.
+- **Premium Layout**: Elegant card-based design with smooth transitions.
+
+### 7. Donation Info (Donasi)
 - **Bank Details**: Clear information on where to send donations (Lingkungan & Taman Doa).
 - **Ease of Use**: "One-click copy" for bank account numbers and step-by-step donation guides.
 - **QRIS Support**: Ready for QR-based donation integration.
@@ -55,6 +61,8 @@ This document describes the functional features and capabilities of the church w
 - **Full Site Support**: Seamless dark mode available across both the public website and the admin dashboard.
 - **System Preference**: Respects the user's OS settings while allowing manual toggle via the Sun/Moon icon.
 - **Adaptive UI**: High-contrast, readable text and themed UI components for a comfortable reading experience at night.
+- **Accessibility First**: Standardized color contrast in Light mode to ensure readability across all content.
+- **Editorial Design**: Premium typography and layout enhancements like drop caps for religious content.
 
 ### 2. Responsive Design
 - **Mobile First**: Optimised experience for smartphones and tablets.
@@ -64,5 +72,8 @@ This document describes the functional features and capabilities of the church w
 - **Optimized Assets**: Automatic image loading and code splitting for faster page transitions.
 - **Modern Animations**: Smooth, premium-feel transitions powered by Framer Motion.
 
+
 ---
-*Last updated: March 2026*
+
+68: *Last updated: March 2, 2026*
+69: 
