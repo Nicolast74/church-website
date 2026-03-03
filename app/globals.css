@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@source "../app/**/*.{js,ts,jsx,tsx,mdx}";
+@source "../components/**/*.{js,ts,jsx,tsx,mdx}";
+@source "../pages/**/*.{js,ts,jsx,tsx,mdx}";
+@variant dark (&:where(html.dark, html.dark *));
 
 @theme {
   --color-primary: #4a5568;
