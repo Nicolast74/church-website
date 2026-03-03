@@ -1,3 +1,5 @@
+import PushSubscriptionButton from "../notifications/PushSubscriptionButton";
+
 export default function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800">
@@ -20,17 +22,21 @@ export default function Footer() {
             </p>
           </div>
           <div className="md:col-span-1">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200">Tautan</h3>
-            <ul className="mt-2 space-y-1">
-              <li><a href="https://maps.app.goo.gl/6f5s3mF7Fucx4WEo9" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 no-underline">Lokasi Gereja</a></li>
-              <li><a href="/kontak" className="text-gray-500 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 no-underline">Formulir Kontak</a></li>
-            </ul>
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200">Notifikasi</h3>
+            <p className="mt-2 text-gray-500 dark:text-slate-400 mb-4">
+              Dapatkan info kegiatan dan pengumuman terbaru langsung di browser Anda.
+            </p>
+            <PushSubscriptionButton />
           </div>
         </div>
-        <div className="mt-12 border-t border-gray-200 dark:border-slate-800 pt-8 text-center">
+        <div className="mt-12 border-t border-gray-200 dark:border-slate-800 pt-8 text-center flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500 dark:text-slate-500">
             © {new Date().getFullYear()} Lingkungan St. Yohanes Rasul Girisekar. Hak cipta dilindungi undang-undang.
           </p>
+          <div className="flex gap-4">
+            <a href="https://maps.app.goo.gl/6f5s3mF7Fucx4WEo9" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 no-underline">Lokasi Gereja</a>
+            <a href="/kontak" className="text-xs text-gray-500 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 no-underline">Kontak</a>
+          </div>
         </div>
       </div>
     </footer>

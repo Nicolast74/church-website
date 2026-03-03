@@ -44,11 +44,14 @@ export const metadata: Metadata = {
   },
 };
 
+import { NotificationManager } from "@/components/notifications/NotificationManager";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${permanentMarker.variable} antialiased font-sans flex flex-col min-h-screen`}>
         <ThemeProvider>
+          <NotificationManager />
           {children}
         </ThemeProvider>
       </body>

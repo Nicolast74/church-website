@@ -1,6 +1,6 @@
 PROJECT: Website Gereja
 STATUS TRACKING DOCUMENT
-LAST UPDATED: 2026-03-02
+LAST UPDATED: 2026-03-03
 
 ============================================================
 FEATURE 1: GALERI KEGIATAN (DYNAMIC)
@@ -159,6 +159,20 @@ DETAILS:
 - Global CSS overrides for robust card and background consistency.
 
 ------------------------------------------------------------
+ 
+FEATURE 13: BROWSER PUSH NOTIFICATION (MVP)
+STATUS: ✅ COMPLETED
+ 
+DETAILS:
+- Native Web Push API integration with web-push (Node)
+- Service Worker (sw.js) for push events and click handling
+- Supabase table "push_subscriptions" for registration data
+- Admin triggers for Kegiatan, Jadwal, and Pengumuman
+- Footer UI for user subscription management
+- VAPID security infrastructure configured
+ 
+------------------------------------------------------------
+ 
 OPEN FEATURES
 STATUS: 🚧 NOT IMPLEMENTED
 

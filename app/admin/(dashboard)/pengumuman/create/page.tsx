@@ -39,6 +39,22 @@ export default function CreatePengumuman() {
       if (error) throw error;
 
       toast.success('Pengumuman berhasil ditambahkan!');
+
+      // Trigger Push Notification
+      try {
+        await fetch('/api/notifications/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: 'Pengumuman Baru',
+            body: `Ada pengumuman baru: ${judul}`,
+            url: '/pengumuman',
+          }),
+        });
+      } catch (err) {
+        console.error('Failed to send push notification:', err);
+      }
+
       router.push('/admin/pengumuman');
       router.refresh();
     } catch (err: any) {

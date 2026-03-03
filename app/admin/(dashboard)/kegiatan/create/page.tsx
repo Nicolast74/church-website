@@ -99,6 +99,22 @@ export default function CreateKegiatan() {
       }
 
       toast.success('Kegiatan berhasil ditambahkan!');
+      
+      // Trigger Push Notification
+      try {
+        await fetch('/api/notifications/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: 'Kegiatan Baru',
+            body: `Ada kegiatan baru: ${judul}`,
+            url: `/galeri/${kegiatan.id}`,
+          }),
+        });
+      } catch (err) {
+        console.error('Failed to send push notification:', err);
+      }
+
       router.push('/admin/kegiatan');
       router.refresh();
       

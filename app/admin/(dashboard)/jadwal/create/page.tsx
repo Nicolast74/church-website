@@ -37,6 +37,21 @@ export default function CreateJadwal() {
 
       if (insertError) throw insertError;
 
+      // Trigger Push Notification
+      try {
+        await fetch('/api/notifications/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: 'Jadwal Baru',
+            body: `Jadwal baru ditambahkan: ${namaKegiatan}`,
+            url: '/jadwal',
+          }),
+        });
+      } catch (err) {
+        console.error('Failed to send push notification:', err);
+      }
+
       router.push('/admin/jadwal');
       router.refresh();
       

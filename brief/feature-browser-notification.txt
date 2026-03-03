@@ -1,0 +1,176 @@
+PROJECT: Website Gereja
+STACK: Next.js (App Router) + Supabase
+FEATURE: Browser Push Notification (MVP)
+
+============================================================
+TUJUAN
+
+Mengirim notifikasi browser otomatis ketika admin membuat:
+
+- Kegiatan baru
+- Jadwal baru
+- Pengumuman baru
+
+Tanpa login user.
+Tanpa email.
+Berbasis Web Push API.
+
+============================================================
+SCOPE (MVP)
+
+- User dapat subscribe notifikasi dari website
+- Subscription disimpan di database
+- Saat konten baru dibuat, server mengirim push notification
+- Notifikasi berisi:
+  - Title
+  - Body
+  - URL tujuan
+- Klik notifikasi membuka halaman terkait
+
+============================================================
+TEKNOLOGI
+
+Gunakan:
+- Native Web Push API
+- Service Worker
+- Library server-side: web-push (Node)
+
+Tidak menggunakan third-party (OneSignal).
+
+============================================================
+DATABASE STRUCTURE
+
+Table: push_subscriptions
+
+id (uuid, primary key)
+endpoint (text, not null)
+p256dh (text, not null)
+auth (text, not null)
+created_at (timestamp with time zone, default now())
+
+Index:
+create index idx_push_created_at
+on push_subscriptions (created_at desc);
+
+============================================================
+FLOW ARSITEKTUR
+
+1. USER SUBSCRIBE
+
+- User klik tombol "Aktifkan Notifikasi"
+- Browser meminta permission
+- Jika granted:
+  - Generate subscription object
+  - Kirim ke API route
+  - Simpan ke database
+
+2. ADMIN CREATE CONTENT
+
+Saat admin:
+- Insert kegiatan
+- Insert jadwal
+- Insert pengumuman
+
+Maka:
+
+- Trigger function kirim push ke semua subscription
+
+============================================================
+FILE STRUCTURE
+
+public/
+  sw.js   (Service Worker)
+
+app/api/notifications/subscribe/route.ts
+app/api/notifications/send/route.ts (optional internal trigger)
+
+lib/
+  webpush.ts
+
+============================================================
+SERVICE WORKER
+
+File: public/sw.js
+
+Function:
+- Listen "push" event
+- Show notification
+- Handle click → open target URL
+
+============================================================
+VAPID SETUP
+
+Generate VAPID key:
+
+npx web-push generate-vapid-keys
+
+Tambahkan ke .env:
+
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=
+VAPID_PRIVATE_KEY=
+VAPID_SUBJECT=mailto:admin@example.com
+
+============================================================
+NOTIFICATION PAYLOAD FORMAT
+
+{
+  title: "Kegiatan Baru",
+  body: "Misa Syukur 25 Tahun Paroki",
+  url: "/galeri/123"
+}
+
+============================================================
+TRIGGER STRATEGY
+
+Unified Notification Dispatcher:
+
+Saat admin create:
+- kegiatan
+- jadwal
+- pengumuman
+
+Panggil function:
+
+sendNotification({
+  type: "kegiatan",
+  title: "...",
+  url: "..."
+})
+
+Mapping type → notification title prefix.
+
+============================================================
+UX STRATEGY
+
+- Tidak auto request permission saat first visit
+- Tampilkan tombol kecil:
+  "Aktifkan Notifikasi"
+- Setelah subscribe berhasil:
+  Tampilkan state: "Notifikasi Aktif"
+
+============================================================
+ERROR HANDLING
+
+Jika push gagal (subscription expired):
+- Hapus subscription dari database
+
+============================================================
+NON-GOALS (MVP)
+
+- Segmentasi user
+- Notifikasi khusus kategori
+- In-app notification center
+- Scheduled notification
+- Multi-language notification
+
+============================================================
+EXPECTED OUTCOME
+
+- Umat yang pernah subscribe akan menerima update otomatis
+- Tidak perlu login
+- Tidak perlu email
+- Engagement meningkat
+- Sistem tetap ringan & server-controlled
+
+============================================================
+END OF FEATURE BRIEF
