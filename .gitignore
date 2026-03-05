@@ -16,13 +16,15 @@
 # next.js
 /.next/
 /out/
-
-# production
 /build
 
 # misc
 .DS_Store
 *.pem
+*.log
+dev.log
+index.html
+.vscode/
 
 # debug
 npm-debug.log*
@@ -32,6 +34,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -41,7 +44,4 @@ yarn-error.log*
 next-env.d.ts
 
 # personal notes and temporary brief files
-brief/note.txt
-brief/clipboard.txt
-Brief/Note.txt
-Brief/Clipboard.txt
+brief/

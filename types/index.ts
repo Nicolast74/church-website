@@ -139,6 +139,36 @@ export interface Database {
           created_at?: string
         }
       }
+      bacaan: {
+        Row: {
+          id: string
+          judul: string
+          kategori: string
+          deskripsi: string | null
+          file_url: string
+          file_type: string
+          tanggal_publikasi: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          judul: string
+          kategori: string
+          deskripsi?: string | null
+          file_url: string
+          file_type: string
+          tanggal_publikasi: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          judul?: string
+          kategori?: string
+          deskripsi?: string | null
+          file_url?: string
+          file_type?: string
+          tanggal_publikasi?: string
+          created_at?: string
     }
   }
 }
@@ -148,3 +178,4 @@ export type KegiatanFoto = Database['public']['Tables']['kegiatan_foto']['Row']
 export type Jadwal = Database['public']['Tables']['jadwal']['Row']
 export type Renungan = Database['public']['Tables']['renungan']['Row']
 export type Pengumuman = Database['public']['Tables']['pengumuman']['Row']
+export type Bacaan = Database['public']['Tables']['bacaan']['Row']
