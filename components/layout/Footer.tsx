@@ -8,9 +8,9 @@ export default function Footer() {
           <div className="md:col-span-1">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200">Lingkungan St. Yohanes Rasul Girisekar</h3>
             <p className="mt-2 text-gray-500 dark:text-slate-400">
-              Jl. Damai Sejahtera No. 123
+              Dusun Sawah, Desa Girisekar
               <br />
-              Girisekar, Panggang, Gunungkidul
+              Kecamatan Panggang, Gunungkidul, D.I. Yogyakarta
             </p>
           </div>
           <div className="md:col-span-1">

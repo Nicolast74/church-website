@@ -27,10 +27,10 @@ export default function StYohanes() {
         details: "Setiap hari Kamis pukul 19:00. Mari bersama-sama merenungkan Sabda Tuhan.",
       },
     ],
-    address: "Jl. Damai Sejahtera No. 123, Girisekar, Panggang, Gunungkidul, DIY",
+    address: "Sawah, Girisekar, Panggang, Gunungkidul, DIY",
     phone: "021-123-4567",
     email: "st.yohanes.girisekar@gmail.com",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.6283587461476!2d110.45637699999999!3d-8.037197100000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7bad2d6ebe6903%3A0x2ccee3f40f4c3041!2sGua%20Maria%20Bintang%20Samudera!5e0!3m2!1sen!2sid!4v1772442095833!5m2!1sen!2sid",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.6299048315836!2d110.4564573!3d-8.0370383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7bad00434b0e4d%3A0x3d9f8067e8544bb3!2sGereja%20Katolik%20Stasi%20Santo%20Yohanes%20Rasul%2C%20Girisekar!5e0!3m2!1sen!2sid!4v1772771261888!5m2!1sen!2sid",
     galeriUrl: "/galeri?lokasi=st-yohanes",
   };
 

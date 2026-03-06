@@ -122,7 +122,7 @@ export default async function Home() {
       <section className="py-32 bg-slate-950 rounded-[4rem] mx-4 mb-24 text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-end mb-24">
-            <h2 className="heading-huge text-white!">Galeri <br/><span className="text-accent-serif">pelayanan.</span></h2>
+            <h2 className="heading-huge text-white!">Galeri <br/><span className="text-accent-serif">Kegiatan.</span></h2>
             <Link href="/galeri" className="px-8 py-4 border border-white/20 rounded-2xl font-black text-[10px] uppercase hover:bg-white hover:text-black transition-all tracking-widest">
               Explore
             </Link>
