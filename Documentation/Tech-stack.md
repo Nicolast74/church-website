@@ -3,7 +3,7 @@
 This document outlines the technologies used in the **St. Yohanes Rasul Girisekar** church website.
 
 ## Frontend Framework
-- **[Next.js 15+](https://nextjs.org/)**: React framework for production, utilizing the **App Router** for layout management, server components, and optimized routing.
+- **[Next.js 16](https://nextjs.org/)**: React framework for production, utilizing the **App Router** for layout management, server components, and optimized routing. This project currently uses Next.js **16.1.6**.
 - **[React 19](https://react.dev/)**: Core UI library.
 - **[TypeScript](https://www.typescriptlang.org/)**: Typed JavaScript for robust development and improved developer experience.
 
@@ -34,4 +34,4 @@ This document outlines the technologies used in the **St. Yohanes Rasul Giriseka
 - `/Documentation`: Project documentation and guides.
 
 ---
-*Last updated: March 2026*
+*Last updated: March 8, 2026*
