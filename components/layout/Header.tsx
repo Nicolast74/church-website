@@ -97,14 +97,17 @@ export default function Header() {
               </Link>
             </nav>
 
-            {/* MOBILE TOGGLE */}
-            <button
-              onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2.5 bg-slate-50 rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
-              aria-label="Buka menu"
-            >
-              <Menu size={22} />
-            </button>
+            {/* MOBILE TOGGLE & THEME */}
+            <div className="flex lg:hidden items-center gap-2">
+              <ThemeToggle />
+              <button
+                onClick={() => setMobileOpen(true)}
+                className="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-colors"
+                aria-label="Buka menu"
+              >
+                <Menu size={22} />
+              </button>
+            </div>
 
           </div>
         </div>
