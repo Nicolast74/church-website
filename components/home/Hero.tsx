@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-indigo-100 to-white font-serif italic font-light lowercase">Kebersamaan.</span>
         </h1>
         <div className="mt-12 flex flex-col sm:flex-row gap-5 justify-center">
-          <Link href="/jadwal" className="px-10 py-4 bg-white text-black font-black rounded-2xl hover:bg-indigo-50 transition-all shadow-xl hover:-translate-y-1">
+          <Link href="/jadwal" className="px-10 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-black rounded-2xl hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all shadow-xl hover:-translate-y-1">
             Lihat Jadwal
           </Link>
           <Link href="/kontak" className="px-10 py-4 bg-white/10 backdrop-blur-md text-white border border-white/40 font-black rounded-2xl hover:bg-white/20 transition-all">
