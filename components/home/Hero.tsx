@@ -6,11 +6,11 @@ const Hero: React.FC = () => {
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-slate-950">
       <Image
-        src="/images/bg/gereja.jpg"
+        src="/images/bg/st-yohanes-dari-barat.jpg"
         alt="Background Gereja"
         fill
         priority
-        className="absolute inset-0 z-0 object-cover opacity-60 scale-105"
+        className="absolute inset-0 z-0 object-cover opacity-60 scale-100"
       />
       {/* Overlay gradien */}
       <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.4), transparent, var(--background))' }}></div>

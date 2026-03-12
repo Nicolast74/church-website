@@ -19,7 +19,7 @@ export default async function Galeri() {
   return (
     <main>
       <Section>
-        <PageHeader title="Galeri Kegiatan" subtitle="Momen-momen kebersamaan di Wilayah Bonaventura Panggang" />
+        <PageHeader title="Galeri Kegiatan" subtitle="Momen-momen kebersamaan di Lingkungan St. Yohanes Girisekar" />
 
         {activities && activities.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">

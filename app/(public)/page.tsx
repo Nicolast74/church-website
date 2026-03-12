@@ -99,7 +99,7 @@ export default async function Home() {
           <div className="lg:w-5/12 shrink-0">
             <div className="w-full aspect-3/4 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 sticky top-24">
               <Image
-                src="/images/home/church-location.png"
+                src="/images/bg/depan.jpg"
                 alt="Gereja St. Yohanes Girisekar"
                 fill
                 className="object-cover"

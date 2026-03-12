@@ -27,13 +27,13 @@ const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, descriptio
 const ChurchLocationCards: React.FC = () => {
   const locations = [
     {
-      imageSrc: "/images/bg/gereja.jpg",
+      imageSrc: "/images/bg/st-yohanes-1.jpg",
       title: "St. Yohanes Girisekar",
       description: "Gereja lingkungan di Girisekar yang melayani umat dengan penuh kasih.",
       linkHref: "/lokasi/st-yohanes",
     },
     {
-      imageSrc: "/images/galeri/The-Wind-Rises.jpg",
+      imageSrc: "/images/bg/taman-doa-2.jpg",
       title: "Taman Doa Bintang Samudra",
       description: "Tempat ziarah dan retret tenang di tepi samudra yang indah.",
       linkHref: "/lokasi/taman-doa",
