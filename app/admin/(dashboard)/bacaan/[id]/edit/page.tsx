@@ -30,11 +30,12 @@ export default function EditBacaan() {
         toast.error('Gagal memuat bacaan');
         return;
       }
-      setBacaan(data as Bacaan);
-      setJudul(data.judul);
-      setKategori(data.kategori);
-      setDeskripsi(data.deskripsi || '');
-      setTanggal(data.tanggal_publikasi);
+      const bacaanData = data as Bacaan;
+      setBacaan(bacaanData);
+      setJudul(bacaanData.judul);
+      setKategori(bacaanData.kategori);
+      setDeskripsi(bacaanData.deskripsi || '');
+      setTanggal(bacaanData.tanggal_publikasi ? bacaanData.tanggal_publikasi.split('T')[0] : '');
     };
     fetchBacaan();
   }, [id]);
@@ -73,19 +74,22 @@ export default function EditBacaan() {
         fileUrl = uploaded.url;
         fileType = uploaded.type;
       }
-      const { error } = await supabase.from('bacaan').update({
+      const updateData = {
         judul,
         kategori,
         deskripsi,
         tanggal_publikasi: tanggal,
-        file_url: fileUrl,
-        file_type: fileType,
-      }).eq('id', id);
+        ...(fileUrl ? { file_url: fileUrl } : {}),
+        ...(fileType ? { file_type: fileType } : {}),
+      };
+      
+      const { error } = await supabase.from('bacaan').update(updateData).eq('id', id);
       if (error) throw error;
       toast.success('Bacaan berhasil diperbarui');
       router.push('/admin/bacaan');
-    } catch (err: any) {
-      toast.error('Gagal memperbarui bacaan: ' + err.message);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Terjadi kesalahan';
+      toast.error('Gagal memperbarui bacaan: ' + errorMessage);
     } finally {
       setLoading(false);
     }

@@ -34,6 +34,7 @@ export interface Database {
           thumbnail_url?: string | null
           created_at?: string
         }
+        Relationships: { foreignKeyName: string, columns: string[], isOneToOne: boolean, referencedRelation: string, referencedColumns: string[] }[]
       }
       kegiatan_foto: {
         Row: {
@@ -54,6 +55,7 @@ export interface Database {
           foto_url?: string
           created_at?: string
         }
+        Relationships: { foreignKeyName: string, columns: string[], isOneToOne: boolean, referencedRelation: string, referencedColumns: string[] }[]
       }
       jadwal: {
         Row: {
@@ -83,6 +85,7 @@ export interface Database {
           deskripsi?: string | null
           created_at?: string
         }
+        Relationships: { foreignKeyName: string, columns: string[], isOneToOne: boolean, referencedRelation: string, referencedColumns: string[] }[]
       }
       renungan: {
         Row: {
@@ -109,6 +112,7 @@ export interface Database {
           tanggal?: string
           created_at?: string
         }
+        Relationships: { foreignKeyName: string, columns: string[], isOneToOne: boolean, referencedRelation: string, referencedColumns: string[] }[]
       }
       pengumuman: {
         Row: {
@@ -138,6 +142,7 @@ export interface Database {
           tanggal_selesai?: string | null
           created_at?: string
         }
+        Relationships: { foreignKeyName: string, columns: string[], isOneToOne: boolean, referencedRelation: string, referencedColumns: string[] }[]
       }
       bacaan: {
         Row: {
@@ -169,6 +174,45 @@ export interface Database {
           file_type?: string
           tanggal_publikasi?: string
           created_at?: string
+        }
+        Relationships: { foreignKeyName: string, columns: string[], isOneToOne: boolean, referencedRelation: string, referencedColumns: string[] }[]
+      }
+      push_subscriptions: {
+        Row: {
+          id: string
+          endpoint: string
+          p256dh: string
+          auth: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          endpoint: string
+          p256dh: string
+          auth: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          endpoint?: string
+          p256dh?: string
+          auth?: string
+          created_at?: string
+        }
+        Relationships: { foreignKeyName: string, columns: string[], isOneToOne: boolean, referencedRelation: string, referencedColumns: string[] }[]
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
     }
   }
 }
