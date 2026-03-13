@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabaseServer';
+import { supabasePublic } from '@/lib/supabasePublic';
 import PageHeader from '@/components/ui/PageHeader';
 import Section from '@/components/ui/Section';
 import { Pengumuman } from '@/types';
@@ -8,7 +8,7 @@ import PengumumanCard from '@/components/pengumuman/PengumumanCard';
 export const revalidate = 60;
 
 export default async function PengumumanPage() {
-  const supabase = await createClient();
+  const supabase = supabasePublic;
   const today = new Date().toISOString().split('T')[0];
 
   const { data } = await supabase

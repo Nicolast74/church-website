@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabaseServer';
+import { supabasePublic } from '@/lib/supabasePublic';
 import Card from "@/components/ui/Card";
 import PageHeader from "@/components/ui/PageHeader";
 import Section from "@/components/ui/Section";
@@ -7,7 +7,7 @@ import { Jadwal } from "@/types";
 export const revalidate = 60;
 
 export default async function JadwalPage() {
-  const supabase = await createClient();
+  const supabase = supabasePublic;
   const today = new Date().toISOString().split('T')[0];
   
   const { data } = await supabase

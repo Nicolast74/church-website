@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
-import { createClient } from '@/lib/supabaseServer';
+import { supabasePublic } from '@/lib/supabasePublic';
 import { Clock, Quote, ArrowRight, Sparkles } from 'lucide-react';
 
 import Hero from '@/components/home/Hero';
@@ -12,8 +12,10 @@ const UpcomingSchedules = dynamic(() => import('@/components/home/UpcomingSchedu
 const GalleryPreview = dynamic(() => import('@/components/home/GalleryPreview'));
 const DailyDevotionPreview = dynamic(() => import('@/components/home/DailyDevotionPreview'));
 
+export const revalidate = 60; // ISR validation every 60 seconds
+
 export default async function Home() {
-  const supabase = await createClient();
+  const supabase = supabasePublic;
   const today = new Date().toISOString().split('T')[0];
 
   // Fetch Data dari Supabase

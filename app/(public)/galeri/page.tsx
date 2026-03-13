@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabaseServer';
+import { supabasePublic } from '@/lib/supabasePublic';
 import GalleryCard from "@/components/galeri/GalleryCard";
 import PageHeader from "@/components/ui/PageHeader";
 import Section from "@/components/ui/Section";
@@ -8,7 +8,7 @@ import { Kegiatan } from '@/types';
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function Galeri() {
-  const supabase = await createClient();
+  const supabase = supabasePublic;
   const { data } = await supabase
     .from('kegiatan')
     .select('*')

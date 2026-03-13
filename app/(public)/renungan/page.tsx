@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabaseServer';
+import { supabasePublic } from '@/lib/supabasePublic';
 import Section from "@/components/ui/Section";
 import PageHeader from "@/components/ui/PageHeader";
 import Card from "@/components/ui/Card";
@@ -10,7 +10,7 @@ import { id } from 'date-fns/locale';
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function RenunganListPage() {
-  const supabase = await createClient();
+  const supabase = supabasePublic;
   const { data } = await supabase
     .from('renungan')
     .select('*')
