@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import Image from 'next/image';
 import { supabasePublic } from '@/lib/supabasePublic';
 import { Clock, Quote, ArrowRight } from 'lucide-react';
 
 import Hero from '@/components/home/Hero';
 import ChurchLocationCards from '@/components/home/ChurchLocationCards';
+import DynamicLocationHero from '@/components/home/DynamicLocationHero';
 import FadeIn from '@/components/ui/FadeIn';
 
 const UpcomingSchedules = dynamic(() => import('@/components/home/UpcomingSchedules'));
@@ -99,16 +99,9 @@ export default async function Home() {
       {/* SECTION LOKASI */}
       <section className="py-24 px-4 max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-stretch gap-12 lg:gap-20">
-          {/* Image Column - 3:4 ratio */}
+          {/* Image Column - 3:4 ratio slideshow */}
           <div className="lg:w-5/12 shrink-0">
-            <div className="w-full aspect-3/4 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200 sticky top-24">
-              <Image
-                src="/images/bg/depan.jpg"
-                alt="Gereja St. Yohanes Girisekar"
-                fill
-                className="object-cover"
-              />
-            </div>
+            <DynamicLocationHero />
           </div>
 
           {/* Content Column */}
