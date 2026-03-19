@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface GalleryCardProps {
   imageUrl: string;
@@ -23,12 +24,14 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ imageUrl, caption, rotateClas
       style={{ backgroundColor: '#ffffff', opacity: 1 }}
     >
       {/* 1. Box Gambar: Pastikan ini lebar penuh (w-full) */}
-      <div className="w-full h-[230px] overflow-hidden bg-gray-100 border border-gray-100 rounded-md">
-        <img 
+      <div className="relative w-full h-[230px] overflow-hidden bg-gray-100 border border-gray-100 rounded-md">
+        <Image 
           src={imageUrl} 
           alt={caption}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           /* object-cover biar nggak penyet, w-full biar simetris */
-          className="w-full h-full object-cover grayscale-10 group-hover:grayscale-0 transition-all duration-500"
+          className="object-cover grayscale-10 group-hover:grayscale-0 transition-all duration-500"
         />
       </div>
 

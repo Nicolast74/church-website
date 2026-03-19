@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import FadeIn from '@/components/ui/FadeIn';
 
 interface LocationCardProps {
@@ -11,8 +12,8 @@ interface LocationCardProps {
 
 const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, description, linkHref }) => (
   <div className="w-full bg-white dark:bg-slate-800 rounded-[2.5rem] border border-slate-100 dark:border-slate-700 p-4 hover:shadow-[0_32px_64px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_32px_64px_-15px_rgba(0,0,0,0.4)] transition-all duration-500 group">
-    <div className="w-full aspect-video overflow-hidden rounded-[2rem] mb-6">
-      <img src={imageSrc} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+    <div className="relative w-full aspect-video overflow-hidden rounded-[2rem] mb-6">
+      <Image src={imageSrc} alt={title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
     </div>
     <div className="px-4 pb-4">
       <h3 className="text-xl font-black text-slate-900 dark:text-slate-100 mb-2">{title}</h3>

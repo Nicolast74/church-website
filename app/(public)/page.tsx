@@ -18,19 +18,23 @@ export default async function Home() {
   const supabase = supabasePublic;
   const today = new Date().toISOString().split('T')[0];
 
-  // Fetch Data dari Supabase
-  const { data: activities } = await supabase
-    .from('kegiatan')
-    .select('*')
-    .order('tanggal', { ascending: false })
-    .limit(4);
-
-  const { data: schedules } = await supabase
-    .from('jadwal')
-    .select('*')
-    .gte('tanggal', today)
-    .order('tanggal', { ascending: true })
-    .limit(3);
+  // Fetch Data dari Supabase secara paralel
+  const [
+    { data: activities },
+    { data: schedules }
+  ] = await Promise.all([
+    supabase
+      .from('kegiatan')
+      .select('*')
+      .order('tanggal', { ascending: false })
+      .limit(4),
+    supabase
+      .from('jadwal')
+      .select('*')
+      .gte('tanggal', today)
+      .order('tanggal', { ascending: true })
+      .limit(3)
+  ]);
 
   const nextMisa = schedules?.[0] || { nama_kegiatan: "Misa Minggu", jam: "08:00" };
 

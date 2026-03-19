@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Kegiatan } from '@/types';
 
@@ -21,8 +22,8 @@ export default function GalleryPreview({ activities }: GalleryPreviewProps) {
         >
           <Link href={`/galeri/${item.id}`}>
             <div className="bg-white dark:bg-slate-800 p-4 pb-12 shadow-2xl shadow-black/30 transform hover:scale-105 transition-all">
-              <div className="aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700">
-                <img src={item.thumbnail_url || 'https://picsum.photos/seed/1/500/500'} className="w-full h-full object-cover" alt={item.judul} />
+              <div className="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <Image src={item.thumbnail_url || 'https://picsum.photos/seed/1/500/500'} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 25vw" className="object-cover" alt={item.judul} />
               </div>
               <p className="mt-6 text-slate-800 dark:text-slate-200 text-xl text-center" style={{ fontFamily: 'var(--font-permanent-marker), cursive' }}>
                 {item.judul}
