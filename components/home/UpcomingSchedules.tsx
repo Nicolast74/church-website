@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Jadwal } from '@/types';
 import { Clock } from 'lucide-react';
 
@@ -8,19 +7,19 @@ interface UpcomingSchedulesProps {
 
 export default function UpcomingSchedules({ schedules }: UpcomingSchedulesProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {(schedules?.length ? schedules : Array(3).fill(null)).map((item, i) => (
-        <div key={i} className="group p-10 bg-white dark:bg-slate-800 rounded-[2.5rem] border border-slate-100 dark:border-slate-700 hover:border-indigo-100 dark:hover:border-indigo-700 hover:shadow-2xl hover:shadow-indigo-100/50 dark:hover:shadow-indigo-900/30 transition-all duration-500">
-          <div className="w-12 h-12 bg-slate-50 dark:bg-slate-700 text-slate-400 dark:text-slate-400 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-            <Clock size={20} />
+        <div key={i} className="group p-10 bg-white dark:bg-stone-800 rounded-[2rem] border border-stone-100 dark:border-stone-700 hover:border-amber-200 dark:hover:border-amber-900/50 hover:shadow-xl hover:shadow-stone-200/40 dark:hover:shadow-black/20 transition-all duration-700">
+          <div className="w-14 h-14 bg-stone-50 dark:bg-stone-700 text-stone-400 dark:text-stone-500 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-amber-700 group-hover:text-white transition-all duration-500">
+            <Clock size={24} />
           </div>
-          <h3 className="text-2xl font-black text-slate-900 dark:text-slate-100 mb-2 tracking-tight">
+          <h3 className="text-3xl font-serif font-medium text-stone-950 dark:text-stone-50 mb-3 tracking-tight">
             {item?.nama_kegiatan || (i === 0 ? "Misa Minggu" : "Misa Harian")}
           </h3>
-          <p className="text-indigo-600 dark:text-indigo-400 font-bold text-sm mb-6 uppercase tracking-widest">
+          <p className="text-amber-700 dark:text-amber-400 font-bold text-[11px] mb-8 uppercase tracking-[0.2em]">
             {item ? new Date(item.tanggal).toLocaleDateString('id-ID', { weekday: 'long' }) : "Setiap Hari"}
           </p>
-          <div className="inline-block px-4 py-2 bg-slate-50 dark:bg-slate-700 rounded-xl text-xs font-black text-slate-600 dark:text-slate-300 uppercase">
+          <div className="inline-block px-5 py-2.5 bg-stone-100 dark:bg-stone-700 rounded-xl text-[11px] font-bold text-stone-700 dark:text-stone-300 uppercase tracking-widest leading-none">
             Pukul {item?.jam || "08:00"}
           </div>
         </div>

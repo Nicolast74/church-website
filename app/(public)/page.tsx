@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { supabasePublic } from '@/lib/supabasePublic';
-import { Clock, Quote, ArrowRight, Sparkles } from 'lucide-react';
+import { Clock, Quote, ArrowRight } from 'lucide-react';
 
 import Hero from '@/components/home/Hero';
 import ChurchLocationCards from '@/components/home/ChurchLocationCards';
@@ -10,7 +10,6 @@ import FadeIn from '@/components/ui/FadeIn';
 
 const UpcomingSchedules = dynamic(() => import('@/components/home/UpcomingSchedules'));
 const GalleryPreview = dynamic(() => import('@/components/home/GalleryPreview'));
-const DailyDevotionPreview = dynamic(() => import('@/components/home/DailyDevotionPreview'));
 
 export const revalidate = 60; // ISR validation every 60 seconds
 
@@ -42,21 +41,20 @@ export default async function Home() {
     <main style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
       <Hero />
 
-      {/* SECTION BENTO */}
-      <section className="relative z-30 -mt-24 px-4 md:px-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      {/* SECTION EDITORIAL / BENTO REPLACEMENT */}
+      <section className="relative z-30 -mt-20 px-4 md:px-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
-          <div className="lg:col-span-7 glass-card p-10 md:p-20 group">
+          <div className="lg:col-span-8 glass-card p-10 md:p-16 group flex flex-col justify-center">
             <FadeIn>
               <div className="flex items-center gap-3 mb-8">
                 <span className="badge-premium">Profil Lingkungan</span>
-                <Sparkles size={14} className="text-indigo-400 animate-pulse mb-6" />
               </div>
-              <h2 className="heading-huge mb-10">
-                <span className="text-5xl md:text-7xl! block md:inline">Menumbuhkan</span> <br className="hidden md:block"/> <span className="text-accent-serif">iman</span> dalam kasih.
+              <h2 className="heading-huge mb-8">
+                Menumbuhkan <span className="text-accent-serif underline decoration-amber-200 decoration-4 underline-offset-8">Iman</span> dalam kasih.
               </h2>
-              <p className="text-slate-500 text-lg md:text-xl font-medium italic mb-12 max-w-lg">
-                &quot;Melayani umat melalui ibadah dan semangat kebersamaan yang inklusif di Girisekar.&quot;
+              <p className="text-stone-500 text-lg md:text-xl font-normal italic mb-10 max-w-xl leading-relaxed">
+                &quot;Melayani umat melalui ibadah dan semangat kebersamaan yang inklusif di lingkungan Girisekar.&quot;
               </p>
               <Link href="/profil" className="btn-primary-modern">
                 Selengkapnya <ArrowRight size={18} />
@@ -64,31 +62,31 @@ export default async function Home() {
             </FadeIn>
           </div>
 
-          <div className="lg:col-span-5 flex flex-col gap-8">
+          <div className="lg:col-span-4 flex flex-col gap-10">
             <FadeIn direction="up">
-              <div className="bg-indigo-600 rounded-[2.5rem] p-12 text-white shadow-2xl shadow-indigo-200 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-700">
-                  <Clock size={140} />
+              <div className="bg-stone-900 rounded-[2.5rem] p-12 text-white shadow-2xl group relative overflow-hidden h-full flex flex-col justify-center">
+                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-1000">
+                  <Clock size={180} />
                 </div>
                 <div className="relative z-10">
-                  <p className="text-indigo-200 font-black text-[10px] tracking-widest uppercase mb-8">Misa Terdekat</p>
-                  <h3 className="text-8xl font-black tracking-tighter">{nextMisa.jam}</h3>
-                  <p className="text-indigo-50 mt-4 text-xl font-bold flex items-center gap-3">
-                    <span className="w-2.5 h-2.5 bg-indigo-300 rounded-full animate-ping" /> {nextMisa.nama_kegiatan}
+                  <p className="text-amber-400 font-bold text-[11px] tracking-[0.3em] uppercase mb-8">Ekaristi Terdekat</p>
+                  <h3 className="text-7xl font-serif font-medium tracking-tight mb-4">{nextMisa.jam}</h3>
+                  <p className="text-stone-300 text-lg font-medium flex items-center gap-3">
+                    <span className="w-2.5 h-2.5 bg-amber-500 rounded-full" /> {nextMisa.nama_kegiatan}
                   </p>
                 </div>
               </div>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.2}>
-              <div className="bg-slate-950 rounded-[3rem] p-12 text-white flex flex-col justify-between h-full group relative overflow-hidden border border-slate-800 shadow-2xl">
-                <Quote className="text-indigo-500/10 absolute -left-6 -top-6 group-hover:scale-110 transition-transform duration-700" size={140} />
+              <div className="bg-white border border-stone-200 rounded-[2.5rem] p-12 text-stone-900 flex flex-col justify-between h-full group relative overflow-hidden shadow-xl">
+                <Quote className="text-amber-600/5 absolute -left-8 -top-8 group-hover:scale-110 transition-transform duration-1000" size={160} />
                 <div className="relative z-10">
-                  <p className="text-2xl font-serif italic font-light leading-snug text-slate-300">
+                  <p className="text-2xl font-serif italic font-normal leading-relaxed text-stone-800">
                     &quot;Sebab di mana dua atau tiga orang berkumpul dalam Nama-Ku, di situ Aku ada...&quot;
                   </p>
                 </div>
-                <span className="text-[10px] font-black text-indigo-400 tracking-widest uppercase mt-8 border-t border-slate-800 pt-6 relative z-10">
+                <span className="text-[11px] font-bold text-amber-700 tracking-[0.2em] uppercase mt-10 border-t border-stone-100 pt-8 relative z-10">
                   Matius 18:20
                 </span>
               </div>
@@ -125,12 +123,15 @@ export default async function Home() {
       </section>
 
       {/* SECTION GALLERY */}
-      <section className="py-32 bg-slate-950 rounded-[4rem] mx-4 mb-24 text-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-end mb-24">
-            <h2 className="heading-huge text-white!">Galeri <br/><span className="text-accent-serif">Kegiatan.</span></h2>
-            <Link href="/galeri" className="px-8 py-4 border border-white/20 rounded-2xl font-black text-[10px] uppercase hover:bg-white hover:text-black transition-all tracking-widest">
-              Explore
+      <section className="py-32 bg-stone-950 rounded-[3rem] mx-4 mb-24 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-24">
+            <div>
+              <span className="text-amber-500 font-bold text-[11px] tracking-[0.3em] uppercase mb-6 block">Dokumentasi</span>
+              <h2 className="text-5xl md:text-7xl font-serif font-medium tracking-tight">Galeri <br/><span className="text-amber-400 italic font-normal capitalize">Kegiatan</span></h2>
+            </div>
+            <Link href="/galeri" className="px-10 py-4 border border-white/20 rounded-xl font-bold text-[12px] uppercase hover:bg-white hover:text-stone-950 transition-all tracking-widest leading-none">
+              Lihat Semua
             </Link>
           </div>
           <GalleryPreview activities={activities || []} />

@@ -2,12 +2,12 @@
 @variant dark (&:where(html.dark, html.dark *));
 
 @theme {
-  --color-primary: #4a5568;
-  --color-secondary: #a0aec0;
-  --color-accent: #fbbf24;
+  --color-primary: #1e293b;
+  --color-secondary: #64748b;
+  --color-accent: #b45309;
   --color-background: var(--background);
-  --color-text-primary: #2d3748;
-  --color-text-secondary: #718096;
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #475569;
 
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-playfair), Georgia, serif;
@@ -15,25 +15,25 @@
 }
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #fdfcf9; /* Warm stone-white */
+  --foreground: #1c1917; /* Very dark stone */
   --card-bg: #ffffff;
-  --card-border: #f1f5f9;
-  --nav-bg: rgba(255, 255, 255, 0.75);
+  --card-border: #e7e5e4; /* Stone-200 */
+  --nav-bg: rgba(253, 252, 249, 0.85);
   --dropdown-bg: #ffffff;
-  --dropdown-border: #e5e7eb;
-  --muted: #475569;
+  --dropdown-border: #d6d3d1;
+  --muted: #57534e;
 }
 
 html.dark {
-  --background: #0f172a;
-  --foreground: #f1f5f9;
-  --card-bg: #1e293b;
-  --card-border: #334155;
-  --nav-bg: rgba(15, 23, 42, 0.8);
-  --dropdown-bg: #1e293b;
-  --dropdown-border: #334155;
-  --muted: #94a3b8;
+  --background: #1c1917; /* Dark stone */
+  --foreground: #f5f5f4; /* Stone-100 */
+  --card-bg: #292524; /* Stone-800 */
+  --card-border: #44403c; /* Stone-700 */
+  --nav-bg: rgba(28, 25, 23, 0.9);
+  --dropdown-bg: #292524;
+  --dropdown-border: #44403c;
+  --muted: #a8a29e;
 }
 
 body {
@@ -76,38 +76,43 @@ html.dark .bg-white\/70 {
 html.dark .bg-gray-50,
 html.dark .bg-slate-50,
 html.dark .bg-stone-50 {
-  background-color: #1e293b !important;
+  background-color: var(--card-bg) !important;
 }
 
 html.dark .bg-gray-100,
 html.dark .bg-slate-100,
 html.dark .bg-stone-100,
 html.dark .bg-indigo-100 {
-  background-color: #334155 !important;
+  background-color: var(--card-border) !important;
 }
 
 html.dark .bg-indigo-50 {
   background-color: rgba(79, 70, 229, 0.1) !important;
 }
 
-/* Text in dark mode for common gray text utilities */
+/* Text in dark mode for common stone/gray text utilities */
+html.dark .text-stone-950,
 html.dark .text-gray-800,
 html.dark .text-slate-900,
 html.dark .text-gray-900 {
-  color: #f1f5f9 !important;
+  color: #fafaf9 !important; /* Stone-50 */
 }
 
+html.dark .text-stone-800,
+html.dark .text-stone-700,
 html.dark .text-gray-700,
 html.dark .text-slate-800,
 html.dark .text-gray-600,
 html.dark .text-slate-700 {
-  color: #cbd5e1 !important;
+  color: #e7e5e4 !important; /* Stone-200 */
 }
 
+html.dark .text-stone-600,
+html.dark .text-stone-500,
 html.dark .text-gray-500,
 html.dark .text-slate-600,
 html.dark .text-slate-500 {
-  color: #cbd5e1 !important; /* lightened for better contrast in dark mode */
+  color: #d6d3d1 !important; /* Stone-300 */
 }
 
 /* Light mode readability overrides — ensure gray text meets contrast standards */
@@ -147,14 +152,14 @@ html.dark .bg-amber-50 {
 
 /* Footer */
 html.dark footer {
-  background-color: #0f172a;
-  border-color: #1e293b;
+  background-color: var(--background);
+  border-color: var(--card-border);
 }
 
 /* glass-card on homepage bento */
 html.dark .glass-card {
-  background: rgba(30, 41, 59, 0.92) !important;
-  border-color: #334155 !important;
+  background: rgba(41, 37, 36, 0.9) !important; /* Stone-800 with alpha */
+  border-color: var(--card-border) !important;
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -164,21 +169,21 @@ html.dark .glass-card {
  * ──────────────────────────────────────────────────────────────
  */
 
-/* heading-huge: dark:text-slate-100 */
+/* heading-huge: dark:text-stone-50 */
 html.dark .heading-huge {
-  color: #f1f5f9;
+  color: var(--foreground) !important;
 }
 
-/* nav-item: dark:text-slate-300 */
+/* nav-item: dark:text-stone-300 */
 html.dark .nav-item {
-  color: #cbd5e1 !important; /* slate-300 */
+  color: #d6d3d1 !important; /* stone-300 */
 }
 html.dark .nav-item:hover {
-  color: #818cf8 !important; /* indigo-400 */
-  background-color: rgba(30, 41, 59, 0.6) !important;
+  color: #fbbf24 !important; /* gold-400 equivalent */
+  background-color: rgba(41, 37, 36, 0.6) !important;
 }
 html.dark .nav-item.active {
-  color: #818cf8 !important;
+  color: #fbbf24 !important;
 }
 
 /* dropdown-item: dark:text-slate-300 */
@@ -194,9 +199,9 @@ html.dark .heading-huge.text-white\! {
   color: #ffffff !important;
 }
 
-/* text-accent-serif — indigo-600 → indigo-400 in dark */
+/* text-accent-serif — indigo-600 → amber-400 in dark */
 html.dark .text-accent-serif {
-  color: #818cf8 !important; /* indigo-400 */
+  color: #fbbf24 !important; /* amber-400 equivalent */
 }
 
 /* badge-premium */
@@ -208,11 +213,11 @@ html.dark .badge-premium {
 
 /* btn-primary-modern */
 html.dark .btn-primary-modern {
-  background: #4f46e5 !important; /* indigo-600 */
+  background: #b45309 !important; /* Gold/Amber */
   color: #ffffff !important;
 }
 html.dark .btn-primary-modern:hover {
-  background: #4338ca !important;
+  background: #92400e !important;
 }
 
 /* glass-card text (headings inside) */
@@ -220,9 +225,16 @@ html.dark .glass-card .text-slate-500 {
   color: #94a3b8 !important;
 }
 
-/* Dark mode: indigo-600 text → indigo-400 for readability */
+/* Dark mode: stone-600 text → stone-300 for readability */
+html.dark .text-stone-600,
+html.dark .text-stone-500 {
+  color: #d6d3d1 !important;
+}
+
+/* Dark mode: amber-600 text → amber-400 for readability */
+html.dark .text-amber-600,
 html.dark .text-indigo-600 {
-  color: #818cf8 !important;
+  color: #fbbf24 !important;
 }
 
 @layer components {
@@ -319,23 +331,23 @@ html.dark .text-indigo-600 {
 
   /* Typography */
   .heading-huge {
-    @apply text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] text-slate-900 dark:text-slate-100;
+    @apply text-5xl md:text-6xl font-serif font-medium tracking-tight leading-[1.15] text-stone-950 dark:text-stone-50;
   }
 
   .text-accent-serif {
     font-family: var(--font-playfair), serif;
-    @apply italic font-light text-indigo-500 lowercase;
+    @apply italic font-normal text-amber-900 dark:text-amber-300 capitalize;
   }
 
   /* Bento & Cards */
   .glass-card {
-    @apply bg-white/90 dark:bg-slate-800/90 backdrop-blur-2xl border border-white dark:border-slate-700
-           rounded-[3rem] shadow-[0_32px_64px_-15px_rgba(0,0,0,0.05)] transition-all duration-500;
+    @apply bg-white/70 dark:bg-stone-800/70 backdrop-blur-xl border border-white dark:border-stone-700
+           rounded-[2.5rem] shadow-[0_24px_48px_-12px_rgba(0,0,0,0.06)] transition-all duration-500;
   }
 
   .dark-card {
-    background-color: #020617;
-    border-radius: 3rem;
+    background-color: #1c1917;
+    border-radius: 2.5rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     position: relative;
@@ -344,15 +356,15 @@ html.dark .text-indigo-600 {
 
   /* Badge */
   .badge-premium {
-    @apply inline-flex items-center px-4 py-1.5 text-[10px] font-black tracking-[0.4em]
-           text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950 rounded-full uppercase border border-indigo-100 dark:border-indigo-900 mb-6;
+    @apply inline-flex items-center px-5 py-2 text-[11px] font-bold tracking-[0.2em]
+           text-stone-700 dark:text-stone-300 bg-stone-100 dark:bg-stone-800 rounded-full uppercase border border-stone-200 dark:border-stone-700 mb-6;
   }
 
   /* Button */
   .btn-primary-modern {
-    @apply px-10 py-5 bg-slate-900 dark:bg-indigo-600 text-white font-bold rounded-2xl
-           hover:bg-indigo-600 dark:hover:bg-indigo-500 transition-all shadow-xl hover:-translate-y-1
-           flex items-center gap-3 w-fit uppercase text-[11px] tracking-widest;
+    @apply px-10 py-5 bg-stone-900 dark:bg-amber-700 text-white font-bold rounded-xl
+           hover:bg-amber-800 dark:hover:bg-amber-600 transition-all shadow-lg hover:-translate-y-0.5
+           flex items-center gap-3 w-fit uppercase text-[12px] tracking-widest;
   }
 
   /* Polaroid */

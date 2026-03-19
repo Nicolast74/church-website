@@ -51,16 +51,15 @@ export default function Header() {
         <div className="floating-navbar">
           <div className="flex h-16 items-center justify-between px-5">
 
-            {/* LOGO */}
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-indigo-200 group-hover:rotate-12 transition-transform duration-500">
-                <Home size={18} />
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 bg-amber-700 rounded-xl flex items-center justify-center text-white shadow-lg shadow-amber-900/10 group-hover:rotate-12 transition-transform duration-500 font-serif">
+                <Home size={20} />
               </div>
-              <div className="flex flex-col leading-none">
-                <span className="text-sm font-black text-slate-900 hidden md:block">
+              <div className="flex flex-col leading-tight">
+                <span className="text-[15px] font-serif font-medium text-stone-900 dark:text-stone-50 hidden md:block group-hover:text-amber-700 transition-colors">
                   St. Yohanes Rasul
                 </span>
-                <span className="text-[10px] font-bold text-indigo-500 uppercase tracking-widest hidden md:block">
+                <span className="text-[10px] font-bold text-stone-500 dark:text-amber-500/80 uppercase tracking-[0.2em] hidden md:block">
                   Girisekar
                 </span>
               </div>
@@ -90,9 +89,9 @@ export default function Header() {
               {/* Donasi CTA */}
               <Link
                 href="/donasi"
-                className="ml-2 flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl transition-colors shadow-md shadow-indigo-200"
+                className="ml-2 flex items-center gap-1.5 px-5 py-2.5 bg-amber-700 hover:bg-amber-800 text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-amber-900/10 hover:-translate-y-0.5"
               >
-                <Heart size={14} />
+                <Heart size={14} className="fill-white" />
                 Donasi
               </Link>
             </nav>
@@ -102,7 +101,7 @@ export default function Header() {
               <ThemeToggle />
               <button
                 onClick={() => setMobileOpen(true)}
-                className="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-colors"
+                className="p-2.5 bg-stone-50 dark:bg-stone-800 rounded-xl text-stone-500 dark:text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-stone-700 transition-colors"
                 aria-label="Buka menu"
               >
                 <Menu size={22} />

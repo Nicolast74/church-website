@@ -4,30 +4,33 @@ import Image from 'next/image';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-slate-950">
+    <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-stone-950">
       <Image
         src="/images/bg/st-yohanes-dari-barat.jpg"
         alt="Background Gereja"
         fill
         priority
-        className="absolute inset-0 z-0 object-cover opacity-60 scale-100"
+        className="absolute inset-0 z-0 object-cover opacity-50 scale-105"
       />
-      {/* Overlay gradien */}
-      <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.4), transparent, var(--background))' }}></div>
+      {/* Overlay gradien - Warmer overlay */}
+      <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to bottom, rgba(28,25,23,0.6), transparent, var(--background))' }}></div>
       
-      <div className="relative z-20 px-6 max-w-6xl text-center">
-        <span className="inline-block px-4 py-1.5 mb-8 text-[10px] font-black tracking-[0.5em] text-white bg-indigo-950/20 backdrop-blur-md rounded-full uppercase border border-white/30">
-          Welcome to Our Community
+      <div className="relative z-20 px-6 max-w-5xl text-center">
+        <span className="badge-premium mb-8 !text-white !bg-white/10 !border-white/20 backdrop-blur-sm">
+          Selamat Datang di Gereja Kami
         </span>
-        <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-[0.85] mb-10 drop-shadow-2xl">
-          IMAN. KASIH. <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-indigo-100 to-white font-serif italic font-light lowercase">Kebersamaan.</span>
+        <h1 className="text-6xl md:text-8xl font-serif font-medium tracking-tight text-white leading-tight mb-8 drop-shadow-xl">
+          Iman. Kasih. <br/>
+          <span className="text-amber-400 italic font-normal">Kebersamaan.</span>
         </h1>
-        <div className="mt-12 flex flex-col sm:flex-row gap-5 justify-center">
-          <Link href="/jadwal" className="px-10 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-black rounded-2xl hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all shadow-xl hover:-translate-y-1">
-            Lihat Jadwal
+        <p className="text-stone-200 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+          Menumbuhkan komunitas iman yang inklusif dan penuh kasih di tengah Girisekar.
+        </p>
+        <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
+          <Link href="/jadwal" className="btn-primary-modern !bg-white !text-stone-900 hover:!bg-stone-100">
+            Lihat Jadwal Misa
           </Link>
-          <Link href="/kontak" className="px-10 py-4 bg-white/10 backdrop-blur-md text-white border border-white/40 font-black rounded-2xl hover:bg-white/20 transition-all">
+          <Link href="/kontak" className="px-10 py-5 bg-transparent backdrop-blur-md text-white border border-white/30 font-bold rounded-xl hover:bg-white/10 transition-all uppercase text-[12px] tracking-widest leading-none flex items-center justify-center">
             Hubungi Kami
           </Link>
         </div>
