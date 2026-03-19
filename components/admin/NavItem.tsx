@@ -2,17 +2,34 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LucideIcon } from 'lucide-react';
+import { 
+  LayoutDashboard, 
+  Image, 
+  Calendar, 
+  BookOpen, 
+  Megaphone, 
+  FileText 
+} from 'lucide-react';
+
+const ICON_MAP = {
+  dashboard: LayoutDashboard,
+  galeri: Image,
+  jadwal: Calendar,
+  renungan: BookOpen,
+  pengumuman: Megaphone,
+  bacaan: FileText,
+};
 
 interface NavItemProps {
   href: string;
   label: string;
-  icon: LucideIcon;
+  iconName: keyof typeof ICON_MAP;
 }
 
-export function NavItem({ href, label, icon: Icon }: NavItemProps) {
+export function NavItem({ href, label, iconName }: NavItemProps) {
   const pathname = usePathname();
   const isActive = pathname === href || (href !== '/admin/dashboard' && pathname.startsWith(href));
+  const Icon = ICON_MAP[iconName];
 
   return (
     <Link

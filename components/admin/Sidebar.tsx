@@ -2,22 +2,16 @@ import Link from 'next/link';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import { NavItem } from './NavItem';
 import { 
-  LayoutDashboard, 
-  Image, 
-  Calendar, 
-  BookOpen, 
-  Megaphone, 
-  FileText, 
   ExternalLink 
 } from 'lucide-react';
 
 const MENU_ITEMS = [
-  { href: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/admin/kegiatan', label: 'Galeri Kegiatan', icon: Image },
-  { href: '/admin/jadwal', label: 'Jadwal Misa', icon: Calendar },
-  { href: '/admin/renungan', label: 'Renungan Harian', icon: BookOpen },
-  { href: '/admin/pengumuman', label: 'Pengumuman', icon: Megaphone },
-  { href: '/admin/bacaan', label: 'Bacaan Ibadah', icon: FileText },
+  { href: '/admin/dashboard', label: 'Dashboard', iconName: 'dashboard' as const },
+  { href: '/admin/kegiatan', label: 'Galeri Kegiatan', iconName: 'galeri' as const },
+  { href: '/admin/jadwal', label: 'Jadwal Misa', iconName: 'jadwal' as const },
+  { href: '/admin/renungan', label: 'Renungan Harian', iconName: 'renungan' as const },
+  { href: '/admin/pengumuman', label: 'Pengumuman', iconName: 'pengumuman' as const },
+  { href: '/admin/bacaan', label: 'Bacaan Ibadah', iconName: 'bacaan' as const },
 ];
 
 export function Sidebar() {
