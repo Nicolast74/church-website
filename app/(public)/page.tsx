@@ -42,21 +42,21 @@ export default async function Home() {
       <Hero />
 
       {/* SECTION EDITORIAL / BENTO REPLACEMENT */}
-      <section className="relative z-30 -mt-20 px-4 md:px-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+      <section className="relative z-30 -mt-10 md:-mt-20 px-4 md:px-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-stretch">
           
-          <div className="lg:col-span-8 glass-card p-10 md:p-16 group flex flex-col justify-center">
+          <div className="lg:col-span-8 glass-card p-6 md:p-16 group flex flex-col justify-center">
             <FadeIn>
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-6 md:mb-8">
                 <span className="badge-premium">Profil Lingkungan</span>
               </div>
-              <h2 className="heading-huge mb-8">
+              <h2 className="heading-huge mb-6 md:mb-8">
                 Menumbuhkan <span className="text-accent-serif underline decoration-amber-200 decoration-4 underline-offset-8">Iman</span> dalam kasih.
               </h2>
-              <p className="text-stone-500 text-lg md:text-xl font-normal italic mb-10 max-w-xl leading-relaxed">
+              <p className="text-stone-500 text-base md:text-xl font-normal italic mb-8 md:mb-10 max-w-xl leading-relaxed">
                 &quot;Melayani umat melalui ibadah dan semangat kebersamaan yang inklusif di lingkungan Girisekar.&quot;
               </p>
-              <Link href="/profil" className="btn-primary-modern">
+              <Link href="/profil" className="btn-primary-modern scale-90 md:scale-100 origin-left">
                 Selengkapnya <ArrowRight size={18} />
               </Link>
             </FadeIn>

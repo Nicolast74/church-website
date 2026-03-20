@@ -19,8 +19,8 @@ const Hero: React.FC = () => {
         <span className="badge-premium mb-8 !text-white !bg-white/10 !border-white/20 backdrop-blur-sm">
           Selamat Datang di Gereja Kami
         </span>
-        <h1 className="text-6xl md:text-8xl font-serif font-medium tracking-tight text-white leading-tight mb-8 drop-shadow-xl">
-          Iman. Kasih. <br/>
+        <h1 className="text-4xl sm:text-5xl md:text-8xl font-serif font-medium tracking-tight text-white leading-tight mb-8 drop-shadow-xl">
+          Iman. Kasih. <br className="hidden md:block"/>
           <span className="text-amber-400 italic font-normal">Kebersamaan.</span>
         </h1>
         <p className="text-stone-200 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed">

@@ -23,7 +23,7 @@ const DynamicLocationHero: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full aspect-3/4 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-stone-200 dark:shadow-black/20 sticky top-24">
+    <div className="w-full aspect-video lg:aspect-3/4 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-stone-200 dark:shadow-black/20 sticky top-24">
       <AnimatePresence mode="wait">
         <motion.div
           key={images[index]}
