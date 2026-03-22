@@ -9,7 +9,7 @@ export default function UpcomingSchedules({ schedules }: UpcomingSchedulesProps)
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {(schedules?.length ? schedules : Array(3).fill(null)).map((item, i) => (
-        <div key={i} className="group p-6 md:p-10 bg-white dark:bg-stone-800 rounded-[2rem] border border-stone-100 dark:border-stone-700 hover:border-amber-200 dark:hover:border-amber-900/50 hover:shadow-xl hover:shadow-stone-200/40 dark:hover:shadow-black/20 transition-all duration-700">
+        <div key={i} className="group p-6 md:p-10 bg-white dark:bg-stone-800 rounded-4xl border border-stone-100 dark:border-stone-700 hover:border-amber-200 dark:hover:border-amber-900/50 hover:shadow-xl hover:shadow-stone-200/40 dark:hover:shadow-black/20 transition-all duration-700">
           <div className="w-12 h-12 md:w-14 md:h-14 bg-stone-50 dark:bg-stone-700 text-stone-400 dark:text-stone-500 rounded-2xl flex items-center justify-center mb-6 md:mb-10 group-hover:bg-amber-700 group-hover:text-white transition-all duration-500">
             <Clock size={20} className="md:w-6 md:h-6" />
           </div>

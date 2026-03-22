@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to bottom, rgba(28,25,23,0.6), transparent, var(--background))' }}></div>
       
       <div className="relative z-20 px-6 max-w-5xl text-center">
-        <span className="badge-premium mb-8 !text-white !bg-white/10 !border-white/20 backdrop-blur-sm">
+        <span className="badge-premium mb-8 text-white! bg-white/10! border-white/20! backdrop-blur-sm!">
           Selamat Datang di Gereja Kami
         </span>
         <h1 className="text-4xl sm:text-5xl md:text-8xl font-serif font-medium tracking-tight text-white leading-tight mb-8 drop-shadow-xl">

@@ -25,7 +25,7 @@ export default async function BacaanDetail({ params }: { params: { id: string } 
     const { file_url, file_type } = bacaan;
     if (file_type === 'pdf') {
       return (
-        <iframe src={file_url} className="w-full h-[600px] border rounded" />
+        <iframe src={file_url} className="w-full h-150 border rounded" />
       );
     }
     if (file_type.startsWith('image')) {
@@ -35,7 +35,7 @@ export default async function BacaanDetail({ params }: { params: { id: string } 
     return (
       <iframe
         src={`https://docs.google.com/viewer?url=${encodeURIComponent(file_url)}&embedded=true`}
-        className="w-full h-[600px] border rounded"
+        className="w-full h-150 border rounded"
       />
     );
   };
