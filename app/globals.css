@@ -16,11 +16,11 @@
 }
 
 :root {
-  --background: #fdfcf9; /* Warm stone-white */
+  --background: #f9f6ee; /* Soft Bone / Cream */
   --foreground: #1c1917; /* Very dark stone */
   --card-bg: #ffffff;
   --card-border: #e7e5e4; /* Stone-200 */
-  --nav-bg: rgba(253, 252, 249, 0.85);
+  --nav-bg: rgba(249, 246, 238, 0.85);
   --dropdown-bg: #ffffff;
   --dropdown-border: #d6d3d1;
   --muted: #57534e;
