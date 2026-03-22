@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import { NavItem } from './NavItem';
+import { LogoutButton } from './LogoutButton';
 import { 
   ExternalLink 
 } from 'lucide-react';
@@ -53,10 +54,11 @@ export function Sidebar() {
         
         <div className="flex items-center p-3 rounded-2xl border border-(--card-border) bg-[color-mix(in_srgb,var(--background)_60%,var(--card-bg)_40%)] transition-colors">
           <div className="h-9 w-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-black text-xs">A</div>
-          <div className="ml-3">
+          <div className="ml-3 flex-1">
             <p className="text-sm font-black leading-tight text-(--foreground)">Admin</p>
             <p className="text-[10px] text-indigo-600 font-bold">Administrator</p>
           </div>
+          <LogoutButton />
         </div>
       </div>
     </aside>

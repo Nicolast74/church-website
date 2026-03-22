@@ -1,6 +1,7 @@
 import { Toaster } from 'sonner';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import { Sidebar } from '@/components/admin/Sidebar';
+import { AutoLogout } from '@/components/admin/AutoLogout';
 
 export default function DashboardLayout({
   children,
@@ -10,6 +11,7 @@ export default function DashboardLayout({
   return (
     <div className="min-h-screen flex font-sans bg-(--background) text-(--foreground)">
       <Toaster position="top-right" richColors />
+      <AutoLogout />
       
       <Sidebar />
 
