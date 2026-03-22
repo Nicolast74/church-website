@@ -26,11 +26,11 @@ const Hero: React.FC = () => {
         <p className="text-stone-200 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 leading-relaxed">
           Menumbuhkan komunitas iman yang inklusif dan penuh kasih di tengah Girisekar.
         </p>
-        <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
-          <Link href="/jadwal" className="btn-primary-modern !bg-white !text-stone-900 hover:!bg-stone-100">
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center w-full max-w-xs sm:max-w-none mx-auto">
+          <Link href="/jadwal" className="btn-primary-modern bg-white! text-stone-900! hover:bg-stone-100! w-full! sm:w-60! justify-center">
             Lihat Jadwal Misa
           </Link>
-          <Link href="/kontak" className="px-10 py-5 bg-transparent backdrop-blur-md text-white border border-white/30 font-bold rounded-xl hover:bg-white/10 transition-all uppercase text-[12px] tracking-widest leading-none flex items-center justify-center">
+          <Link href="/kontak" className="px-10 py-5 bg-transparent backdrop-blur-md text-white border border-white/30 font-bold rounded-xl hover:bg-white/10 transition-all uppercase text-[12px] tracking-widest leading-none flex items-center justify-center w-full sm:w-60">
             Hubungi Kami
           </Link>
         </div>

@@ -15,7 +15,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ imageUrl, caption, rotateClas
         bg-white shadow-[0_15px_40px_rgba(0,0,0,0.5)]
         transition-all duration-500 transform 
         hover:-translate-y-6 hover:rotate-0 hover:scale-105 hover:z-50
-        ${rotateClass} w-full max-w-[280px] group cursor-pointer
+        ${rotateClass} w-full max-w-70 group cursor-pointer
         rounded-lg
         
         /* Padding merata di semua sisi, bawah lebih besar untuk caption */
@@ -24,7 +24,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ imageUrl, caption, rotateClas
       style={{ backgroundColor: '#ffffff', opacity: 1 }}
     >
       {/* 1. Box Gambar: Pastikan ini lebar penuh (w-full) */}
-      <div className="relative w-full h-[230px] overflow-hidden bg-gray-100 border border-gray-100 rounded-md">
+      <div className="relative w-full h-57.5 overflow-hidden bg-gray-100 border border-gray-100 rounded-md">
         <Image 
           src={imageUrl} 
           alt={caption}
