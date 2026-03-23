@@ -135,4 +135,4 @@ Row Level Security (RLS) is enabled on all tables to protect against unauthorize
 
 ---
 
-*Last updated: March 23, 2026*
+*Last updated: March 23, 2026.*
