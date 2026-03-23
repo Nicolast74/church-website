@@ -42,7 +42,7 @@ const LocationPage: React.FC<LocationPageProps> = ({
     <main className="bg-background min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[65vh] bg-cover bg-center overflow-hidden" style={{ backgroundImage: `url('${heroImage}')` }}>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-background via-black/30 to-transparent" />
         <div className="relative z-10 flex flex-col items-center justify-end h-full text-center text-white px-4 pb-24">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -182,7 +182,7 @@ const LocationPage: React.FC<LocationPageProps> = ({
                   Buka di Maps <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
-              <div className="aspect-[16/9] md:aspect-[21/9] w-full grayscale-[0.2] hover:grayscale-0 transition-all duration-700">
+              <div className="aspect-video md:aspect-21/9 w-full grayscale-[0.2] hover:grayscale-0 transition-all duration-700">
                 <iframe 
                   src={mapUrl.replace('maps.app.goo.gl', 'www.google.com/maps/embed')} // Simplistic attempt, though proper embed URLs are better
                   width="100%" 
@@ -206,7 +206,7 @@ const LocationPage: React.FC<LocationPageProps> = ({
                 className="group relative inline-flex items-center px-10 py-5 bg-indigo-600 text-white text-lg font-bold rounded-full overflow-hidden shadow-xl shadow-indigo-500/20 hover:-translate-y-1 transition-all"
               >
                 <span className="relative z-10">Lihat Jadwal Lengkap</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                <span className="absolute inset-0 bg-linear-to-r from-indigo-700 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
               </Link>
               <Link 
                 href={galeriUrl} 

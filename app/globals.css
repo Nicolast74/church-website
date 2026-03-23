@@ -250,7 +250,7 @@ html.dark .text-indigo-600 {
   .floating-navbar {
     background: var(--nav-bg);
     @apply max-w-7xl mx-auto backdrop-blur-xl border border-white/20
-           dark:border-white/5 rounded-[2rem]
+           dark:border-white/5 rounded-4xl
            shadow-[0_8px_32px_rgba(0,0,0,0.05)] transition-all duration-300;
   }
 
@@ -262,7 +262,7 @@ html.dark .text-indigo-600 {
 
   /* Dropdown */
   .dropdown-panel {
-    @apply absolute top-[calc(100%+6px)] left-1/2 -translate-x-1/2 min-w-[180px] rounded-[14px] p-1.5 z-[100];
+    @apply absolute top-[calc(100%+6px)] left-1/2 -translate-x-1/2 min-w-45 rounded-[14px] p-1.5 z-100;
     background: var(--dropdown-bg);
     border: 1px solid var(--dropdown-border);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -279,7 +279,7 @@ html.dark .text-indigo-600 {
 
   /* Mobile sidebar */
   .mobile-sidebar {
-    @apply fixed top-0 right-0 bottom-0 w-[290px] z-[1000] p-6 overflow-y-auto;
+    @apply fixed top-0 right-0 bottom-0 w-72.5 z-1000 p-6 overflow-y-auto;
     background: var(--card-bg);
     box-shadow: -8px 0 28px rgba(0, 0, 0, 0.09);
     transform: translateX(100%);
@@ -297,7 +297,7 @@ html.dark .text-indigo-600 {
   }
 
   .sidebar-overlay {
-    @apply fixed inset-0 z-[999] opacity-0 invisible;
+    @apply fixed inset-0 z-999 opacity-0 invisible;
     background: rgba(0, 0, 0, 0.28);
     backdrop-filter: blur(2px);
     transition:

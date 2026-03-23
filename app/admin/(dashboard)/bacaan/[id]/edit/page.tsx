@@ -38,7 +38,7 @@ export default function EditBacaan() {
       setTanggal(bacaanData.tanggal_publikasi ? bacaanData.tanggal_publikasi.split('T')[0] : '');
     };
     fetchBacaan();
-  }, [id]);
+  }, [id, supabase]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -95,7 +95,7 @@ export default function EditBacaan() {
     }
   };
 
-  if (!bacaan) return <div className="flex items-center justify-center min-h-[200px]">Loading...</div>;
+  if (!bacaan) return <div className="flex items-center justify-center min-h-50">Loading...</div>;
 
   return (
     <div className="max-w-3xl mx-auto">

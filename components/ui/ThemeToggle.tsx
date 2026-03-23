@@ -9,7 +9,12 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
   const [mounted, setMounted] = useState(false);
 
   // Avoid hydration mismatch — only render after mount
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
   if (!mounted) return <div className="w-9 h-9" />;
 
   const isDark = resolvedTheme === "dark";

@@ -29,7 +29,7 @@ export default async function DailyDevotionPreview() {
   const d = devotion as Renungan;
 
   return (
-    <div className="bg-gradient-to-br from-indigo-50/50 to-white/50 dark:from-indigo-950/40 dark:to-slate-800/50 py-12 px-4 rounded-[2.5rem] border border-indigo-100/50 dark:border-indigo-900/40 backdrop-blur-sm shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+    <div className="bg-linear-to-br from-indigo-50/50 to-white/50 dark:from-indigo-950/40 dark:to-slate-800/50 py-12 px-4 rounded-[2.5rem] border border-indigo-100/50 dark:border-indigo-900/40 backdrop-blur-sm shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center space-x-2 px-4 py-2 bg-indigo-100/50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-bold border border-indigo-200/50 dark:border-indigo-800/50">
