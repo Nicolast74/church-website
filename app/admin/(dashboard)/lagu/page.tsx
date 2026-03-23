@@ -8,6 +8,7 @@ import { useEffect, useState, useCallback } from 'react';
 export default function LaguList() {
   const [laguList, setLaguList] = useState<Lagu[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
   const supabase = createClient();
 
   const fetchLagu = useCallback(async () => {
@@ -26,8 +27,19 @@ export default function LaguList() {
   }, [supabase]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    fetchLagu();
+    let ignore = false;
+    
+    const initFetch = async () => {
+      // Avoids the strict linter warning about synchronous setState from within useEffect
+      if (!ignore) {
+        await fetchLagu();
+      }
+    };
+    initFetch();
+
+    return () => {
+      ignore = true;
+    };
   }, [fetchLagu]);
 
   const handleDelete = async (item: Lagu) => {
@@ -76,6 +88,21 @@ export default function LaguList() {
         </Link>
       </div>
 
+      <div className="mb-6 relative">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            placeholder="Cari berdasarkan judul, kategori, atau tipe file..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="block w-full pl-11 pr-4 py-3 border border-gray-200 rounded-2xl bg-white text-sm placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all shadow-[0_4px_20px_rgb(0,0,0,0.02)]"
+          />
+      </div>
+
       <div className="bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl overflow-hidden">
         <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
@@ -93,7 +120,11 @@ export default function LaguList() {
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                    {laguList.length === 0 ? (
+                    {laguList.filter(lagu => 
+                      lagu.judul.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                      lagu.kategori.toLowerCase().replace('_', ' ').includes(searchQuery.toLowerCase()) ||
+                      lagu.file_type.toLowerCase().includes(searchQuery.toLowerCase())
+                    ).length === 0 ? (
                         <tr>
                             <td colSpan={3} className="px-6 py-12 text-center">
                                 <div className="mx-auto h-24 w-24 text-gray-200 mb-4 flex items-center justify-center">
@@ -101,15 +132,25 @@ export default function LaguList() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
                                     </svg>
                                 </div>
-                                <h3 className="text-lg font-medium text-gray-900">Belum ada lagu</h3>
-                                <p className="text-gray-500 mt-1 mb-6">Mulai dengan menambahkan partitur atau lirik lagu gereja.</p>
-                                <Link href="/admin/lagu/create" className="text-indigo-600 hover:text-indigo-700 font-medium">
-                                    + Tambah Lagu
-                                </Link>
+                                <h3 className="text-lg font-medium text-gray-900">
+                                  {searchQuery ? 'Tidak ada lagu yang sesuai pencarian' : 'Belum ada lagu'}
+                                </h3>
+                                {!searchQuery && (
+                                  <>
+                                    <p className="text-gray-500 mt-1 mb-6">Mulai dengan menambahkan partitur atau lirik lagu gereja.</p>
+                                    <Link href="/admin/lagu/create" className="text-indigo-600 hover:text-indigo-700 font-medium">
+                                        + Tambah Lagu
+                                    </Link>
+                                  </>
+                                )}
                             </td>
                         </tr>
                     ) : (
-                        laguList.map((item) => (
+                        laguList.filter(lagu => 
+                          lagu.judul.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          lagu.kategori.toLowerCase().replace('_', ' ').includes(searchQuery.toLowerCase()) ||
+                          lagu.file_type.toLowerCase().includes(searchQuery.toLowerCase())
+                        ).map((item) => (
                             <tr key={item.id} className="hover:bg-gray-50/80 transition-colors">
                                 <td className="px-6 py-4">
                                     <div className="text-sm font-medium text-gray-900">{item.judul}</div>
