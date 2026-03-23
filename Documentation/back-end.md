@@ -67,6 +67,18 @@ Stores news and announcements for the congregation.
 - `tanggal_selesai` (date, nullable): Expiration date.
 - `created_at` (timestamptz): Creation timestamp.
 
+#### `lagu` (Song Library)
+
+Stores church songs, sheet music files, and lyrics.
+
+- `id` (uuid, primary key): Unique identifier.
+- `judul` (text): Title of the song.
+- `kategori` (text): Category (e.g., `misa`, `pujian`, `komuni`).
+- `lirik` (text, nullable): Text lyrics for the song.
+- `file_url` (text, nullable): URL to the uploaded sheet music (PDF/Image/DOC).
+- `file_type` (text): The format of the uploaded file (`pdf`, `image`, `docx`, `text`).
+- `created_at` (timestamptz): Creation timestamp.
+
 #### `push_subscriptions` (Push Notifications)
 
 Stores browser-side subscription data for Web Push API.
@@ -94,6 +106,7 @@ Files are stored in **Supabase Storage**.
 ### Buckets
 
 - **`kegiatan`**: Publicly accessible bucket for storing images related to activities and gallery items.
+- **`lagu`**: Publicly accessible bucket for storing uploaded sheet music PDFs and images.
 
 ## Push Notifications (Web Push API)
 
@@ -122,4 +135,4 @@ Row Level Security (RLS) is enabled on all tables to protect against unauthorize
 
 ---
 
-*Last updated: March 3, 2026*
+*Last updated: March 23, 2026*

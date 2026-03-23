@@ -76,6 +76,11 @@ The website features a comprehensive Dark Mode implementation using `next-themes
 - **Subscription UI**: `PushSubscriptionButton.tsx` handles the opt-in/opt-out flow and browser permissions.
 - **Global Manager**: `NotificationManager.tsx` ensures the service worker is registered automatically on initial page load.
 
+### Document Viewer (Library Lagu)
+
+- **Native Embedded PDF**: Uses native `<iframe>` rendering with `#toolbar=0` flag to securely embed sheet music without requiring third-party libraries.
+- **Format Fallbacks**: Automatically falls back to standard `<img>` usage or explicit download links based on file types detected from the backend.
+
 ### Performance & SEO
 
 - **Server Components**: Majority of fetching logic implemented in Server Components for faster initial load.
@@ -84,4 +89,4 @@ The website features a comprehensive Dark Mode implementation using `next-themes
 
 ---
 
-*Last updated: March 3, 2026*
+*Last updated: March 23, 2026*

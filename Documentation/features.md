@@ -52,6 +52,12 @@ This document describes the functional features and capabilities of the church w
 - **Direct Engagement**: Clicking notifications leads directly to the relevant content pages.
 - **Non-Intrusive**: Users have full control over opting in or out via the footer.
 
+### 9. Song Library (Library Lagu)
+
+- **Digital Songbook**: Dedicated `/lagu` page for accessing church songs, sheet music, and lyrics.
+- **Embedded Document Viewer**: Interactive viewer for PDF notations and Image files directly inside the browser.
+- **Hybrid Content**: Supports combinations of both downloadable files (DOCX/Word) and direct text lyrics.
+
 ## 🛠️ Administrative Features
 
 ### 1. Secure Admin Panel
@@ -65,6 +71,7 @@ This document describes the functional features and capabilities of the church w
 - **Schedule Management**: Full control over mass times, locations, and event names.
 - **Announcement Control**: Easy management of warta jemaat with automated expiration dates.
 - **Reflections Management**: Daily publishing tools for spiritual content.
+- **Song Library Management**: Upload notations (PDF, Images) and manage song lyrics for the public digital songbook.
 
 ### 3. Notification Dispatch (MVP)
 
@@ -98,4 +105,4 @@ This document describes the functional features and capabilities of the church w
 
 ---
 
-*Last updated: March 3, 2026*
+*Last updated: March 23, 2026*
