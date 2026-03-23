@@ -52,8 +52,9 @@ export default function CreateBacaan() {
       if (error) throw error;
       toast.success('Bacaan berhasil ditambahkan');
       router.push('/admin/bacaan');
-    } catch (err: any) {
-      toast.error('Gagal menambahkan bacaan: ' + err.message);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Terjadi kesalahan tidak terduga';
+      toast.error('Gagal menambahkan bacaan: ' + errorMessage);
     } finally {
       setLoading(false);
     }

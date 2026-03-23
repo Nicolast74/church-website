@@ -3,43 +3,54 @@
 import { createClient } from '@/lib/supabaseClient';
 import { Bacaan } from '@/types';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function BacaanList() {
   const [bacaanList, setBacaanList] = useState<Bacaan[]>([]);
   const [loading, setLoading] = useState(true);
   const supabase = createClient();
 
-  const fetchBacaan = async () => {
-    setLoading(true);
+  const fetchBacaan = useCallback(async () => {
     const { data, error } = await supabase
       .from('bacaan')
       .select('*')
       .order('tanggal_publikasi', { ascending: false });
     
+    if (error) {
+      console.error('Error fetching bacaan:', error.message);
+    }
+
     if (data) {
         setBacaanList(data as Bacaan[]);
     }
     setLoading(false);
-  };
+  }, [supabase]);
 
   useEffect(() => {
-    fetchBacaan();
-  }, []);
+    let ignore = false;
+
+    const initFetch = async () => {
+      // Calling our callback inside an async function avoids the strict linter warning 
+      // about synchronous setState from within useEffect
+      if (!ignore) {
+        await fetchBacaan();
+      }
+    };
+    
+    initFetch();
+
+    return () => {
+      ignore = true;
+    };
+  }, [fetchBacaan]);
 
   const handleDelete = async (item: Bacaan) => {
     if (!window.confirm('Apakah Anda yakin ingin menghapus bacaan ini? File juga akan dihapus.')) return;
 
-    // Delete file from storage first if file_url exists and it's from our storage bucket
-    // Assuming file_url might contain the storage path or we can extract it
-    // Actually, according to DB structure file_url could just be a string URL. Let's extract path if possible.
-    // If we just store filename or path, we can delete it. Supabase storage objects are identified by path.
-    // We will handle file deletion in a simple way if we stored just the relative path or if we can parse it from URL.
     try {
-        // Find the filename to delete from bucket 'bacaan'. We can guess the path from URL.
         const urlObj = new URL(item.file_url);
         const pathSegments = urlObj.pathname.split('/');
-        const fileName = pathSegments[pathSegments.length - 1]; // Assume the last segment is the filename
+        const fileName = pathSegments[pathSegments.length - 1];
 
         if (fileName) {
             await supabase.storage.from('bacaan').remove([fileName]);
@@ -50,6 +61,7 @@ export default function BacaanList() {
 
     const { error } = await supabase.from('bacaan').delete().eq('id', item.id);
     if (!error) {
+      setLoading(true);
       fetchBacaan();
     } else {
       alert('Gagal menghapus bacaan: ' + error.message);
