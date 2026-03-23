@@ -177,6 +177,36 @@ export interface Database {
         }
         Relationships: { foreignKeyName: string, columns: string[], isOneToOne: boolean, referencedRelation: string, referencedColumns: string[] }[]
       }
+      lagu: {
+        Row: {
+          id: string
+          judul: string
+          kategori: string
+          lirik: string | null
+          file_url: string | null
+          file_type: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          judul: string
+          kategori: string
+          lirik?: string | null
+          file_url?: string | null
+          file_type: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          judul?: string
+          kategori?: string
+          lirik?: string | null
+          file_url?: string | null
+          file_type?: string
+          created_at?: string
+        }
+        Relationships: { foreignKeyName: string, columns: string[], isOneToOne: boolean, referencedRelation: string, referencedColumns: string[] }[]
+      }
       push_subscriptions: {
         Row: {
           id: string
@@ -223,3 +253,4 @@ export type Jadwal = Database['public']['Tables']['jadwal']['Row']
 export type Renungan = Database['public']['Tables']['renungan']['Row']
 export type Pengumuman = Database['public']['Tables']['pengumuman']['Row']
 export type Bacaan = Database['public']['Tables']['bacaan']['Row']
+export type Lagu = Database['public']['Tables']['lagu']['Row']

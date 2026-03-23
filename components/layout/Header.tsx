@@ -16,6 +16,7 @@ const navGroups = [
     children: [
       { href: "/bacaan", label: "Bacaan" },
       { href: "/renungan", label: "Renungan" },
+      { href: "/lagu", label: "Lagu" },
     ],
   },
   {

@@ -8,7 +8,8 @@ import {
   Calendar, 
   BookOpen, 
   Megaphone, 
-  FileText 
+  FileText,
+  Music
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -18,6 +19,7 @@ const ICON_MAP = {
   renungan: BookOpen,
   pengumuman: Megaphone,
   bacaan: FileText,
+  lagu: Music,
 };
 
 interface NavItemProps {

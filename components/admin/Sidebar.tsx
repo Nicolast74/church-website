@@ -13,6 +13,7 @@ const MENU_ITEMS = [
   { href: '/admin/renungan', label: 'Renungan Harian', iconName: 'renungan' as const },
   { href: '/admin/pengumuman', label: 'Pengumuman', iconName: 'pengumuman' as const },
   { href: '/admin/bacaan', label: 'Bacaan Ibadah', iconName: 'bacaan' as const },
+  { href: '/admin/lagu', label: 'Library Lagu', iconName: 'lagu' as const },
 ];
 
 export function Sidebar() {
