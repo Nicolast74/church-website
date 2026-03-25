@@ -7,16 +7,6 @@ export async function POST(req: Request) {
     const supabase = await createClient();
 
     // Check if subscription already exists to avoid duplicates
-    const { data: existing } = await supabase
-      .from('push_subscriptions')
-      .select('id')
-      .eq('endpoint', subscription.endpoint)
-      .single();
-
-    if (existing) {
-        return NextResponse.json({ message: 'Subscribed successfully' });
-    }
-
     const { error } = await supabase
       .from('push_subscriptions')
       .insert([
@@ -27,7 +17,8 @@ export async function POST(req: Request) {
         },
       ]);
 
-    if (error) throw error;
+    // Ignore unique constraint violation (code 23505) if the user is already subscribed
+    if (error && error.code !== '23505') throw error;
 
     return NextResponse.json({ message: 'Subscribed successfully' });
   } catch (error: any) {
