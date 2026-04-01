@@ -9,7 +9,7 @@ import { convertToWebP } from '@/lib/imageCompression';
 
 export default function CreateKegiatan() {
   const router = useRouter();
-  const supabase = createClient() as any;
+  const supabase = createClient();
   
   const [judul, setJudul] = useState('');
   const [deskripsi, setDeskripsi] = useState('');
@@ -66,7 +66,7 @@ export default function CreateKegiatan() {
             tanggal,
             thumbnail_url: thumbnailUrl,
           },
-        ] as any)
+        ])
         .select()
         .single();
 
@@ -96,7 +96,7 @@ export default function CreateKegiatan() {
         
         const { error: photosError } = await supabase
             .from('kegiatan_foto')
-            .insert(photoRecords as any);
+            .insert(photoRecords);
             
         if (photosError) throw photosError;
       }
@@ -121,8 +121,9 @@ export default function CreateKegiatan() {
       router.push('/admin/kegiatan');
       router.refresh();
       
-    } catch (err: any) {
-      toast.error('Gagal menambahkan kegiatan: ' + err.message);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Terjadi kesalahan';
+      toast.error('Gagal menambahkan kegiatan: ' + message);
     } finally {
       setLoading(false);
     }
@@ -212,6 +213,7 @@ export default function CreateKegiatan() {
                             </div>
                             {thumbnailPreview && (
                                 <div className="absolute inset-0 bg-white">
+                                    {/* eslint-disable-next-line @next/next/no-img-element -- blob: URL from URL.createObjectURL() cannot be optimized by next/image */}
                                     <img src={thumbnailPreview} alt="Preview" className="w-full h-full object-cover opacity-50 group-hover:opacity-40 transition-opacity" />
                                 </div>
                             )}

@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { Kegiatan } from '@/types';
 import { toast } from 'sonner';
@@ -13,7 +14,7 @@ export default function EditKegiatan() {
   const router = useRouter();
   const params = useParams();
   const id = params?.id as string;
-  const supabase = createClient() as any;
+  const supabase = createClient();
   
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -46,7 +47,7 @@ export default function EditKegiatan() {
     };
 
     if (id) fetchKegiatan();
-  }, [id]);
+  }, [id, supabase]);
 
   const handleUpload = async (file: File) => {
     const converted = await convertToWebP(file);
@@ -82,7 +83,7 @@ export default function EditKegiatan() {
             deskripsi,
             tanggal,
             thumbnail_url: finalThumbnailUrl
-        } as any)
+        })
         .eq('id', id);
 
       if (updateError) throw updateError;
@@ -91,15 +92,16 @@ export default function EditKegiatan() {
       router.push('/admin/kegiatan');
       router.refresh();
       
-    } catch (err: any) {
-      toast.error('Gagal menyimpan perubahan: ' + err.message);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Terjadi kesalahan';
+      toast.error('Gagal menyimpan perubahan: ' + message);
     } finally {
       setSaving(false);
     }
   };
 
   if (loading) return (
-      <div className="flex items-center justify-center min-h-[400px]">
+      <div className="flex items-center justify-center min-h-100">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
       </div>
   );
@@ -167,7 +169,7 @@ export default function EditKegiatan() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Thumbnail Saat Ini</label>
                   {thumbnailUrl && (
                       <div className="relative h-48 w-full md:w-80 rounded-xl overflow-hidden mb-4 border border-gray-200">
-                          <img src={thumbnailUrl} alt="Thumbnail" className="w-full h-full object-cover" />
+                          <Image src={thumbnailUrl} alt="Thumbnail" fill className="object-cover" />
                       </div>
                   )}
                   
