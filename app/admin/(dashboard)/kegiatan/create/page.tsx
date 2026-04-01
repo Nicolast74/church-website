@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import { convertToWebP } from '@/lib/imageCompression';
 
 export default function CreateKegiatan() {
   const router = useRouter();
@@ -20,17 +21,18 @@ export default function CreateKegiatan() {
   // Preview states
   const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null);
 
-  const handleThumbnailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleThumbnailChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setThumbnail(file);
-      setThumbnailPreview(URL.createObjectURL(file));
+      const raw = e.target.files[0];
+      const converted = await convertToWebP(raw);
+      setThumbnail(converted);
+      setThumbnailPreview(URL.createObjectURL(converted));
     }
   };
 
   const handleUpload = async (file: File) => {
     const fileExt = file.name.split('.').pop();
-    const fileName = `${Math.random()}.${fileExt}`;
+    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${fileExt}`;
     const filePath = `thumbnails/${fileName}`;
 
     const { error: uploadError } = await supabase.storage
@@ -72,13 +74,14 @@ export default function CreateKegiatan() {
 
       if (photos && photos.length > 0 && kegiatan) {
         const uploadPromises = Array.from(photos).map(async (photo) => {
-             const fileExt = photo.name.split('.').pop();
-             const fileName = `${Math.random()}.${fileExt}`;
+             const converted = await convertToWebP(photo);
+             const fileExt = converted.name.split('.').pop();
+             const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${fileExt}`;
              const filePath = `photos/${kegiatan.id}/${fileName}`;
              
              const { error: uploadError } = await supabase.storage
                 .from('kegiatan')
-                .upload(filePath, photo);
+                .upload(filePath, converted, { contentType: 'image/webp' });
                 
              if (uploadError) throw uploadError;
              
@@ -205,7 +208,7 @@ export default function CreateKegiatan() {
                                     </label>
                                     <p className="pl-1">or drag and drop</p>
                                 </div>
-                                <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                <p className="text-xs text-gray-500">PNG, JPG (otomatis dikonversi ke WebP)</p>
                             </div>
                             {thumbnailPreview && (
                                 <div className="absolute inset-0 bg-white">

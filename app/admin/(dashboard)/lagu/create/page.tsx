@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import { convertToWebP } from '@/lib/imageCompression';
 
 export default function CreateLagu() {
   const router = useRouter();
@@ -23,13 +24,17 @@ export default function CreateLagu() {
   };
 
   const uploadFile = async (file: File) => {
-    const ext = file.name.split('.').pop();
-    const fileName = `${Math.random()}.${ext}`;
+    // Convert images to WebP before uploading
+    const isImage = file.type.startsWith('image/');
+    const finalFile = isImage ? await convertToWebP(file) : file;
+
+    const ext = finalFile.name.split('.').pop();
+    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
     const filePath = `${fileName}`;
-    const { error: uploadError } = await supabase.storage.from('lagu').upload(filePath, file);
+    const { error: uploadError } = await supabase.storage.from('lagu').upload(filePath, finalFile);
     if (uploadError) throw uploadError;
     const { data } = supabase.storage.from('lagu').getPublicUrl(filePath);
-    return { url: data.publicUrl, type: file.type.includes('pdf') ? 'pdf' : file.type.includes('image') ? 'image' : 'docx' };
+    return { url: data.publicUrl, type: file.type.includes('pdf') ? 'pdf' : file.type.startsWith('image/') ? 'image' : 'docx' };
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -107,7 +112,7 @@ export default function CreateLagu() {
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Upload File (PDF, Image, DOCX) - Opsional</label>
           <input type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" onChange={handleFileChange} className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition-all" />
-          <p className="text-xs text-gray-400 mt-2">Format yang disarankan: PDF untuk partitur.</p>
+          <p className="text-xs text-gray-400 mt-2">Format disarankan: PDF untuk partitur. Gambar (JPG/PNG) otomatis dikonversi ke WebP.</p>
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Lirik Lagu (Opsional)</label>

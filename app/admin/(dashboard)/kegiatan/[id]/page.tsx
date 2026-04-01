@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { Kegiatan } from '@/types';
 import { toast } from 'sonner';
+import { convertToWebP } from '@/lib/imageCompression';
 
 export default function EditKegiatan() {
   const router = useRouter();
@@ -48,13 +49,14 @@ export default function EditKegiatan() {
   }, [id]);
 
   const handleUpload = async (file: File) => {
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${Math.random()}.${fileExt}`;
+    const converted = await convertToWebP(file);
+    const fileExt = converted.name.split('.').pop();
+    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${fileExt}`;
     const filePath = `thumbnails/${fileName}`;
 
     const { error: uploadError } = await supabase.storage
       .from('kegiatan')
-      .upload(filePath, file);
+      .upload(filePath, converted, { contentType: 'image/webp' });
 
     if (uploadError) throw uploadError;
 
