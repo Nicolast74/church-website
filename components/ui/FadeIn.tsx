@@ -22,10 +22,10 @@ export default function FadeIn({
   
   const getInitial = (dir: string) => {
     switch (dir) {
-      case "up": return { opacity: 0, y: 40 };
-      case "down": return { opacity: 0, y: -40 };
-      case "left": return { opacity: 0, x: 40 };
-      case "right": return { opacity: 0, x: -40 };
+      case "up": return { opacity: 0, y: 30 };
+      case "down": return { opacity: 0, y: -30 };
+      case "left": return { opacity: 0, x: 30 };
+      case "right": return { opacity: 0, x: -30 };
       default: return { opacity: 0, y: 0 };
     }
   };
@@ -34,13 +34,14 @@ export default function FadeIn({
     <motion.div
       initial={getInitial(direction)}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ 
-        duration: 0.7, 
+        duration: 0.5, 
         delay: delay,
         ease: "easeOut" 
       }}
       className={`${fullWidth ? "w-full" : ""} ${className}`}
+      style={{ willChange: "opacity, transform" }}
     >
       {children}
     </motion.div>

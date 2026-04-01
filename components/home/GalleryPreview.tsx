@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { Kegiatan } from '@/types';
 
 interface GalleryPreviewProps {
@@ -16,12 +15,12 @@ export default function GalleryPreview({ activities }: GalleryPreviewProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {activities.map((item, i) => (
-        <motion.div 
+        <div 
           key={item.id} 
-          className={`${rotClasses[i % rotClasses.length]} hover:rotate-0 transition-all duration-500 hover:z-50`}
+          className={`${rotClasses[i % rotClasses.length]} hover:rotate-0 transition-transform duration-500 hover:z-50 will-change-transform`}
         >
-          <Link href={`/galeri/${item.id}`}>
-            <div className="bg-white dark:bg-stone-800 p-4 md:p-5 pb-10 md:pb-14 shadow-2xl shadow-black/20 transform hover:scale-105 transition-all duration-700">
+          <Link href={`/galeri/${item.id}`} className="block">
+            <div className="bg-white dark:bg-stone-800 p-4 md:p-5 pb-10 md:pb-14 shadow-2xl shadow-black/20 transform hover:scale-105 transition-transform duration-500 will-change-transform">
               <div className="relative aspect-square overflow-hidden bg-stone-100 dark:bg-stone-900 shadow-inner">
                 <Image src={item.thumbnail_url || 'https://picsum.photos/seed/1/500/500'} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 25vw" className="object-cover" alt={item.judul} />
               </div>
@@ -30,7 +29,7 @@ export default function GalleryPreview({ activities }: GalleryPreviewProps) {
               </p>
             </div>
           </Link>
-        </motion.div>
+        </div>
       ))}
     </div>
   );
