@@ -4,8 +4,8 @@ self.addEventListener('push', (event) => {
   const data = event.data.json();
   const options = {
     body: data.body,
-    icon: '/icons/icon-192x192.png', // Fallback icon
-    badge: '/icons/badge.png',
+    icon: '/images/logo/logo-gereja.png',
+    badge: '/images/logo/logo-gereja.png',
     data: {
       url: data.url,
     },

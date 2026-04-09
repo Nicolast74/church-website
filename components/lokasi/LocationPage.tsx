@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Section from '@/components/ui/Section';
 import { MapPin, Phone, Mail, Clock, Calendar, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -38,12 +39,23 @@ const LocationPage: React.FC<LocationPageProps> = ({
   jadwalUrl = '/jadwal',
   galeriUrl = '/galeri',
 }) => {
+  const [isMapLoaded, setIsMapLoaded] = React.useState(false);
+
   return (
     <main className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[65vh] bg-cover bg-center overflow-hidden" style={{ backgroundImage: `url('${heroImage}')` }}>
-        <div className="absolute inset-0 bg-linear-to-t from-background via-black/30 to-transparent" />
-        <div className="relative z-10 flex flex-col items-center justify-end h-full text-center text-white px-4 pb-24">
+      <section className="relative h-[65vh] overflow-hidden">
+        <Image
+          src={heroImage}
+          alt={`Foto ${name}`}
+          fill
+          priority
+          sizes="100vw"
+          quality={75}
+          className="absolute inset-0 z-0 object-cover"
+        />
+        <div className="absolute inset-0 z-10 bg-linear-to-t from-background via-black/30 to-transparent" />
+        <div className="relative z-20 flex flex-col items-center justify-end h-full text-center text-white px-4 pb-24">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -183,16 +195,29 @@ const LocationPage: React.FC<LocationPageProps> = ({
                 </a>
               </div>
               <div className="aspect-video md:aspect-21/9 w-full grayscale-[0.2] hover:grayscale-0 transition-all duration-700">
-                <iframe 
-                  src={mapUrl.replace('maps.app.goo.gl', 'www.google.com/maps/embed')} // Simplistic attempt, though proper embed URLs are better
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen={true} 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={`Map of ${name}`}
-                ></iframe>
+                {isMapLoaded ? (
+                  <iframe 
+                    src={mapUrl.replace('maps.app.goo.gl', 'www.google.com/maps/embed')} // Simplistic attempt, though proper embed URLs are better
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen={true} 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`Map of ${name}`}
+                  ></iframe>
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-stone-100 dark:bg-stone-900">
+                    <button
+                      type="button"
+                      onClick={() => setIsMapLoaded(true)}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/20"
+                    >
+                      Muat Peta
+                      <ExternalLink className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
               </div>
             </motion.div>
           )}

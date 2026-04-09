@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 const directory = './public/images';
-const MAX_WIDTH = 1920;
+const MAX_WIDTH = 1600;
 
 async function processImages(dir) {
   const files = await fs.readdir(dir);
@@ -14,19 +14,24 @@ async function processImages(dir) {
 
     if (stat.isDirectory()) {
       await processImages(fullPath); // Process subfolders recursively
-    } else if (file.match(/\.(jpg|jpeg|png|webp)$/i)) {
+    } else if (file.match(/\.(jpg|jpeg|png)$/i) && !file.match(/-1600\.(jpg|jpeg|png)$/i)) {
       console.log(`Processing: ${fullPath}`);
-      
-      const tempPath = `${fullPath}.tmp`;
-      
+
+      const parsed = path.parse(fullPath);
+      const baseOut = path.join(parsed.dir, `${parsed.name}-${MAX_WIDTH}`);
+
+      const jpgOut = `${baseOut}.jpg`;
+      const webpOut = `${baseOut}.webp`;
+      const avifOut = `${baseOut}.avif`;
+
       try {
-        await sharp(fullPath)
-          .resize({ width: MAX_WIDTH, withoutEnlargement: true }) // Resize to max 1920px width
-          .webp({ quality: 80 }) // Convert to WebP with 80% quality
-          .toFile(tempPath);
-          
-        await fs.rename(tempPath, fullPath); // Overwrite original
-        console.log(`✅ Compressed: ${file}`);
+        const pipeline = sharp(fullPath).resize({ width: MAX_WIDTH, withoutEnlargement: true });
+
+        await pipeline.clone().jpeg({ quality: 80, mozjpeg: true }).toFile(jpgOut);
+        await pipeline.clone().webp({ quality: 80 }).toFile(webpOut);
+        await pipeline.clone().avif({ quality: 50 }).toFile(avifOut);
+
+        console.log(`✅ Generated: ${path.basename(jpgOut)}, ${path.basename(webpOut)}, ${path.basename(avifOut)}`);
       } catch (err) {
         console.error(`❌ Error processing ${file}:`, err);
       }

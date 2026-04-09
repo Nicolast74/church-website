@@ -6,10 +6,12 @@ const Hero: React.FC = () => {
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-stone-950">
       <Image
-        src="/images/bg/st-yohanes-dari-barat.jpg"
+        src="/images/bg/st-yohanes-dari-barat-1600.jpg"
         alt="Background Gereja"
         fill
         priority
+        sizes="100vw"
+        quality={75}
         className="absolute inset-0 z-0 object-cover opacity-50 scale-105"
       />
       {/* Overlay gradien - Warmer overlay */}

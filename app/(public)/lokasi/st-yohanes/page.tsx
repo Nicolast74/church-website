@@ -3,7 +3,7 @@ import LocationPage from "@/components/lokasi/LocationPage";
 export default function StYohanes() {
   const locationData = {
     name: "Lingkungan Gereja St. Yohanes Girisekar",
-    heroImage: "/images/bg/st-yohanes-1.jpg",
+    heroImage: "/images/bg/st-yohanes-1-1600.jpg",
     description: (
       <>
         <p>

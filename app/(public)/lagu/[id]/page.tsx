@@ -65,6 +65,8 @@ export default async function LaguDetailPage({ params }: { params: { id: string 
                 src={`${lagu.file_url}#toolbar=0`} 
                 className="w-full h-[80vh] rounded-2xl border border-stone-200 dark:border-stone-600"
                 title={lagu.judul}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
             ) : lagu.file_type === 'image' ? (
               <>

@@ -3,7 +3,7 @@ import LocationPage from "@/components/lokasi/LocationPage";
 export default function TamanDoa() {
   const locationData = {
     name: "Taman Doa Goa Maria Bintang Samudra",
-    heroImage: "/images/bg/taman-doa-2.jpg",
+    heroImage: "/images/bg/taman-doa-2-1600.jpg",
     description: (
       <>
         <p>
