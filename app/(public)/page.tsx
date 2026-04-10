@@ -123,7 +123,7 @@ export default async function Home() {
               <span className="text-amber-500 font-bold text-[11px] tracking-[0.3em] uppercase mb-6 block">Dokumentasi</span>
               <h2 className="text-5xl md:text-7xl font-serif font-medium tracking-tight">Galeri <br/><span className="text-amber-400 italic font-normal capitalize">Kegiatan</span></h2>
             </div>
-            <Link href="/galeri" className="px-10 py-4 border border-white/20 rounded-xl font-bold text-[12px] uppercase hover:bg-white hover:text-stone-950 transition-all tracking-widest leading-none">
+            <Link href="/galeri" className="btn-secondary-modern py-4!">
               Lihat Semua
             </Link>
           </div>

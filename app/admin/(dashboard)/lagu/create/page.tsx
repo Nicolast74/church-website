@@ -126,10 +126,10 @@ export default function CreateLagu() {
         </div>
         
         <div className="flex items-center justify-end space-x-3 pt-4 border-t border-gray-100">
-          <Link href="/admin/lagu" className="px-6 py-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-50 transition-colors">
+          <Link href="/admin/lagu" className="px-6 py-3 border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-50 hover:-translate-y-0.5 hover:shadow-sm active:scale-95 transition-all duration-200">
             Batal
           </Link>
-          <button type="submit" disabled={loading} className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 shadow-lg disabled:opacity-50 transition-all">
+          <button type="submit" disabled={loading} className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:hover:translate-y-0 transition-all duration-200">
             {loading ? 'Menyimpan...' : 'Simpan Lagu'}
           </button>
         </div>

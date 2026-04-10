@@ -18,8 +18,8 @@ const LocationCard: React.FC<LocationCardProps> = ({ imageSrc, title, descriptio
     <div className="px-1 md:px-2 pb-1 md:pb-2">
       <h3 className="text-xl md:text-2xl font-serif font-medium text-stone-900 dark:text-stone-100 mb-2 md:mb-3">{title}</h3>
       <p className="text-stone-500 dark:text-stone-400 text-xs md:text-sm mb-6 md:mb-8 leading-relaxed italic">&quot;{description}&quot;</p>
-      <Link href={linkHref} className="inline-block w-full py-3.5 md:py-4 bg-stone-50 dark:bg-stone-700 text-stone-900 dark:text-stone-100 text-[10px] md:text-[11px] font-bold tracking-[0.2em] rounded-xl hover:bg-stone-900 hover:text-white dark:hover:bg-amber-700 dark:hover:text-white transition-all text-center uppercase">
-        Selengkapnya
+      <Link href={linkHref} className="inline-block w-full py-3.5 md:py-4 bg-stone-50 dark:bg-stone-700 text-stone-900 dark:text-stone-100 text-[10px] md:text-[11px] font-bold tracking-[0.2em] rounded-xl hover:bg-stone-900 hover:text-white dark:hover:bg-amber-700 dark:hover:text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md active:scale-95 text-center uppercase relative overflow-hidden group/btn">
+        <span className="relative z-10">Selengkapnya</span>
       </Link>
     </div>
   </div>

@@ -361,11 +361,42 @@ html.dark .text-indigo-600 {
            text-stone-700 dark:text-stone-300 bg-stone-100 dark:bg-stone-800 rounded-full uppercase border border-stone-200 dark:border-stone-700 mb-6;
   }
 
-  /* Button */
+  /* Button Primary */
   .btn-primary-modern {
     @apply px-10 py-5 bg-stone-900 dark:bg-amber-700 text-white font-bold rounded-xl
-           hover:bg-amber-800 dark:hover:bg-amber-600 transition-all shadow-lg hover:-translate-y-0.5
-           flex items-center gap-3 w-fit uppercase text-[12px] tracking-widest;
+           transition-all duration-300 ease-out shadow-lg 
+           hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/20 dark:hover:shadow-amber-700/30
+           active:scale-[0.97] active:translate-y-0
+           flex items-center gap-3 w-fit uppercase text-[12px] tracking-widest relative overflow-hidden;
+  }
+
+  /* Inner shine effect for primary button */
+  .btn-primary-modern::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .btn-primary-modern:hover::after {
+    left: 150%;
+  }
+
+  /* Button Secondary (Outline/Transparent) */
+  .btn-secondary-modern {
+    @apply px-10 py-5 bg-transparent backdrop-blur-sm text-[var(--foreground)] border border-[var(--card-border)] font-bold rounded-xl 
+           transition-all duration-300 ease-out shadow-sm
+           hover:bg-[var(--foreground)] hover:text-[var(--background)] hover:-translate-y-1 hover:shadow-lg
+           active:scale-[0.97] active:translate-y-0
+           uppercase text-[12px] tracking-widest leading-none flex flex-row items-center gap-3 w-fit relative overflow-hidden;
+  }
+
+  html.dark .btn-secondary-modern {
+    @apply border-white/20 text-white hover:bg-white hover:text-stone-950;
   }
 
   /* Polaroid */

@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
           <Link href="/jadwal" className="btn-primary-modern bg-white! text-stone-900! hover:bg-stone-100! w-full! sm:w-60! justify-center">
             Lihat Jadwal Misa
           </Link>
-          <Link href="/kontak" className="px-10 py-5 bg-transparent backdrop-blur-md text-white border border-white/30 font-bold rounded-xl hover:bg-white/10 transition-all uppercase text-[12px] tracking-widest leading-none flex items-center justify-center w-full sm:w-60">
+          <Link href="/kontak" className="btn-secondary-modern bg-transparent backdrop-blur-md text-white border-white/30 hover:bg-white/10 hover:text-white! hover:border-white/50 w-full sm:w-60 justify-center">
             Hubungi Kami
           </Link>
         </div>
