@@ -1,0 +1,10 @@
+# Ignore build and cache directories
+.next/
+node_modules/
+.git/
+.vercel/
+dist/
+build/
+*.log
+.gemini/
+lighthouse-reports/

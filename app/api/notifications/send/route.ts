@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-...
+    const err = error as Error;
     console.error('Error in send-notification API:', err);
     return NextResponse.json({ error: err.message }, { status: 500 });
   }

@@ -1,0 +1,20 @@
+name = "git:commit"
+description = "Generates a Conventional Commit message based on staged changes."
+
+[prompt]
+template = """
+Review the following staged changes and generate a clear, concise Conventional Commit message.
+Focus on *why* the changes were made rather than just *what* changed.
+
+Staged Changes:
+```diff
+!{git diff --staged}
+```
+
+Follow the style of recent commits in this repository:
+```text
+!{git log -n 5 --oneline}
+```
+
+Format the output as a draft commit message.
+"""
