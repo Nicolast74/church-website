@@ -31,9 +31,10 @@ export async function sendPushNotification(payload: { title: string; body: strin
 
     try {
       await webpush.sendNotification(pushSubscription, notificationPayload);
-    } catch (err: any) {
+    } catch (err: unknown) {
       // If subscription is expired or revoked (404 or 410), delete it
-      if (err.statusCode === 404 || err.statusCode === 410) {
+      const statusCode = (err as { statusCode?: number }).statusCode;
+      if (statusCode === 404 || statusCode === 410) {
         console.warn(`Subscription ${sub.id} expired, deleting...`);
         await supabase.from('push_subscriptions').delete().eq('id', sub.id);
       } else {

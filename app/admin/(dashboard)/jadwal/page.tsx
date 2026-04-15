@@ -3,39 +3,43 @@
 import { createClient } from '@/lib/supabaseClient';
 import { Jadwal } from '@/types';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 export default function JadwalList() {
   const [schedules, setSchedules] = useState<Jadwal[]>([]);
   const [loading, setLoading] = useState(true);
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
-  const fetchSchedules = async () => {
-    setLoading(true);
-    const { data, error } = await supabase
+  const fetchSchedules = useCallback(async () => {
+    const { data } = await supabase
       .from('jadwal')
       .select('*')
       .order('tanggal', { ascending: true });
-    
+
     if (data) {
         setSchedules(data as Jadwal[]);
     }
     setLoading(false);
-  };
+  }, [supabase]);
 
   useEffect(() => {
-    fetchSchedules();
-  }, []);
+    const timer = setTimeout(() => {
+      fetchSchedules();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [fetchSchedules]);
 
   const handleDelete = async (id: string) => {
     if (!window.confirm('Apakah Anda yakin ingin menghapus jadwal ini?')) return;
 
-    const { error } = await supabase.from('jadwal').delete().eq('id', id);
-    if (!error) {
+    setLoading(true);
+    const { error: deleteError } = await supabase.from('jadwal').delete().eq('id', id);
+    if (!deleteError) {
       alert('Jadwal berhasil dihapus');
       fetchSchedules();
     } else {
-      alert('Gagal menghapus jadwal: ' + error.message);
+      alert('Gagal menghapus jadwal: ' + deleteError.message);
+      setLoading(false);
     }
   };
 

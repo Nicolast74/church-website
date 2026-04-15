@@ -2,12 +2,12 @@
 
 import { createClient } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 
 export default function CreateJadwal() {
   const router = useRouter();
-  const supabase = createClient() as any;
+  const supabase = useMemo(() => createClient(), []);
   
   const [namaKegiatan, setNamaKegiatan] = useState('');
   const [tanggal, setTanggal] = useState('');
@@ -33,7 +33,7 @@ export default function CreateJadwal() {
             lokasi,
             deskripsi: deskripsi || null,
           },
-        ] as any);
+        ]);
 
       if (insertError) throw insertError;
 
@@ -55,8 +55,8 @@ export default function CreateJadwal() {
       router.push('/admin/jadwal');
       router.refresh();
       
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Terjadi kesalahan');
     } finally {
       setLoading(false);
     }

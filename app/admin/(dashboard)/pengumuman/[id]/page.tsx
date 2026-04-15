@@ -2,7 +2,7 @@
 
 import { createClient } from '@/lib/supabaseClient';
 import { useRouter, useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { Pengumuman } from '@/types';
@@ -17,7 +17,7 @@ export default function EditPengumuman() {
   const router = useRouter();
   const params = useParams();
   const id = params?.id as string;
-  const supabase = createClient() as any;
+  const supabase = useMemo(() => createClient(), []);
 
   const [judul, setJudul] = useState('');
   const [isi, setIsi] = useState('');
@@ -28,7 +28,7 @@ export default function EditPengumuman() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    const fetch = async () => {
+    const fetchData = async () => {
       const { data, error } = await supabase
         .from('pengumuman')
         .select('*')
@@ -49,8 +49,8 @@ export default function EditPengumuman() {
       setLoading(false);
     };
 
-    if (id) fetch();
-  }, [id, router]);
+    if (id) fetchData();
+  }, [id, router, supabase]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,8 +73,8 @@ export default function EditPengumuman() {
       toast.success('Perubahan berhasil disimpan!');
       router.push('/admin/pengumuman');
       router.refresh();
-    } catch (err: any) {
-      toast.error('Gagal menyimpan: ' + err.message);
+    } catch (err: unknown) {
+      toast.error('Gagal menyimpan: ' + (err instanceof Error ? err.message : 'Terjadi kesalahan'));
     } finally {
       setSaving(false);
     }

@@ -3,16 +3,16 @@
 import { createClient } from '@/lib/supabaseClient';
 import { Kegiatan } from '@/types';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 export default function KegiatanList() {
   const [activities, setActivities] = useState<Kegiatan[]>([]);
   const [loading, setLoading] = useState(true);
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
-  const fetchActivities = async () => {
-    setLoading(true);
-    const { data, error } = await supabase
+  const fetchActivities = useCallback(async () => {
+    const { data } = await supabase
       .from('kegiatan')
       .select('*')
       .order('tanggal', { ascending: false });
@@ -21,21 +21,26 @@ export default function KegiatanList() {
         setActivities(data as Kegiatan[]);
     }
     setLoading(false);
-  };
+  }, [supabase]);
 
   useEffect(() => {
-    fetchActivities();
-  }, []);
+    const timer = setTimeout(() => {
+      fetchActivities();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [fetchActivities]);
 
   const handleDelete = async (id: string) => {
     if (!window.confirm('Apakah Anda yakin ingin menghapus kegiatan ini?')) return;
 
-    const { error } = await supabase.from('kegiatan').delete().eq('id', id);
-    if (!error) {
+    setLoading(true);
+    const { error: deleteError } = await supabase.from('kegiatan').delete().eq('id', id);
+    if (!deleteError) {
     //   toast.success('Kegiatan berhasil dihapus');
       fetchActivities();
     } else {
-      alert('Gagal menghapus kegiatan: ' + error.message);
+      alert('Gagal menghapus kegiatan: ' + deleteError.message);
+      setLoading(false);
     }
   };
 
@@ -98,7 +103,13 @@ export default function KegiatanList() {
                                 <td className="px-6 py-4 whitespace-nowrap w-24">
                                     <div className="h-16 w-16 flex-shrink-0 relative rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
                                         {item.thumbnail_url ? (
-                                            <img src={item.thumbnail_url} alt={item.judul} className="h-full w-full object-cover" />
+                                            <Image 
+                                              src={item.thumbnail_url} 
+                                              alt={item.judul} 
+                                              className="h-full w-full object-cover" 
+                                              width={64}
+                                              height={64}
+                                            />
                                         ) : (
                                             <div className="h-full w-full flex items-center justify-center text-gray-300">
                                                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

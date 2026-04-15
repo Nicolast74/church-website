@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Bacaan } from '@/types';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
+import Image from 'next/image';
 
 export const dynamic = 'force-dynamic'; // ensure fresh data on each request
 
@@ -35,7 +36,19 @@ export default async function BacaanDetail({ params }: { params: { id: string } 
       );
     }
     if (file_type.startsWith('image')) {
-      return <img src={file_url} alt={bacaan.judul} className="max-w-full h-auto rounded" />;
+      return (
+        <div className="relative w-full">
+          <Image 
+            src={file_url} 
+            alt={bacaan.judul} 
+            width={0} 
+            height={0} 
+            sizes="100vw" 
+            style={{ width: '100%', height: 'auto' }} 
+            className="rounded" 
+          />
+        </div>
+      );
     }
     // For docs, use Google Docs viewer fallback
     return (

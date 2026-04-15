@@ -2,7 +2,7 @@
 
 import { createClient } from '@/lib/supabaseClient';
 import { useRouter, useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { Renungan } from '@/types';
@@ -11,7 +11,7 @@ export default function EditRenungan() {
   const router = useRouter();
   const params = useParams();
   const id = params?.id as string;
-  const supabase = createClient() as any;
+  const supabase = useMemo(() => createClient(), []);
   
   const [judul, setJudul] = useState('');
   const [ayatReferensi, setAyatReferensi] = useState('');
@@ -42,7 +42,7 @@ export default function EditRenungan() {
     };
 
     if (id) fetchRenungan();
-  }, [id, router]);
+  }, [id, router, supabase]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,8 +70,8 @@ export default function EditRenungan() {
       router.push('/admin/renungan');
       router.refresh();
       
-    } catch (err: any) {
-      toast.error('Gagal menyimpan perubahan: ' + err.message);
+    } catch (err: unknown) {
+      toast.error('Gagal menyimpan perubahan: ' + (err instanceof Error ? err.message : 'Terjadi kesalahan'));
     } finally {
       setSaving(false);
     }

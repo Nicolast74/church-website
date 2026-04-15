@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabaseServer';
 import Section from "@/components/ui/Section";
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { Kegiatan, KegiatanFoto } from '@/types';
 import GalleryGrid from '@/components/galeri/GalleryGrid';
@@ -84,11 +85,12 @@ export default async function GalleryDetail({ params }: Props) {
                 </p>
 
                 {activity.thumbnail_url && (
-                    <div className="aspect-video w-full overflow-hidden rounded-xl mb-10 shadow-lg">
-                        <img 
+                    <div className="aspect-video w-full overflow-hidden rounded-xl mb-10 shadow-lg relative">
+                        <Image 
                             src={activity.thumbnail_url} 
                             alt={activity.judul} 
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
                         />
                     </div>
                 )}

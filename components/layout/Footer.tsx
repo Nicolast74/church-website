@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PushSubscriptionButton from "../notifications/PushSubscriptionButton";
 
 export default function Footer() {
@@ -34,9 +35,9 @@ export default function Footer() {
             © {new Date().getFullYear()} Lingkungan St. Yohanes Rasul Girisekar.
           </p>
           <div className="flex gap-4">
-            <a href="/lagu" className="text-xs text-gray-500 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 no-underline">Library Lagu</a>
+            <Link href="/lagu" className="text-xs text-gray-500 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 no-underline">Library Lagu</Link>
             <a href="https://maps.app.goo.gl/6f5s3mF7Fucx4WEo9" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 no-underline">Lokasi Gereja</a>
-            <a href="/kontak" className="text-xs text-gray-500 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 no-underline">Kontak</a>
+            <Link href="/kontak" className="text-xs text-gray-500 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 no-underline">Kontak</Link>
           </div>
         </div>
       </div>

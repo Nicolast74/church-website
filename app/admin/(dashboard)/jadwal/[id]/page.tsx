@@ -10,7 +10,7 @@ export default function EditJadwal() {
   const router = useRouter();
   const params = useParams();
   const id = params?.id as string;
-  const supabase = createClient() as any;
+  const supabase = createClient();
   
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -43,8 +43,10 @@ export default function EditJadwal() {
       setLoading(false);
     };
 
-    if (id) fetchSchedules();
-  }, [id]);
+    if (id) {
+      fetchSchedules();
+    }
+  }, [id, supabase]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,7 +62,7 @@ export default function EditJadwal() {
             jam,
             lokasi,
             deskripsi: deskripsi || null,
-        } as any)
+        })
         .eq('id', id);
 
       if (updateError) throw updateError;
@@ -68,8 +70,8 @@ export default function EditJadwal() {
       router.push('/admin/jadwal');
       router.refresh();
       
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Terjadi kesalahan');
     } finally {
       setSaving(false);
     }

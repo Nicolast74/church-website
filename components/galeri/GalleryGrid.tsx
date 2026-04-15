@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import GalleryLightbox from './GalleryLightbox';
 import { KegiatanFoto } from '@/types';
 
@@ -38,13 +39,14 @@ export default function GalleryGrid({ photos, activityTitle }: GalleryGridProps)
         {photos.map((photo, index) => (
           <div 
             key={photo.id} 
-            className="aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+            className="aspect-square relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
             onClick={() => openLightbox(index)}
           >
-            <img 
+            <Image 
               src={photo.foto_url} 
               alt={`Dokumentasi ${activityTitle}`} 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
         ))}

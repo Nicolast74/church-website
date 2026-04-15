@@ -3,7 +3,7 @@
 import { createClient } from '@/lib/supabaseClient';
 import { Renungan } from '@/types';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import { toast } from 'sonner';
@@ -11,11 +11,10 @@ import { toast } from 'sonner';
 export default function RenunganAdminList() {
   const [devotions, setDevotions] = useState<Renungan[]>([]);
   const [loading, setLoading] = useState(true);
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
-  const fetchDevotions = async () => {
-    setLoading(true);
-    const { data, error } = await supabase
+  const fetchDevotions = useCallback(async () => {
+    const { data } = await supabase
       .from('renungan')
       .select('*')
       .order('tanggal', { ascending: false });
@@ -24,21 +23,26 @@ export default function RenunganAdminList() {
         setDevotions(data as Renungan[]);
     }
     setLoading(false);
-  };
+  }, [supabase]);
 
   useEffect(() => {
-    fetchDevotions();
-  }, []);
+    const timer = setTimeout(() => {
+      fetchDevotions();
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [fetchDevotions]);
 
   const handleDelete = async (id: string) => {
     if (!window.confirm('Apakah Anda yakin ingin menghapus renungan ini?')) return;
 
-    const { error } = await supabase.from('renungan').delete().eq('id', id);
-    if (!error) {
+    setLoading(true);
+    const { error: deleteError } = await supabase.from('renungan').delete().eq('id', id);
+    if (!deleteError) {
       toast.success('Renungan berhasil dihapus');
       fetchDevotions();
     } else {
-      toast.error('Gagal menghapus renungan: ' + error.message);
+      toast.error('Gagal menghapus renungan: ' + deleteError.message);
+      setLoading(false);
     }
   };
 

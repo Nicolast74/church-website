@@ -2,7 +2,7 @@
 
 import { createClient } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
@@ -14,7 +14,7 @@ const KATEGORI_OPTIONS = [
 
 export default function CreatePengumuman() {
   const router = useRouter();
-  const supabase = createClient() as any;
+  const supabase = useMemo(() => createClient(), []);
 
   const [judul, setJudul] = useState('');
   const [isi, setIsi] = useState('');
@@ -57,8 +57,8 @@ export default function CreatePengumuman() {
 
       router.push('/admin/pengumuman');
       router.refresh();
-    } catch (err: any) {
-      toast.error('Gagal menambahkan: ' + err.message);
+    } catch (err: unknown) {
+      toast.error('Gagal menambahkan: ' + (err instanceof Error ? err.message : 'Terjadi kesalahan'));
     } finally {
       setLoading(false);
     }

@@ -21,8 +21,9 @@ export async function POST(req: Request) {
     if (error && error.code !== '23505') throw error;
 
     return NextResponse.json({ message: 'Subscribed successfully' });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error subscribing:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

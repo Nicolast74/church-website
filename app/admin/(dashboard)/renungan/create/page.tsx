@@ -2,13 +2,13 @@
 
 import { createClient } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
 export default function CreateRenungan() {
   const router = useRouter();
-  const supabase = createClient() as any;
+  const supabase = useMemo(() => createClient(), []);
   
   const [judul, setJudul] = useState('');
   const [ayatReferensi, setAyatReferensi] = useState('');
@@ -43,8 +43,8 @@ export default function CreateRenungan() {
       router.push('/admin/renungan');
       router.refresh();
       
-    } catch (err: any) {
-      toast.error('Gagal menambahkan renungan: ' + err.message);
+    } catch (err: unknown) {
+      toast.error('Gagal menambahkan renungan: ' + (err instanceof Error ? err.message : 'Terjadi kesalahan'));
     } finally {
       setLoading(false);
     }
