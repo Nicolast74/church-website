@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 export const revalidate = 0;
@@ -69,14 +70,16 @@ export default async function LaguDetailPage({ params }: { params: { id: string 
                 referrerPolicy="no-referrer-when-downgrade"
               />
             ) : lagu.file_type === 'image' ? (
-              <>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
+              <div className="relative w-full">
+                <Image 
                   src={lagu.file_url} 
                   alt={lagu.judul} 
+                  width={1200}
+                  height={1600}
                   className="w-full h-auto rounded-2xl"
+                  priority
                 />
-              </>
+              </div>
             ) : (
               <div className="text-center py-20">
                 <p className="text-stone-600 dark:text-stone-300 mb-6">File dokumen tersedia dalam format yang tidak dapat di-preview langsung.</p>

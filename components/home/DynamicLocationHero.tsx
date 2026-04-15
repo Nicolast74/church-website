@@ -5,11 +5,11 @@ import Image from 'next/image';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const images = [
-  "/images/bg/depan-1600.jpg",
-  "/images/bg/st-yohanes-1-1600.jpg",
-  "/images/bg/st-yohanes-2-1600.jpg",
-  "/images/bg/st-yohanes-dari-barat-1600.jpg",
-  "/images/bg/taman-doa-2-1600.jpg"
+  "/images/bg/depan-1600.avif",
+  "/images/bg/st-yohanes-1-1600.avif",
+  "/images/bg/st-yohanes-2-1600.avif",
+  "/images/bg/st-yohanes-dari-barat-1600.avif",
+  "/images/bg/taman-doa-2-1600.avif"
 ];
 
 const DynamicLocationHero: React.FC = () => {

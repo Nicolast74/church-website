@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-stone-950">
       <Image
-        src="/images/bg/st-yohanes-dari-barat-1600.jpg"
+        src="/images/bg/st-yohanes-dari-barat-1600.avif"
         alt="Background Gereja"
         fill
         priority
