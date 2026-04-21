@@ -134,6 +134,7 @@ export function CookieConsent() {
                   <button
                     onClick={() => setShowSettings(false)}
                     className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Tutup pengaturan"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -166,8 +167,12 @@ export function CookieConsent() {
                       </p>
                     </div>
                     <div className="flex h-6 items-center">
+                      {/* eslint-disable-next-line jsx-a11y/aria-proptypes */}
                       <button
                         type="button"
+                        role="switch"
+                        aria-checked={preferences.analytics}
+                        aria-label="Toggle cookie analitik"
                         onClick={() => setPreferences({ ...preferences, analytics: !preferences.analytics })}
                         className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background ${
                           preferences.analytics ? "bg-accent" : "bg-muted-foreground/30"
@@ -191,8 +196,12 @@ export function CookieConsent() {
                       </p>
                     </div>
                     <div className="flex h-6 items-center">
+                      {/* eslint-disable-next-line jsx-a11y/aria-proptypes */}
                       <button
                         type="button"
+                        role="switch"
+                        aria-checked={preferences.marketing}
+                        aria-label="Toggle cookie pemasaran"
                         onClick={() => setPreferences({ ...preferences, marketing: !preferences.marketing })}
                         className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background ${
                           preferences.marketing ? "bg-accent" : "bg-muted-foreground/30"
