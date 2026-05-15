@@ -45,7 +45,7 @@ export function useChat() {
         if (value) {
           const chunk = decoder.decode(value, { stream: true });
           // Basic text parsing. Adapt based on actual RAG Engine response format (SSE vs raw)
-          const text = chunk.replace(/^data: /gm, '').replace(/\\n\\n$/gm, '\\n');
+          const text = chunk.replace(/^data: /gm, '').replace(/\n\n$/gm, '\n');
           
           setMessages((prev) => 
             prev.map((msg) => 
@@ -58,7 +58,7 @@ export function useChat() {
       console.error('Chat error:', error);
       setMessages((prev) => 
         prev.map((msg) => 
-          msg.id === assistantId ? { ...msg, content: msg.content + '\\n\\n**Error:** Could not reach the engine.' } : msg
+          msg.id === assistantId ? { ...msg, content: msg.content + '\n\n**Error:** Could not reach the engine.' } : msg
         )
       );
     } finally {

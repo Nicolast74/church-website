@@ -52,6 +52,7 @@ export const metadata: Metadata = {
 
 import { NotificationManager } from "@/components/notifications/NotificationManager";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import ChatWidget from "@/components/chat/chat-widget";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <NotificationManager />
           <CookieConsent />
           {children}
+          <ChatWidget />
         </ThemeProvider>
       </body>
     </html>
