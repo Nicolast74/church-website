@@ -17,6 +17,7 @@ const navGroups = [
       { href: "/bacaan", label: "Bacaan" },
       { href: "/renungan", label: "Renungan" },
       { href: "/lagu", label: "Lagu" },
+      { href: "/sentinel", label: "Sentinel" },
     ],
   },
   {

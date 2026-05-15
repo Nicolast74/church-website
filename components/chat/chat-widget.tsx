@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, setInput, sendMessage, isLoading } = useChat();
+  const { messages, input, setInput, sendMessage, isLoading } = useChat({ mode: 'short' });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function ChatWidget() {
             {/* Header */}
             <div className="bg-stone-900 border-b border-stone-800 p-4 flex justify-between items-center">
               <div>
-                <h3 className="text-white font-bold font-serif text-lg tracking-wide">Workshop Assistant</h3>
+                <h3 className="text-white font-bold font-serif text-lg tracking-wide">Sentinel</h3>
                 <p className="text-stone-400 text-xs uppercase tracking-widest">Saint John&apos;s Engine</p>
               </div>
               <button onClick={() => setIsOpen(false)} className="text-stone-400 hover:text-white transition-colors">

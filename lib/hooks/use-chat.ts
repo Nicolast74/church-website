@@ -6,7 +6,7 @@ export type Message = {
   content: string;
 };
 
-export function useChat() {
+export function useChat({ mode = 'short' }: { mode?: 'short' | 'detailed' } = {}) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +26,7 @@ export function useChat() {
       const response = await fetch(`${process.env.NEXT_PUBLIC_ENGINE_API_URL || 'http://localhost:8000'}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: content, history: messages }),
+        body: JSON.stringify({ message: content, history: messages, mode }),
       });
 
       if (!response.ok) {
@@ -64,7 +64,7 @@ export function useChat() {
     } finally {
       setIsLoading(false);
     }
-  }, [messages]);
+  }, [messages, mode]);
 
   return {
     messages,
