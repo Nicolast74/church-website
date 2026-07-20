@@ -14,6 +14,7 @@ const navGroups = [
   {
     label: "Rohani",
     children: [
+      { href: "/katekese-ai", label: "Katekese AI ✨" },
       { href: "/bacaan", label: "Bacaan" },
       { href: "/renungan", label: "Renungan" },
       { href: "/lagu", label: "Lagu" },

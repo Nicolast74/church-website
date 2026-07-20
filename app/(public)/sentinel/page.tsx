@@ -6,7 +6,7 @@ import { useChat } from '@/lib/hooks/use-chat';
 import { motion } from 'framer-motion';
 
 export default function SentinelPage() {
-  const { messages, input, setInput, sendMessage, isLoading } = useChat({ mode: 'detailed' });
+  const { messages, input, setInput, sendMessage, isLoading } = useChat({ initialMode: 'detailed' });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -8,6 +8,7 @@ import {
 
 const MENU_ITEMS = [
   { href: '/admin/dashboard', label: 'Dashboard', iconName: 'dashboard' as const },
+  { href: '/admin/ai-agent', label: 'Agen AI Otonom ✨', iconName: 'dashboard' as const },
   { href: '/admin/kegiatan', label: 'Galeri Kegiatan', iconName: 'galeri' as const },
   { href: '/admin/jadwal', label: 'Jadwal Misa', iconName: 'jadwal' as const },
   { href: '/admin/renungan', label: 'Renungan Harian', iconName: 'renungan' as const },
